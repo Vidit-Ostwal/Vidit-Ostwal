@@ -16,6 +16,7 @@ def summarize_sentence(sentence):
         str: 100-word summary of the input sentence
     """
     genai.configure(api_key=os.environ.get('GOOGLE_API_KEY'))
+    print(os.environ.get('GOOGLE_API_KEY'))
     
     model = genai.GenerativeModel('gemini-pro')
     
@@ -214,6 +215,7 @@ def main():
     # Get GitHub username and personal access token from environment variables
     username = os.environ.get('GITHUB_USERNAME')
     token = os.environ.get('GITHUB_TOKEN')
+    print(username, token)
     
     if not username or not token:
         print("Please set GITHUB_USERNAME and GITHUB_TOKEN environment variables.")
