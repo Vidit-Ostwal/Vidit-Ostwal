@@ -15,7 +15,7 @@ def summarize_sentence(sentence):
     Returns:
         str: 100-word summary of the input sentence
     """
-    genai.configure(api_key=os.environ.get('GEMINI_API_KEY'))
+    genai.configure(api_key=os.environ.get('GOOGLE_API_KEY'))
     
     model = genai.GenerativeModel('gemini-pro')
     
