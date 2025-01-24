@@ -98,13 +98,19 @@ def get_github_activity(username, token):
                     break  # Stop if the event is older than 30 days
                 
                 # Collect comments
+                # Fetch full comment details for IssueCommentEvent
                 if event['type'] == 'IssueCommentEvent':
-                    activities['recent_comments'].append({
-                        'repo': event['repo']['name'],
-                        'comment_url': comment_details['html_url'],
-                        'comment_text': comment_details['body'],
-                        'date': event_date.strftime("%Y-%m-%d")
-                    })
+                    comment_url = event['payload']['comment']['url']
+                    comment_response = requests.get(comment_url, headers=headers)
+                    
+                    if comment_response.status_code == 200:
+                        comment_details = comment_response.json()
+                        activities['recent_comments'].append({
+                            'repo': event['repo']['name'],
+                            'comment_url': comment_details['html_url'],
+                            'comment_text': comment_details['body'],
+                            'date': event_date.strftime("%Y-%m-%d")
+                        })
                 
                 # Collect issues raised
                 elif event['type'] == 'IssuesEvent' and event['payload']['action'] == 'opened':
