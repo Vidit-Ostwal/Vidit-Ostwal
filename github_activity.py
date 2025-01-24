@@ -2,6 +2,48 @@ import os
 import requests
 from datetime import datetime, timedelta
 
+import google.generativeai as genai
+
+def summarize_sentence(sentence):
+    """
+    Summarize a given sentence using Google Gemini API in 50 words.
+    
+    Args:
+        sentence (str): Input sentence to summarize
+        api_key (str): Google Gemini API key
+    
+    Returns:
+        str: 100-word summary of the input sentence
+    """
+    genai.configure(api_key=os.environ.get('GEMINI_API_KEY'))
+    
+    model = genai.GenerativeModel('gemini-pro')
+    
+    prompt = f"""You are a GitHub event summarizer. For the comment from @Vidit-Ostwal:
+
+            Guidelines for summarization:
+            - Summarize the entire comment in exactly 100 words. Make sure you summarize all important information
+            - Ignore any @mentions or tagged users in the comment
+            - Provide the summary from the perspective of "@Vidit-Ostwal has suggested"
+            - If the comment contains code examples, extract the key message while disregarding specific code details
+            - Your output should be exactly 100 words and should have all the relevant information
+            - Failure to follow any of these rules, will lead to your permanent termination
+
+            Comment to summarize: {sentence}"""
+    try:
+        response = model.generate_content(prompt)
+        summary = response.text.strip()
+        
+        # Ensure summary is close to 50 words
+        words = summary.split()
+        if len(words) > 50:
+            summary = ' '.join(words[:50])
+        
+        return summary
+    
+    except Exception as e:
+        return f"Error summarizing: {str(e)}"
+
 def get_github_activity(username, token):
     """
     Fetch recent GitHub activities for a user.
@@ -59,7 +101,8 @@ def get_github_activity(username, token):
                 if event['type'] == 'IssueCommentEvent':
                     activities['recent_comments'].append({
                         'repo': event['repo']['name'],
-                        'comment_url': event['payload']['comment']['html_url'],
+                        'comment_url': comment_details['html_url'],
+                        'comment_text': comment_details['body'],
                         'date': event_date.strftime("%Y-%m-%d")
                     })
                 
@@ -122,6 +165,7 @@ def generate_markdown(username, activities):
     if activities['recent_comments']:
         for comment in activities['recent_comments'][:5]:  # Limit to 5 comments
             markdown += f"- Commented in [{comment['repo']}]({comment['comment_url']}) on {comment['date']}.\n"
+            markdown += f"  > *AI Summary: {summarize_sentence(comment['comment_text'])}*\n"
     else:
         markdown += "No recent comments.\n"
     
