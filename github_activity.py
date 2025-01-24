@@ -4,14 +4,15 @@ from datetime import datetime, timedelta
 
 def get_github_activity(username, token):
     """
-    Fetch recent GitHub activities for a user
+    Fetch recent GitHub activities for a user.
     
     Args:
         username (str): GitHub username
         token (str): GitHub Personal Access Token
     
     Returns:
-        dict: Consolidated GitHub activity summary
+        dict: Consolidated GitHub activity summary, including comments, issues, pull requests,
+              starred repositories, and forks.
     """
     # GitHub API base URL
     base_url = "https://api.github.com"
@@ -22,60 +23,90 @@ def get_github_activity(username, token):
         "Accept": "application/vnd.github.v3+json"
     }
     
-    # Retrieve recent activities
+    # Initialize the activity summary
     activities = {
         "recent_comments": [],
         "issues_raised": [],
-        "pull_requests": []
+        "pull_requests": [],
+        "starred_repos": [],
+        "forked_repos": []
     }
     
-    # Fetch recent comments across repositories
-    comments_url = f"{base_url}/users/{username}/events"
-    comments_response = requests.get(comments_url, headers=headers)
+    # GitHub Events API (supports user events)
+    events_url = f"{base_url}/users/{username}/events"
     
-    if comments_response.status_code == 200:
-        events = comments_response.json()
+    # Fetch events with pagination (in case of more than 30 results)
+    page = 1
+    cutoff_date = datetime.now() - timedelta(days=30)
+    
+    while True:
+        response = requests.get(f"{events_url}?page={page}", headers=headers)
+        if response.status_code != 200:
+            print(f"Failed to fetch events: {response.status_code} - {response.json().get('message', 'Unknown error')}")
+            break
         
-        # Filter and process events in the last 30 days
-        cutoff_date = datetime.now() - timedelta(days=30)
+        events = response.json()
+        if not events:
+            break  # No more events to process
         
         for event in events:
-            event_date = datetime.strptime(event['created_at'], "%Y-%m-%dT%H:%M:%SZ")
+            try:
+                event_date = datetime.strptime(event['created_at'], "%Y-%m-%dT%H:%M:%SZ")
+                if event_date < cutoff_date:
+                    break  # Stop if the event is older than 30 days
+                
+                # Collect comments
+                if event['type'] == 'IssueCommentEvent':
+                    activities['recent_comments'].append({
+                        'repo': event['repo']['name'],
+                        'comment_url': event['payload']['comment']['html_url'],
+                        'date': event_date.strftime("%Y-%m-%d")
+                    })
+                
+                # Collect issues raised
+                elif event['type'] == 'IssuesEvent' and event['payload']['action'] == 'opened':
+                    activities['issues_raised'].append({
+                        'repo': event['repo']['name'],
+                        'issue_title': event['payload']['issue']['title'],
+                        'issue_url': event['payload']['issue']['html_url'],
+                        'date': event_date.strftime("%Y-%m-%d")
+                    })
+                
+                # Collect pull requests
+                elif event['type'] == 'PullRequestEvent' and event['payload']['action'] == 'opened':
+                    activities['pull_requests'].append({
+                        'repo': event['repo']['name'],
+                        'pr_title': event['payload']['pull_request']['title'],
+                        'pr_url': event['payload']['pull_request']['html_url'],
+                        'date': event_date.strftime("%Y-%m-%d")
+                    })
+                
+                # Collect starred repositories
+                elif event['type'] == 'WatchEvent' and event['payload']['action'] == 'started':
+                    activities['starred_repos'].append({
+                        'repo': event['repo']['name'],
+                        'date': event_date.strftime("%Y-%m-%d")
+                    })
+                
+                # Collect forked repositories
+                elif event['type'] == 'ForkEvent':
+                    activities['forked_repos'].append({
+                        'repo': event['repo']['name'],
+                        'fork_url': event['payload']['forkee']['html_url'],
+                        'date': event_date.strftime("%Y-%m-%d")
+                    })
             
-            if event_date < cutoff_date:
-                break
-            
-            # Collect comments
-            if event['type'] == 'CommentEvent':
-                activities['recent_comments'].append({
-                    'repo': event['repo']['name'],
-                    'comment_url': event.get('payload', {}).get('comment', {}).get('html_url', ''),
-                    'date': event_date.strftime("%Y-%m-%d")
-                })
-            
-            # Collect issues
-            if event['type'] == 'IssuesEvent' and event['payload']['action'] == 'opened':
-                activities['issues_raised'].append({
-                    'repo': event['repo']['name'],
-                    'issue_title': event['payload']['issue']['title'],
-                    'issue_url': event['payload']['issue']['html_url'],
-                    'date': event_date.strftime("%Y-%m-%d")
-                })
-            
-            # Collect pull requests
-            if event['type'] == 'PullRequestEvent' and event['payload']['action'] == 'opened':
-                activities['pull_requests'].append({
-                    'repo': event['repo']['name'],
-                    'pr_title': event['payload']['pull_request']['title'],
-                    'pr_url': event['payload']['pull_request']['html_url'],
-                    'date': event_date.strftime("%Y-%m-%d")
-                })
+            except KeyError as e:
+                print(f"Missing key in event: {e}")
+        
+        # Go to the next page
+        page += 1
     
     return activities
 
 def generate_markdown(username, activities):
     """
-    Generate a markdown summary of GitHub activities
+    Generate a markdown summary of GitHub activities.
     
     Args:
         username (str): GitHub username
@@ -84,33 +115,50 @@ def generate_markdown(username, activities):
     Returns:
         str: Markdown formatted activity summary
     """
-    markdown = f"## Recent GitHub Activity for {username}\n\n"
+    markdown = f"# Recent GitHub Activity for {username}\n\n"
     
     # Recent Comments Section
-    markdown += "### 💬 Recent Comments\n"
+    markdown += "## 💬 Recent Comments\n"
     if activities['recent_comments']:
         for comment in activities['recent_comments'][:5]:  # Limit to 5 comments
-            markdown += f"- In [{comment['repo']}]({comment['comment_url']}), commented on {comment['date']}\n"
+            markdown += f"- Commented in [{comment['repo']}]({comment['comment_url']}) on {comment['date']}.\n"
     else:
         markdown += "No recent comments.\n"
     
     # Issues Raised Section
-    markdown += "\n### 🐛 Issues Raised\n"
+    markdown += "\n## 🐛 Issues Raised\n"
     if activities['issues_raised']:
         for issue in activities['issues_raised'][:5]:  # Limit to 5 issues
-            markdown += f"- In [{issue['repo']}]({issue['issue_url']}): {issue['issue_title']} ({issue['date']})\n"
+            markdown += f"- Raised an issue in [{issue['repo']}]({issue['issue_url']}): {issue['issue_title']} ({issue['date']}).\n"
     else:
         markdown += "No issues raised recently.\n"
     
     # Pull Requests Section
-    markdown += "\n### 🚀 Pull Requests\n"
+    markdown += "\n## 🚀 Pull Requests\n"
     if activities['pull_requests']:
         for pr in activities['pull_requests'][:5]:  # Limit to 5 PRs
-            markdown += f"- In [{pr['repo']}]({pr['pr_url']}): {pr['pr_title']} ({pr['date']})\n"
+            markdown += f"- Opened a PR in [{pr['repo']}]({pr['pr_url']}): {pr['pr_title']} ({pr['date']}).\n"
     else:
         markdown += "No pull requests opened recently.\n"
     
+    # Starred Repositories Section
+    markdown += "\n## ⭐ Starred Repositories\n"
+    if activities['starred_repos']:
+        for star in activities['starred_repos'][:5]:  # Limit to 5 starred repos
+            markdown += f"- Starred [{star['repo']}] on {star['date']}.\n"
+    else:
+        markdown += "No repositories starred recently.\n"
+    
+    # Forked Repositories Section
+    markdown += "\n## 🍴 Forked Repositories\n"
+    if activities['forked_repos']:
+        for fork in activities['forked_repos'][:5]:  # Limit to 5 forks
+            markdown += f"- Forked [{fork['repo']}]({fork['fork_url']}) on {fork['date']}.\n"
+    else:
+        markdown += "No repositories forked recently.\n"
+    
     return markdown
+
 
 def main():
     # Get GitHub username and personal access token from environment variables
