@@ -27,6 +27,7 @@ def summarize_sentence(sentence):
             - Ignore any @mentions or tagged users in the comment
             - Provide the summary from the perspective of "@Vidit-Ostwal has suggested"
             - If the comment contains code examples, extract the key message while disregarding specific code details
+            - Do not refer to any other external link in the summary
             - Your output should be exactly 100 words and should have all the relevant information
             - Failure to follow any of these rules, will lead to your permanent termination
 
