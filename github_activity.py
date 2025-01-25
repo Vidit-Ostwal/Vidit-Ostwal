@@ -16,7 +16,6 @@ def summarize_sentence(sentence):
         str: 100-word summary of the input sentence
     """
     genai.configure(api_key=os.environ.get('GOOGLE_API_KEY'))
-    print(os.environ.get('GOOGLE_API_KEY'))
     
     model = genai.GenerativeModel('gemini-pro')
     
@@ -129,10 +128,11 @@ def get_github_activity(username, token):
                     activities['pull_requests'].append({
                         'repo': event['repo']['name'],
                         'pr_title': event['payload']['pull_request']['title'],
+                        'pr_description': event['payload']['pull_request']['body'],
                         'pr_url': event['payload']['pull_request']['html_url'],
                         'date': event_date.strftime("%Y-%m-%d")
                     })
-                
+                                
                 # Collect starred repositories
                 elif event['type'] == 'WatchEvent' and event['payload']['action'] == 'started':
                     activities['starred_repos'].append({
@@ -191,6 +191,7 @@ def generate_markdown(username, activities):
     if activities['pull_requests']:
         for pr in activities['pull_requests'][:5]:  # Limit to 5 PRs
             markdown += f"- Opened a PR in [{pr['repo']}]({pr['pr_url']}): {pr['pr_title']} ({pr['date']}).\n"
+            markdown += f"  > *AI Summary: {summarize_sentence(pr['pr_description'])}*\n"
     else:
         markdown += "No pull requests opened recently.\n"
     
@@ -217,7 +218,6 @@ def main():
     # Get GitHub username and personal access token from environment variables
     username = os.environ.get('GITHUB_USERNAME')
     token = os.environ.get('GITHUB_TOKEN')
-    print(username, token)
     
     if not username or not token:
         print("Please set GITHUB_USERNAME and GITHUB_TOKEN environment variables.")
