@@ -2,22 +2,20 @@
 
 ## 💬 Recent Comments
 - Commented in [explodinggradients/ragas](https://github.com/explodinggradients/ragas/issues/1871#issuecomment-2610590240) on 2025-01-23.
-  > *AI Summary: @Vidit-Ostwal has suggested a possible solution to address an issue in the code related to the uniqueness of dictionary keys. The issue arises from using the **_"prompt_trace.name"_** as a key in the **_"prompt_traces"_** dictionary, which results in non-unique keys when the same prompt is called multiple times. @Vidit-Ostwal suggests a*
+  > *AI Summary: @Vidit-Ostwal has suggested a fix for the issue where the dictionary **_"prompt_traces"_** uses the key **_"prompt_trace.name"_**, which can lead to non-unique keys. To resolve this, they propose appending the last four characters of the run ID to make the key unique. An alternative solution is to use a combination of*
 - Commented in [explodinggradients/ragas](https://github.com/explodinggradients/ragas/issues/1865#issuecomment-2606619575) on 2025-01-22.
-  > *AI Summary: @Vidit-Ostwal has suggested a linked resource from the Ragas documentation (https://docs.ragas.io/en/latest/howtos/migrations/migrate_from_v01_to_v02/) that might be helpful in understanding how to migrate from version 0.1 to version 0.2 of a specific software.*
+  > *AI Summary: @Vidit-Ostwal has suggested referencing the provided documentation for guidance on migrating from version 0.1 to version 0.2 of the software. The documentation is available at the provided link and may offer valuable information and instructions for the migration process.*
 - Commented in [explodinggradients/ragas](https://github.com/explodinggradients/ragas/issues/1857#issuecomment-2602616743) on 2025-01-20.
-  > *AI Summary: @Vidit-Ostwal has suggested that @dosu should solve the issue.*
+  > *AI Summary: @Vidit-Ostwal has suggested that @dosu should look into a specific issue and provide a solution. No further details or context were provided.*
 - Commented in [explodinggradients/ragas](https://github.com/explodinggradients/ragas/issues/1842#issuecomment-2600862337) on 2025-01-19.
-  > *AI Summary: @Vidit-Ostwal suggests that @dosu should provide feedback on the ongoing discussion.*
+  > *AI Summary: @Vidit-Ostwal has suggested getting feedback from @dosu on the proposed changes.*
 - Commented in [explodinggradients/ragas](https://github.com/explodinggradients/ragas/issues/1842#issuecomment-2600862090) on 2025-01-19.
-  > *AI Summary: @Vidit-Ostwal has suggested that there might be an error in the documentation. They recommend using the following code instead:
+  > *AI Summary: @Vidit-Ostwal has suggested a correction to the documentation, where the recommended import modules should be:
 
-```
 from ragas.testset import TestsetGenerator
 from ragas.testset import Testset, TestsetSample
-```
 
-This is compatible with `ragas version == 0.2.10`. They have also suggested raising another issue for the documentation error.*
+This has been verified to work with ragas version 0.2.10. A separate issue should be raised to address the documentation error.*
 
 ## 🐛 Issues Raised
 No issues raised recently.
