@@ -2,21 +2,22 @@
 
 ## 💬 Recent Comments
 - Commented in [explodinggradients/ragas](https://github.com/explodinggradients/ragas/issues/1868#issuecomment-2613215323) on 2025-01-24.
-  > *AI Summary: @Vidit-Ostwal suggests resolving the error by updating the ragas version. Additionally, it is recommended to create a KnowledgeGraph using sample nodes and specify the `property_name` as "page_content" and `new_property_name` as "entity_jaccard_similarity" in the `JaccardSimilarityBuilder` constructor. The error occurred due to the absence of "entities" in the sample nodes, making the*
+  > *AI Summary: @Vidit-Ostwal has suggested to update the ragas version. Additionally, for the second error encountered, the suggestion is to replace this line: ``` rel_builder = JaccardSimilarityBuilder(property_name="entities", key_name="PER", new_property_name="entity_jaccard_similarity") ``` with this line: ``` rel_builder = JaccardSimilarityBuilder(property_name="page_content", new_property_name="entity_jaccard_similarity") ``` This modification is recommended because the sample nodes provided do not possess an*
 - Commented in [explodinggradients/ragas](https://github.com/explodinggradients/ragas/issues/1868#issuecomment-2612806612) on 2025-01-24.
-  > *AI Summary: @Vidit-Ostwal has suggested that the output you're receiving is as expected and that the documentation contains a mistake. According to the documentation, the sole purpose of NER is to extract entities and not provide any additional information. However, the documentation shows an output with extra details like "observer's frame of*
+  > *AI Summary: @Vidit-Ostwal has suggested that the output returned by the NER model may be different from what is documented. They believe the output should be a list of strings containing entities, rather than a dictionary with different entity types as keys and lists of entities as values. This suggestion is based*
 - Commented in [explodinggradients/ragas](https://github.com/explodinggradients/ragas/issues/1875#issuecomment-2612549639) on 2025-01-24.
-  > *AI Summary: @Vidit-Ostwal has suggested raising an error within the validate_sample function to specify which sample is out of the expected type. This enhanced error message would guide users to the specific sample that deviates from the expected type, aiding in quicker debugging.*
+  > *AI Summary: @Vidit-Ostwal has suggested changing the `validate_samples` function to raise an error indicating which sample is out of the expected sample type. This would provide users with more specific information about the issue and help them identify the problematic sample. The suggested change involves raising an error with the following format:*
 - Commented in [explodinggradients/ragas](https://github.com/explodinggradients/ragas/issues/1871#issuecomment-2610590240) on 2025-01-23.
-  > *AI Summary: @Vidit-Ostwal has suggested a solution to an issue in the code where a dictionary key is not unique, causing errors when the code is called multiple times. The solution involves appending the last four characters of the run ID to the key to make it unique. An alternative approach could*
+  > *AI Summary: @Vidit-Ostwal has suggested a fix for an issue in ragas.metrics._factual_correctness Line 281, 282, 287, 288 and ragas.callbacks.py Line 170, 171, 172. The issue arises due to the use of "_prompt_traces_" dictionary with "_prompt_trace.name_" as the key, which is not unique when called multiple times. The proposed solution is to append*
 - Commented in [explodinggradients/ragas](https://github.com/explodinggradients/ragas/issues/1865#issuecomment-2606619575) on 2025-01-22.
-  > *AI Summary: @Vidit-Ostwal has suggested referring to the Ragas documentation for guidance on migrating from version 0.1 to version 0.2. The provided link outlines the specific steps and considerations necessary to ensure a successful migration.*
+  > *AI Summary: @Vidit-Ostwal has suggested referring to the Ragas documentation for guidance on migrating from version 0.1 to version 0.2. The documentation provides detailed instructions and examples to facilitate a smooth transition.*
 
 ## 🐛 Issues Raised
 No issues raised recently.
 
 ## 🚀 Pull Requests
 - Opened a PR in [explodinggradients/ragas](https://github.com/explodinggradients/ragas/pull/1879): Change the validate_samples functionality (2025-01-24).
+  > *AI Summary: @Vidit-Ostwal has suggested a modification to the `validate_samples` functionality to provide additional information. Specifically, the updated functionality will identify and report the indexed sample that is causing a detected issue, providing more context and easing the debugging process. This enhancement improves the diagnostic capabilities of the feature.*
 
 ## ⭐ Starred Repositories
 - Starred [explodinggradients/ragas] on 2025-01-24.
