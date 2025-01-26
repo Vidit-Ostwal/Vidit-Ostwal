@@ -1,27 +1,28 @@
 # Recent GitHub Activity for Vidit-Ostwal
 
 ## 💬 Recent Comments
+- Commented in [crewAIInc/crewAI](https://github.com/crewAIInc/crewAI/issues/1970#issuecomment-2613994381) on 2025-01-25.
+  > *AI Summary: @Vidit-Ostwal has suggested to set `verbose = True` to resolve the issue. However, the result will only be visible in the logs.*
 - Commented in [explodinggradients/ragas](https://github.com/explodinggradients/ragas/pull/1881#issuecomment-2613963202) on 2025-01-25.
-  > *AI Summary: @Vidit-Ostwal has suggested merging this pull request into the main branch, as doing so would resolve another pull request that they had previously requested.*
+  > *AI Summary: @Vidit-Ostwal has suggested merging this pull request, as it resolves an issue raised in another pull request. By incorporating the changes in this pull request, the other pull request can also be closed.*
 - Commented in [explodinggradients/ragas](https://github.com/explodinggradients/ragas/pull/1880#issuecomment-2613820990) on 2025-01-25.
-  > *AI Summary: @Vidit-Ostwal has suggested a modification to the "validate_samples" function to enhance error handling. The updated code iterates over each sample and raises a more informative error if a sample type mismatch is detected. This improved error message includes the index of the offending sample and specifies both the expected and*
+  > *AI Summary: @Vidit-Ostwal has suggested improving the `validate_samples` function by modifying the error message to include the index and type of the invalid sample. This change will provide more context and make it easier to identify the source of any errors. However, the overall functionality of comparing sample types while iterating remains*
 - Commented in [explodinggradients/ragas](https://github.com/explodinggradients/ragas/pull/1880#issuecomment-2613816523) on 2025-01-25.
-  > *AI Summary: @Vidit-Ostwal has suggested that all unit tests have failed due to PR #1879.*
+  > *AI Summary: @Vidit-Ostwal has suggested investigating the root cause of the unit test failures triggered by pull request #1879. The issue affects all unit tests and @jjmachan has been tagged for assistance.*
 - Commented in [explodinggradients/ragas](https://github.com/explodinggradients/ragas/issues/1868#issuecomment-2613215323) on 2025-01-24.
-  > *AI Summary: @Vidit-Ostwal suggests resolving the first error by updating the ragas version. For the second error, it's suggested to update the property name in the JaccardSimilarityBuilder call from "entities" to "page_content". The correct usage should be: ``` rel_builder = JaccardSimilarityBuilder(property_name="page_content", new_property_name="entity_jaccard_similarity") ``` This is because the sample nodes do not have*
-- Commented in [explodinggradients/ragas](https://github.com/explodinggradients/ragas/issues/1868#issuecomment-2612806612) on 2025-01-24.
-  > *AI Summary: @Vidit-Ostwal has suggested that the current output of the NER model where it returns a tuple of entities and a dictionary of entity types may be incorrect. They believe the output should instead be a tuple of entities and a list of strings, representing the extracted entities. This suggestion is*
+  > *AI Summary: @Vidit-Ostwal has proposed the following: For the second error, update the ragas version and try the following: 1. Replace: ``` rel_builder = JaccardSimilarityBuilder(property_name="entities", key_name="PER", new_property_name="entity_jaccard_similarity") ``` with: ``` rel_builder = JaccardSimilarityBuilder(property_name="page_content", new_property_name="entity_jaccard_similarity") ``` 2. Ensure the sample nodes have a "page_content" property with a string value, not a dictionary. Remove*
 
 ## 🐛 Issues Raised
 No issues raised recently.
 
 ## 🚀 Pull Requests
 - Opened a PR in [explodinggradients/ragas](https://github.com/explodinggradients/ragas/pull/1880): Changed the parse_run_traces to include last 4 letters of run_id (2025-01-25).
-  > *AI Summary: @Vidit-Ostwal has suggested changing the `parse_run_traces` function to incorporate the last four characters of the trace's `run_id`. This change ensures a unique key for each function call, enhancing the accuracy and effectiveness of the function.*
+  > *AI Summary: @Vidit-Ostwal has suggested a change to the #1871 issue. This change involves modifying the `parse_run_traces` function to include the last 4 characters of the `run_id` for each trace. This modification ensures that each call has a unique key, which is useful for identifying and tracking calls.*
 - Opened a PR in [explodinggradients/ragas](https://github.com/explodinggradients/ragas/pull/1879): Change the validate_samples functionality (2025-01-24).
-  > *AI Summary: @Vidit-Ostwal has suggested modifying the validate_samples functionality to include information on the indexed sample causing any issues. Previously, the functionality only checked for the presence of errors, without providing specific details. This improvement will aid in pinpointing and resolving issues more efficiently.*
+  > *AI Summary: @Vidit-Ostwal has suggested an update to the `validate_samples` functionality to include specific details about the indexed sample that is causing issues. This enhancement will provide more precise error reporting and aid in troubleshooting. The updated functionality aims to improve the user experience and facilitate efficient resolution of sample validation errors.*
 
 ## ⭐ Starred Repositories
+- Starred [crewAIInc/crewAI] on 2025-01-25.
 - Starred [explodinggradients/ragas] on 2025-01-24.
 
 ## 🍴 Forked Repositories
