@@ -119,6 +119,7 @@ def get_github_activity(username, token):
                     activities['issues_raised'].append({
                         'repo': event['repo']['name'],
                         'issue_title': event['payload']['issue']['title'],
+                        'issue_description': event['payload']['issue']['body'], 
                         'issue_url': event['payload']['issue']['html_url'],
                         'date': event_date.strftime("%Y-%m-%d")
                     })
@@ -183,6 +184,7 @@ def generate_markdown(username, activities):
     if activities['issues_raised']:
         for issue in activities['issues_raised'][:5]:  # Limit to 5 issues
             markdown += f"- Raised an issue in [{issue['repo']}]({issue['issue_url']}): {issue['issue_title']} ({issue['date']}).\n"
+            markdown += f"  > *AI Summary: {summarize_sentence(issue['issue_description'])}*\n"
     else:
         markdown += "No issues raised recently.\n"
     
