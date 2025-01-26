@@ -138,9 +138,10 @@ def get_github_activity(username, token):
                 elif event['type'] == 'WatchEvent' and event['payload']['action'] == 'started':
                     activities['starred_repos'].append({
                         'repo': event['repo']['name'],
+                        'repo_link': f"https://github.com/{event['repo']['name']}",
                         'date': event_date.strftime("%Y-%m-%d")
                     })
-                
+
                 # Collect forked repositories
                 elif event['type'] == 'ForkEvent':
                     activities['forked_repos'].append({
@@ -201,10 +202,10 @@ def generate_markdown(username, activities):
     markdown += "\n## ⭐ Starred Repositories\n"
     if activities['starred_repos']:
         for star in activities['starred_repos'][:5]:  # Limit to 5 starred repos
-            markdown += f"- Starred [{star['repo']}] on {star['date']}.\n"
+            markdown += f"- Starred [{star['repo']}]({star['repo_link']}) on {star['date']}.\n"
     else:
         markdown += "No repositories starred recently.\n"
-    
+        
     # Forked Repositories Section
     markdown += "\n## 🍴 Forked Repositories\n"
     if activities['forked_repos']:
