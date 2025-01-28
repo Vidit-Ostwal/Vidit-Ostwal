@@ -175,7 +175,7 @@ def generate_markdown(username, activities):
     markdown += "## 💬 Recent Comments\n"
     if activities['recent_comments']:
         for comment in activities['recent_comments'][:5]:  # Limit to 5 comments
-            markdown += f"- Commented in [{comment['repo']}]({comment['comment_url']}) on {comment['date']}.\n"
+            markdown += f"- [Commented]({comment['comment_url']}) in [{comment['repo']}] on {comment['date']}.\n"
             markdown += f"  > *AI Summary: {summarize_sentence(comment['comment_text'])}*\n"
     else:
         markdown += "No recent comments.\n"
@@ -184,7 +184,7 @@ def generate_markdown(username, activities):
     markdown += "\n## 🐛 Issues Raised\n"
     if activities['issues_raised']:
         for issue in activities['issues_raised'][:5]:  # Limit to 5 issues
-            markdown += f"- Raised an issue in [{issue['repo']}]({issue['issue_url']}): {issue['issue_title']} ({issue['date']}).\n"
+            markdown += f"- Raised an [issue]({issue['issue_url']}) in [{issue['repo']}]: {issue['issue_title']} ({issue['date']}).\n"
             markdown += f"  > *AI Summary: {summarize_sentence(issue['issue_description'])}*\n"
     else:
         markdown += "No issues raised recently.\n"
@@ -193,7 +193,7 @@ def generate_markdown(username, activities):
     markdown += "\n## 🚀 Pull Requests\n"
     if activities['pull_requests']:
         for pr in activities['pull_requests'][:5]:  # Limit to 5 PRs
-            markdown += f"- Opened a PR in [{pr['repo']}]({pr['pr_url']}): {pr['pr_title']} ({pr['date']}).\n"
+            markdown += f"- Opened a [PR]({pr['pr_url']}) in [{pr['repo']}]: {pr['pr_title']} ({pr['date']}).\n"
             markdown += f"  > *AI Summary: {summarize_sentence(pr['pr_description'])}*\n"
     else:
         markdown += "No pull requests opened recently.\n"
