@@ -1,30 +1,30 @@
 # Recent GitHub Activity for Vidit-Ostwal
 
 ## 💬 Recent Comments
+- [Commented](https://github.com/crewAIInc/crewAI/issues/1989#issuecomment-2619935488) in [crewAIInc/crewAI] on 2025-01-28.
+  > *AI Summary: @Vidit-Ostwal has suggested that the development of features should align with the maintainers' vision. He is currently experiencing latency issues due to multiple API hits. The proposed solution partially addresses his problem. He believes that solving latency issues will be a future necessity for the maintainers. The approach to solving*
 - [Commented](https://github.com/crewAIInc/crewAI/issues/1989#issuecomment-2619584422) in [crewAIInc/crewAI] on 2025-01-28.
-  > *AI Summary: @Vidit-Ostwal has suggested that the current limitation of allowing only one or two agents to work simultaneously hinders Crew AI's production readiness. They emphasized the need for scaling beyond 10 agents to address latency issues and improve efficiency. @Vidit-Ostwal expressed interest in contributing to a potential PR that addresses this*
+  > *AI Summary: @Vidit-Ostwal suggests addressing an issue where only one or two agents can work simultaneously, hindering production request processing. They propose a needed feature to enhance Crew AI's production readiness. Additionally, they express concerns about scaling beyond 10 agents due to potential latency issues. @Vidit-Ostwal offers to collaborate on a PR*
 - [Commented](https://github.com/crewAIInc/crewAI/issues/1977#issuecomment-2619281892) in [crewAIInc/crewAI] on 2025-01-28.
-  > *AI Summary: @Vidit-Ostwal has suggested providing a code example to clarify the issue. They propose creating an output class for Task 1 with a "detail" field. This output would serve as input for subsequent tasks. The raised issue stems from the presence of a "detail" parameter in 'task2' without a prior definition.*
+  > *AI Summary: @Vidit-Ostwal has suggested that a solution to the issue could be to create an output class for Task 1 with a field called `detail`. The output of one task can be provided as input for another task, and this is a core functionality for agent communication. In 'task2', the description*
 - [Commented](https://github.com/crewAIInc/crewAI/issues/1978#issuecomment-2619270257) in [crewAIInc/crewAI] on 2025-01-28.
-  > *AI Summary: @Vidit-Ostwal has suggested that the provided description is confusing and has requested to provide the complete code. They believe that this will help them understand the issue better.*
+  > *AI Summary: @Vidit-Ostwal has suggested sharing the entire code instead of the provided description, which they found confusing. They did not provide any specific guidance on how the description could be improved or what information was missing.*
 - [Commented](https://github.com/crewAIInc/crewAI/issues/1989#issuecomment-2619218501) in [crewAIInc/crewAI] on 2025-01-28.
-  > *AI Summary: @Vidit-Ostwal has suggested that Sequential is essential if the output of one agent is the input for another. However, if the process flow is not predefined, `kickoff()` can be run asynchronously. For more details, please refer to the linked documentation.*
-- [Commented](https://github.com/crewAIInc/crewAI/pull/1985#issuecomment-2619197911) in [crewAIInc/crewAI] on 2025-01-28.
-  > *AI Summary: @Vidit-Ostwal has suggested that @joaomdmoura should review a submission. No specific details or code snippets were included in the comment.*
+  > *AI Summary: @Vidit-Ostwal has suggested that the Sequential mode in Crew.ai is essential when the output of one agent is the input for another. Async mode can be used if there is no flow for the entire process. The documentation provides additional details on the different ways to kick off a Crew.*
 
 ## 🐛 Issues Raised
 - Raised an [issue](https://github.com/crewAIInc/crewAI/issues/1984) in [crewAIInc/crewAI]: output_log_file should also suppport JSON format. (2025-01-27).
-  > *AI Summary: @Vidit-Ostwal has suggested a feature to add JSON format support to the output_log_file. Currently, the log file is in .txt format, which is not easily parsable for further analysis. By adding JSON support, the log file will become more useful and will partially address issue #1970. @Vidit-Ostwal is willing to*
+  > *AI Summary: @Vidit-Ostwal has suggested adding a JSON format option to the output_log_file for enhanced parsability and analysis. The existing format is .txt, which limits its utility. This enhancement partially addresses issue #1970, providing a more flexible and usable logging format. @Vidit-Ostwal expresses willingness to contribute a pull request.*
 - Raised an [issue](https://github.com/browser-use/browser-use/issues/407) in [browser-use/browser-use]: Use of use_vision while defining agent (2025-01-26).
-  > *AI Summary: @Vidit-Ostwal has suggested that the purpose of `use_vision=True` when defining an agent is unclear. They inquire whether screenshots are processed differently using multimodal LLM, or if they still rely on element scraping. They note that the only observed difference is the saving of a `.gif` file. Additionally, they seek a*
+  > *AI Summary: @Vidit-Ostwal has suggested adding clarifications on the purpose of `use_vision set = True` in agent definitions. They inquired about the involvement of multimodal LLMs in image processing when this parameter is enabled. Additionally, they requested guidance on metrics to assess whether multimodal processing is occurring or not. They observed that*
 
 ## 🚀 Pull Requests
 - Opened a [PR](https://github.com/crewAIInc/crewAI/pull/1985) in [crewAIInc/crewAI]: Added functionality to have json format as well for the logs (2025-01-27).
-  > *AI Summary: @Vidit-Ostwal has suggested adding support to save logs in a JSON file. When initializing the Crew class, users can now set output_log_file to True or specify a filename like "log.json" along with setting save_as_json to True. By doing this, a JSON file containing an array of JSON events will be*
+  > *AI Summary: @Vidit-Ostwal has suggested adding support to save logs as a JSON file. When initializing the crew, one can set output_log_file to True or specify a file name, and enable save_as_json by setting it to True. This will generate a JSON file containing an array of JSON events, making it convenient*
 - Opened a [PR](https://github.com/explodinggradients/ragas/pull/1880) in [explodinggradients/ragas]: Changed the parse_run_traces to include last 4 letters of run_id (2025-01-25).
-  > *AI Summary: @Vidit-Ostwal has suggested modifying the `parse_run_traces` function to incorporate the last four characters of the `run_id` for each trace. By doing so, a unique key is generated for every function call, ensuring distinctiveness. This change addresses the issue of duplicate keys and enhances the accuracy of the function.*
+  > *AI Summary: @Vidit-Ostwal has suggested changing the `parse_run_traces` function to include the last four letters of the run ID of the trace. This change would result in a unique key for every call.*
 - Opened a [PR](https://github.com/explodinggradients/ragas/pull/1879) in [explodinggradients/ragas]: Change the validate_samples functionality (2025-01-24).
-  > *AI Summary: @Vidit-Ostwal has suggested a modification to the `validate_samples` functionality. This update will provide additional information by identifying the specific indexed sample that is causing any issues. By providing this detail, the modification aims to enhance the diagnostic capabilities and facilitate more precise troubleshooting.*
+  > *AI Summary: @Vidit-Ostwal has suggested modifying the validate_samples functionality to explicitly identify the problematic indexed sample, enhancing the diagnostic capabilities of the validation process.*
 
 ## ⭐ Starred Repositories
 - Starred [browser-use/browser-use](https://github.com/browser-use/browser-use) on 2025-01-26.
