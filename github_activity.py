@@ -174,7 +174,7 @@ def generate_markdown(username, activities):
     # Recent Comments Section
     markdown += "## 💬 Recent Comments\n"
     if activities['recent_comments']:
-        for comment in activities['recent_comments'][:5]:  # Limit to 5 comments
+        for comment in activities['recent_comments'][:10]:  # Limit to 10 comments
             markdown += f"- [Commented]({comment['comment_url']}) in [{comment['repo']}] on {comment['date']}.\n"
             markdown += f"  > *AI Summary: {summarize_sentence(comment['comment_text'])}*\n"
     else:
