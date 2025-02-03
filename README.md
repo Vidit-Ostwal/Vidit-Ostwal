@@ -2,29 +2,33 @@
 
 ## 💬 Recent Comments
 - [Commented](https://github.com/explodinggradients/ragas/issues/1868#issuecomment-2629482947) in [explodinggradients/ragas] on 2025-02-02.
-  > *AI Summary: @Vidit-Ostwal has asked @jjmachan and @dosu if the provided solution is correct. No further details or suggestions were given in the comment.*
+  > *AI Summary: @Vidit-Ostwal has requested feedback from @jjmachan and @dosu on the correctness of their proposed solution. However, the specific details of the solution are not provided in the comment.*
 - [Commented](https://github.com/Lightning-AI/torchmetrics/issues/2920#issuecomment-2629456251) in [Lightning-AI/torchmetrics] on 2025-02-02.
-  > *AI Summary: @Vidit-Ostwal has suggested that the provided code may cause instability due to near-zero variance in the input tensors `var_x` and `var_y`. They recommend re-scaling the input data or using a larger data type to avoid potential issues with the correlation coefficient calculation.*
+  > *AI Summary: @Vidit-Ostwal has suggested that the unexpected behavior is unique to the input tensor. After analyzing the code, they identified a specific condition that triggers a warning when the variance of predis is close to zero. This condition can lead to incorrect correlation coefficient results. To address this issue, they recommend*
 - [Commented](https://github.com/crewAIInc/crewAI/issues/1977#issuecomment-2629395843) in [crewAIInc/crewAI] on 2025-02-02.
-  > *AI Summary: @Vidit-Ostwal has suggested a modification to the task description for task 2. They recommend removing specific parameter references and instead describing the task's purpose in more general terms. This change aims to avoid potential errors caused by missing parameters in the task's initialization phase.*
+  > *AI Summary: @Vidit-Ostwal has suggested that the error in `interpolate_inputs_and_add_conversation_history()` is due to it trying to find the `detail` parameter before the crew kickoff. They recommend adding a description to `task 2` to clarify that it should use the output of `task 1` without explicitly setting parameters. This would resolve the issue*
 - [Commented](https://github.com/explodinggradients/ragas/pull/1880#issuecomment-2629385607) in [explodinggradients/ragas] on 2025-02-02.
-  > *AI Summary: @Vidit-Ostwal has suggested updating the traces functionality to display traces in the format `{prompt_number} : {trace}`. They have also provided examples of how the new traces should appear. These traces include information about the prompt name, input, and output. The purpose of this change is to provide a more structured*
+  > *AI Summary: @Vidit-Ostwal has suggested updating the traces functionality to include "prompt_number: {trace}" for new traces. The updated traces would resemble this format:
+
+```
+{'prompt_1': {'name': 'claim_decomposition_prompt', 'input': ClaimDecompositionInput(response='Eifel tower is in Paris'), 'output': ClaimDecompositionOutput(claims=['Eiffel tower is in Paris.'])}, ...}
+```*
 - [Commented](https://github.com/explodinggradients/ragas/issues/1871#issuecomment-2628965465) in [explodinggradients/ragas] on 2025-02-01.
-  > *AI Summary: @Vidit-Ostwal has suggested modifying the flow for easier user understanding. He believes it is easy to implement and seeks @jjmachan's approval before updating the PR with the changes.*
+  > *AI Summary: @Vidit-Ostwal has suggested that the approach @VladTabakovCortea is suggesting makes sense from the user's perspective, as it would simplify the flow's comprehension. @Vidit-Ostwal believes it should be straightforward to implement from a technical standpoint. @Vidit-Ostwal has requested @jjmachan's input to confirm the alignment with this solution. If @jjmachan approves, @Vidit-Ostwal*
 
 ## 🐛 Issues Raised
 - Raised an [issue](https://github.com/crewAIInc/crewAI/issues/1984) in [crewAIInc/crewAI]: output_log_file should also suppport JSON format. (2025-01-27).
-  > *AI Summary: @Vidit-Ostwal has suggested introducing a JSON format in addition to the current .txt format in the output_log_file to facilitate further analysis and partial resolution of issue #1970. They are willing to contribute by submitting a pull request for this enhancement.*
+  > *AI Summary: @Vidit-Ostwal has suggested introducing a JSON format for the output log file, allowing for easier parsability and analysis. They believe this will partially address the limitations of the current .txt format. They have expressed willingness to contribute to the implementation by submitting a pull request.*
 - Raised an [issue](https://github.com/browser-use/browser-use/issues/407) in [browser-use/browser-use]: Use of use_vision while defining agent (2025-01-26).
-  > *AI Summary: @Vidit-Ostwal has suggested investigating the purpose of the `use_vision` flag in agent definition. The purpose of the flag and its impact on agent behavior are unclear. Specifically, it is not clear whether the flag triggers multimodal processing of images, causing the agent to interpret images using the multimodal LLM, or*
+  > *AI Summary: @Vidit-Ostwal suggests clarifying the purpose of the `use_vision` parameter when defining agents, specifically its impact on how screenshots are processed. This parameter controls whether the multimodal LLM is used to interpret screenshots or if traditional scraping and element-based analysis is performed. The key visible difference with `use_vision = True` is*
 
 ## 🚀 Pull Requests
 - Opened a [PR](https://github.com/crewAIInc/crewAI/pull/1985) in [crewAIInc/crewAI]: Added functionality to have json format as well for the logs (2025-01-27).
-  > *AI Summary: @Vidit-Ostwal has suggested a new feature to save logs as a JSON file. Users can now set output_log_file to True or provide a file name, and set save_as_json to True. This will create a JSON file containing an array of JSON events, making it easier to parse and work with.*
+  > *AI Summary: @Vidit-Ostwal has suggested adding support to save logs as a JSON file. To do this, set `output_log_file` to `True` or a file name like `"log.json"` and set `save_as_json` to `True`. This will create a JSON file containing an array of JSON events, simplifying parsing and working with the logs. An*
 - Opened a [PR](https://github.com/explodinggradients/ragas/pull/1880) in [explodinggradients/ragas]: Changed the parse_run_traces to include last 4 letters of run_id (2025-01-25).
-  > *AI Summary: @Vidit-Ostwal has suggested changing the parse_run_traces function to include the last 4 letters of the run_id of the trace. This change results in a unique key for every call. This modification ensures that every call has a distinct identifier, reducing the likelihood of key collisions and improving the accuracy of*
+  > *AI Summary: @Vidit-Ostwal has suggested changing the parse_run_traces function to include the last 4 letters of the trace's run_id. This results in a unique key for every call, which should improve the accuracy of the function.*
 - Opened a [PR](https://github.com/explodinggradients/ragas/pull/1879) in [explodinggradients/ragas]: Change the validate_samples functionality (2025-01-24).
-  > *AI Summary: @Vidit-Ostwal has suggested modifying the `validate_samples` functionality to provide additional information about the indexed sample that is causing an issue. This enhancement will assist in more precise error identification and faster troubleshooting.*
+  > *AI Summary: @Vidit-Ostwal has suggested modifying the `validate_samples` functionality to provide information about the specific indexed sample that is causing issues. This change will help identify the problematic sample more easily.*
 
 ## ⭐ Starred Repositories
 - Starred [microsoft/autogen](https://github.com/microsoft/autogen) on 2025-01-31.
