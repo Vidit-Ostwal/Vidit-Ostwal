@@ -2,50 +2,45 @@
 
 ## 💬 Recent Comments
 - [Commented](https://github.com/crewAIInc/crewAI/issues/2023#issuecomment-2640720257) in [crewAIInc/crewAI] on 2025-02-06.
-  > *AI Summary: @Vidit-Ostwal has suggested that `reset_memory_command` might be causing the issue since it initializes `short_term_memory` and `entity_memory` differently than in `crew.py`. While `reset_memory_command` may work for `long_term_memory` and `knowledge_memory`, it may not function properly if custom initialization is used for any memory.*
+  > *AI Summary: @Vidit-Ostwal has suggested that the issue may be caused by a discrepancy between how `reset_memory_command` initializes `short_term_memory` and `entity_memory` from the CLI and how they are initialized within `crew.py`. While the command works for `long_term_memory` and `knowledge_memory`, which do not require arguments, it may not function properly if custom initialization*
 - [Commented](https://github.com/explodinggradients/ragas/pull/1880#issuecomment-2634875873) in [explodinggradients/ragas] on 2025-02-04.
-  > *AI Summary: @Vidit-Ostwal has suggested coordinating with @sahusiddharth to resolve any potential conflicts.*
+  > *AI Summary: @Vidit-Ostwal has suggested coordinating with @sahusiddharth to resolve conflicts.*
 - [Commented](https://github.com/crewAIInc/crewAI/pull/1985#issuecomment-2634692022) in [crewAIInc/crewAI] on 2025-02-04.
-  > *AI Summary: @Vidit-Ostwal has suggested that @bhancockio review the provided code and offer their thoughts. Additionally, @Vidit-Ostwal has requested feedback on whether this functionality enhances the user experience.*
+  > *AI Summary: @Vidit-Ostwal has suggested reviewing the provided code and sharing opinions on its quality. Additionally, they have asked whether the implemented functionality enhances user experience.*
 - [Commented](https://github.com/explodinggradients/ragas/pull/1880#issuecomment-2634530854) in [explodinggradients/ragas] on 2025-02-04.
-  > *AI Summary: @Vidit-Ostwal has suggested checking if the issue is caused by a previous unit test PR authored by @sahusiddharth.*
+  > *AI Summary: @Vidit-Ostwal has suggested that you verify if the issue is related to the recent unit test PR you made.*
 - [Commented](https://github.com/crewAIInc/crewAI/issues/2025#issuecomment-2631615412) in [crewAIInc/crewAI] on 2025-02-03.
-  > *AI Summary: @Vidit-Ostwal has suggested sharing more details about a specific concern they have because they are not able to understand it. They believe that "This" should work in their opinion, but they request more clarity on the matter.*
+  > *AI Summary: @Vidit-Ostwal has suggested that it would be helpful to provide more information about the issue, as they are currently unable to understand the problem. They believe that the suggested solution should work as intended.*
 - [Commented](https://github.com/explodinggradients/ragas/issues/1868#issuecomment-2629482947) in [explodinggradients/ragas] on 2025-02-02.
-  > *AI Summary: @Vidit-Ostwal has requested clarification from @jjmachan and @dosu on the correctness of the proposed solution. It is unclear what the suggested solution entails as the comment does not provide specific details or context.*
+  > *AI Summary: @Vidit-Ostwal has requested feedback on a proposed solution. The commenter seeks confirmation from @jjmachan and @dosu regarding the accuracy of the solution but does not provide further context or details.*
 - [Commented](https://github.com/Lightning-AI/torchmetrics/issues/2920#issuecomment-2629456251) in [Lightning-AI/torchmetrics] on 2025-02-02.
-  > *AI Summary: @Vidit-Ostwal has suggested that the unexpected behavior is likely caused by a specific condition in the provided code snippet. This condition checks if the variance of two variables (`var_x` and `var_y`) is below a threshold (`bound`), which can lead to instability in calculations. They observed this issue in a specific*
+  > *AI Summary: @Vidit-Ostwal has suggested that the unexpected behavior may be specific to the input tensors used. They have checked with different tensors and observed expected results, including `nan` when expected. The particular condition in the provided code snippet checks for variance close to zero, which could lead to instability in the*
 - [Commented](https://github.com/crewAIInc/crewAI/issues/1977#issuecomment-2629395843) in [crewAIInc/crewAI] on 2025-02-02.
-  > *AI Summary: @Vidit-Ostwal has suggested modifying the code in `task 2` to address an error caused by attempting to access the `detail` parameter before it has been initialized. They propose removing the explicit parameter setting and instead using the output of `task 1` as input for `task 2`, ensuring that the necessary*
+  > *AI Summary: @Vidit-Ostwal has suggested modifying the code to address the error raised due to the absence of the `detail` parameter. They propose defining `task 2` without specifying the parameters and instead relying on the output of `task 1`, which should provide the necessary inputs. This approach eliminates the need to explicitly*
 - [Commented](https://github.com/explodinggradients/ragas/pull/1880#issuecomment-2629385607) in [explodinggradients/ragas] on 2025-02-02.
-  > *AI Summary: @Vidit-Ostwal has suggested updating the traces functionality to adopt the `{prompt_number} : {trace}` format. Under this format, each trace will be assigned a unique prompt number and will be represented as a key-value pair. The key will be the assigned number, while the value will be the trace itself.*
+  > *AI Summary: @Vidit-Ostwal has suggested updating the traces functionality to include `{prompt_number} : {trace}` formatting. The new traces will resemble a more descriptive format, such as `{'prompt_1': {'name': 'claim_decomposition_prompt', 'input': ClaimDecompositionInput(response='Eiffel tower is in Paris'), 'output': ClaimDecompositionOutput(claims=['Eiffel tower is in Paris.'])}}`. This enhanced formatting provides a more organized and comprehensive representation of*
 - [Commented](https://github.com/explodinggradients/ragas/issues/1871#issuecomment-2628965465) in [explodinggradients/ragas] on 2025-02-01.
-  > *AI Summary: @Vidit-Ostwal has suggested a modification to the proposed solution, based on user perspective, for easier understanding of the flow. Implementation-wise, it is considered easy. @jjmachan is requested to provide their opinion on the suggested solution. If approved, the PR will be updated accordingly.*
+  > *AI Summary: @Vidit-Ostwal suggests that from a user perspective, separating into separate sections will enhance comprehension of the flow. From an implementation standpoint, they believe it should be straightforward to implement. They request @jjmachan's input to confirm alignment and indicate their willingness to update the PR with the suggested modification upon approval.*
 
 ## 🐛 Issues Raised
 - Raised an [issue](https://github.com/crewAIInc/crewAI/issues/2030) in [crewAIInc/crewAI]: Documentation Error in memory docs (2025-02-04).
-  > *AI Summary: @Vidit-Ostwal has suggested a change to the document at the following link: https://docs.crewai.com/concepts/memory The comment highlights that throughout the provided code examples in the document, the embedder parameter takes the input of 'model' instead of 'model_name', and this should be corrected to 'model_name'. This issue is present in the following*
+  > *AI Summary: @Vidit-Ostwal has suggested addressing an issue in the documentation for CrewAI's Memory concept. The documentation refers to an incorrect parameter name, "model," instead of the correct parameter name, "model_name." Specific examples of this error are provided in the comment for Azure OpenAI Embeddings, Google AI Embeddings, Vertex AI Embeddings, and*
 - Raised an [issue](https://github.com/crewAIInc/crewAI/issues/1984) in [crewAIInc/crewAI]: output_log_file should also suppport JSON format. (2025-01-27).
-  > *AI Summary: @Vidit-Ostwal has suggested a new feature to add JSON format to the `output_log_file` for better parsability and analysis. This addition partially addresses issue #1970. @Vidit-Ostwal expresses willingness to contribute a pull request for this enhancement.*
+  > *AI Summary: @Vidit-Ostwal has suggested converting the output_log_file from .txt format to JSON format for easier parsing and analysis. This change would also partially address issue #1970. @Vidit-Ostwal is willing to contribute a pull request for this feature.*
 - Raised an [issue](https://github.com/browser-use/browser-use/issues/407) in [browser-use/browser-use]: Use of use_vision while defining agent (2025-01-26).
-  > *AI Summary: @Vidit-Ostwal has suggested that the purpose of setting `use_vision` to `True` when defining an agent is unclear. They question whether screenshots are processed by the multimodal LLM or if scraping elements and making decisions based on those elements still occur. Additionally, they have not noticed any significant differences in output*
+  > *AI Summary: @Vidit-Ostwal has suggested an inquiry regarding the `use_vision` parameter in agent definition. They question its functionality when set to `True`. Specifically, they ask if screenshots are processed differently by the multimodal LLM or if the agent still relies primarily on scraping elements for decision-making. Additionally, they express concern about whether*
 
 ## 🚀 Pull Requests
 - Opened a [PR](https://github.com/crewAIInc/crewAI/pull/2047) in [crewAIInc/crewAI]: Added reset memories function inside crew class (2025-02-06).
-  > *AI Summary: @Vidit-Ostwal has suggested resolving the reset memories issue reported in #2023. Additionally, they propose:
-
-1. Eliminating the CLI command for memory reset
-2. Implementing documentation updates
-
-They are willing to make these changes if the suggested solution is aligned with the project's goals.*
+  > *AI Summary: @Vidit-Ostwal has suggested fixing the reset memories issue reported in #2023. Additionally, they propose removing the CLI command used to reset memories and updating the documentation. However, they seek confirmation that their solution aligns with the project's requirements before implementing these changes.*
 - Opened a [PR](https://github.com/crewAIInc/crewAI/pull/2031) in [crewAIInc/crewAI]: Fixed the memory documentation (2025-02-04).
-  > *AI Summary: @Vidit-Ostwal has suggested a commit that addresses the documentation issue outlined in issue #2030. This commit resolves the problem by making the necessary documentation updates and improvements.*
+  > *AI Summary: @Vidit-Ostwal has suggested a fix for the documentation issue reported in issue #2030. The documentation issue involved incorrect details in the instructions of the repository. This fix resolves the issue by updating the documentation with the correct instructions.*
 - Opened a [PR](https://github.com/crewAIInc/crewAI/pull/1985) in [crewAIInc/crewAI]: Added functionality to have json format as well for the logs (2025-01-27).
-  > *AI Summary: @Vidit-Ostwal has suggested adding support to save logs as a JSON file. By setting output_log_file to True or providing a file name and enabling save_as_json, users can now save logs in a JSON format. The resulting JSON file will contain an array of JSON events, enabling easy parsing and manipulation.*
+  > *AI Summary: @Vidit-Ostwal has suggested adding support for saving logs in a JSON format. This feature can be enabled by setting `output_log_file` to `True` or a file name and `save_as_json` to `True` while initializing the crew. The generated JSON file will consist of an array of JSON events, facilitating easy parsing and*
 - Opened a [PR](https://github.com/explodinggradients/ragas/pull/1880) in [explodinggradients/ragas]: Changed the parse_run_traces to include last 4 letters of run_id (2025-01-25).
-  > *AI Summary: @Vidit-Ostwal has suggested a change to the parse_run_traces function, to include the last 4 letters of the run_id of the trace. This modification results in a unique key for every call, resolving the issue of potential duplicate keys. The change has been implemented in pull request #1871.*
+  > *AI Summary: @Vidit-Ostwal has suggested altering the parse_run_traces function to generate a unique key for each call. This is accomplished by incorporating the final four characters of the trace's run_id into the key. This modification ensures a distinct identifier for every function invocation.*
 - Opened a [PR](https://github.com/explodinggradients/ragas/pull/1879) in [explodinggradients/ragas]: Change the validate_samples functionality (2025-01-24).
-  > *AI Summary: @Vidit-Ostwal has suggested modifying the validate_samples functionality to include information about the specific indexed sample causing any issues encountered during validation. This enhancement provides more detailed feedback and facilitates quicker troubleshooting and resolution of validation errors.*
+  > *AI Summary: @Vidit-Ostwal has suggested modifying the validate_samples functionality to include identifying the specific indexed sample causing any issues. This modification enhances the functionality by providing more precise problem identification during validation.*
 
 ## ⭐ Starred Repositories
 - Starred [langfuse/langfuse](https://github.com/langfuse/langfuse) on 2025-02-04.
