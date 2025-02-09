@@ -2,52 +2,47 @@
 
 ## 💬 Recent Comments
 - [Commented](https://github.com/crewAIInc/crewAI/issues/2023#issuecomment-2644717512) in [crewAIInc/crewAI] on 2025-02-08.
-  > *AI Summary: @Vidit-Ostwal has suggested closing the issue if the PR resolves the issue raised by @heckfy88. They believe that the PR addresses the concerns raised in the issue.*
+  > *AI Summary: @Vidit-Ostwal has suggested closing the issue if the merged PR resolves the issue being discussed. @heckfy88 should verify the fix and close the issue if it's resolved.*
 - [Commented](https://github.com/crewAIInc/crewAI/issues/2025#issuecomment-2644714108) in [crewAIInc/crewAI] on 2025-02-08.
-  > *AI Summary: @Vidit-Ostwal suggests that when using a generator to yield a value in a flow, it should be iterated to obtain the actual value. The example code demonstrates this by utilizing the langchain_google_genai and crewai libraries to generate a random city and a fun fact about that city. The flow yields*
+  > *AI Summary: @Vidit-Ostwal suggests using the yield keyword to return values from a generator function in the context of a CrewAI flow. When a generator object is yielded, it allows the flow to pause and resume its execution at the same point when the next step is triggered. This technique can be*
 - [Commented](https://github.com/crewAIInc/crewAI/issues/2055#issuecomment-2643704539) in [crewAIInc/crewAI] on 2025-02-07.
-  > *AI Summary: @Vidit-Ostwal has suggested that the issue may have been resolved. They recommend updating the crew version and checking out PR #2055 for further details.*
+  > *AI Summary: @Vidit-Ostwal has suggested that the issue reported in the thread may have been fixed. He recommends updating the crew version to verify if the issue persists. Additionally, he provided a reference to PR #2055 for further context.*
 - [Commented](https://github.com/crewAIInc/crewAI/pull/2047#issuecomment-2643616523) in [crewAIInc/crewAI] on 2025-02-07.
-  > *AI Summary: @Vidit-Ostwal suggests considering the addition of built-in evaluations for CrewAI's tool outputs, agent performance, and task results. These evaluations would assess performance based on criteria like factual accuracy. @Vidit-Ostwal highlights the work of RAGAS in structured evaluations for retrieval-augmented generation as an example and expresses interest in hearing thoughts on*
+  > *AI Summary: @Vidit-Ostwal has suggested exploring built-in evaluations for CrewAI to assess tool outputs, agent performance, and task results based on specific criteria like factual accuracy. They believe this could be a major addition, as agentic frameworks emerge. @Vidit-Ostwal cited RAGAS' work on structured evaluations for retrieval-augmented generation as an example and*
 - [Commented](https://github.com/crewAIInc/crewAI/pull/2047#issuecomment-2641883649) in [crewAIInc/crewAI] on 2025-02-07.
-  > *AI Summary: @Vidit-Ostwal has suggested expanding the `get_crew` functionality to work with their CLI commands. They had initially missed this idea, but now propose linking the CLI command directly to the current crew instance. They acknowledge the great work done by @lorenzejay and appreciate their collaboration.*
+  > *AI Summary: @Vidit-Ostwal has suggested that the `get_crew` functionality be added to the project. They believe this would allow the CLI commands to be directly linked to the current crew instance. @Vidit-Ostwal acknowledges that they initially missed this idea.*
 - [Commented](https://github.com/crewAIInc/crewAI/issues/2023#issuecomment-2640720257) in [crewAIInc/crewAI] on 2025-02-06.
-  > *AI Summary: @Vidit-Ostwal has suggested that the issue may arise from the way `reset_memory_command` executed from the CLI initializes `short_term_memory` and `entity_memory`, differing from their initialization in `crew.py`. While `reset_memory_command` is suitable for `long_term_memory` and `knowledge_memory`, direct CLI commands may not work for custom memory initialization.*
+  > *AI Summary: @Vidit-Ostwal has suggested that the `reset_memory_command` executed from the CLI initializes `short_term_memory` and `entity_memory` differently than how they are initialized within `crew.py`. This difference may cause issues as the direct CLI command may not work if there is custom initialization for these memory types. Specifically, `long_term_memory` and `knowledge_memory` do not*
 - [Commented](https://github.com/explodinggradients/ragas/pull/1880#issuecomment-2634875873) in [explodinggradients/ragas] on 2025-02-04.
-  > *AI Summary: @Vidit-Ostwal has suggested coordinating with @sahusiddharth to resolve potential conflicts in the code.*
+  > *AI Summary: @Vidit-Ostwal has suggested coordinating with @sahusiddharth to resolve some conflicts.*
 - [Commented](https://github.com/crewAIInc/crewAI/pull/1985#issuecomment-2634692022) in [crewAIInc/crewAI] on 2025-02-04.
-  > *AI Summary: @Vidit-Ostwal has suggested that @bhancockio reviews the provided code and provides feedback on whether the implemented functionality enhances the user experience.*
+  > *AI Summary: @Vidit-Ostwal requests a review of the implemented code and asks for feedback on whether the new functionality enhances the user experience.*
 - [Commented](https://github.com/explodinggradients/ragas/pull/1880#issuecomment-2634530854) in [explodinggradients/ragas] on 2025-02-04.
-  > *AI Summary: @Vidit-Ostwal suggests that the issue being faced might be related to a previous unit test Pull Request made by @sahusiddharth. The original comment does not contain any additional information, such as what this issue is or what the PR's side effects were.*
+  > *AI Summary: @Vidit-Ostwal has suggested that the issue may be related to a previous unit test PR made by @sahusiddharth. They request @sahusiddharth to check if this is indeed the case.*
 - [Commented](https://github.com/crewAIInc/crewAI/issues/2025#issuecomment-2631615412) in [crewAIInc/crewAI] on 2025-02-03.
-  > *AI Summary: @Vidit-Ostwal has suggested providing more details as the provided information is insufficient for understanding. They believe that their suggested approach should work for the task.*
+  > *AI Summary: @Vidit-Ostwal has suggested that the provided solution may not be clear. They believe an alternative approach could be more effective. However, they have not provided specific details about the alternative approach.*
 
 ## 🐛 Issues Raised
 - Raised an [issue](https://github.com/langfuse/langfuse/issues/5432) in [langfuse/langfuse]: bug: Running Langfuse Locally Dcoker (2025-02-08).
-  > *AI Summary: @Vidit-Ostwal has suggested a bug in setting up LangFuse via Docker Compose. When using docker-compose up, the port 9000 used by ClickHouse and Minio is already occupied. Changing the port in the configuration doesn't resolve the issue, as the port is also used internally. The bug manifests as an error*
+  > *AI Summary: @Vidit-Ostwal has suggested addressing a bug where setting up Langfuse with Docker Compose encounters a port 9000 conflict, preventing the successful execution of clickhouse migrations. This error occurs due to port 9000 being occupied by another system process, hindering the web application's access to the database. The concern is raised*
 - Raised an [issue](https://github.com/crewAIInc/crewAI/issues/2030) in [crewAIInc/crewAI]: Documentation Error in memory docs (2025-02-04).
-  > *AI Summary: @Vidit-Ostwal has suggested that there is a discrepancy in the provided sample code for using embeddings. The parameter named `model` is referenced in the code, while the documentation specifies it as `model_name`. This issue is observed across multiple languages and platforms, including Azure OpenAI, Google AI, Vertex AI, and Cohere*
+  > *AI Summary: @Vidit-Ostwal has suggested that the embedder takes the input of `model` instead of `model_name` in the sample code examples provided in the docs page. This behavior is consistent in all examples mentioned in the docs page, including: - Using Azure OpenAI Embeddings - Using Google AI Embeddings - Using Vertex*
 - Raised an [issue](https://github.com/crewAIInc/crewAI/issues/1984) in [crewAIInc/crewAI]: output_log_file should also suppport JSON format. (2025-01-27).
-  > *AI Summary: @Vidit-Ostwal has suggested introducing a JSON format in the logging file to enhance parsability. This change would address the current limitation of a .txt format. Additionally, it partially resolves issue #1970. @Vidit-Ostwal expresses willingness to contribute by submitting a pull request.*
+  > *AI Summary: @Vidit-Ostwal has suggested extending the output_log_file format to support JSON for easier parsing and analysis. This is related to issue #1970. They are willing to contribute a pull request implementing this feature.*
 - Raised an [issue](https://github.com/browser-use/browser-use/issues/407) in [browser-use/browser-use]: Use of use_vision while defining agent (2025-01-26).
-  > *AI Summary: @Vidit-Ostwal has suggested checking the impact of `use_vision` parameter in defining an agent. They noted that enabling this parameter saves a .gif but doesn't seem to affect the output. They question whether the multimodal LLM is used for parsing when `use_vision` is true, or if element scraping and decision-making based*
+  > *AI Summary: @Vidit-Ostwal has suggested that it's unclear what `use_vision set = True` does when defining an agent. Specifically, it's not clear whether the screenshot goes to the multimodal LLM for phrasing or if the entire thing falls back to scraping elements. The only difference found so far with `use_vision = True`*
 
 ## 🚀 Pull Requests
 - Opened a [PR](https://github.com/crewAIInc/crewAI/pull/2047) in [crewAIInc/crewAI]: Added reset memories function inside crew class (2025-02-06).
-  > *AI Summary: @Vidit-Ostwal has suggested addressing the memory reset issue raised in #2023. They propose additional changes:
-
-1. Removing the CLI command for memory reset.
-2. Updating the documentation accordingly.
-
-@Vidit-Ostwal seeks confirmation that these changes align with the intended solution before implementing them.*
+  > *AI Summary: @Vidit-Ostwal has suggested that the reset memories issue brought up in #2023 has been fixed. However, additional changes are required: 1. The CLI command for resetting memories should be removed. 2. Documentation updates should be made. @Vidit-Ostwal is willing to implement these changes, provided the proposed solution is aligned with*
 - Opened a [PR](https://github.com/crewAIInc/crewAI/pull/2031) in [crewAIInc/crewAI]: Fixed the memory documentation (2025-02-04).
-  > *AI Summary: @Vidit-Ostwal has suggested a fix for the documentation issue reported in issue #2030. This fix ensures that the documentation accurately reflects the functionality of the code and resolves any inconsistencies or inaccuracies that were previously present.*
+  > *AI Summary: @Vidit-Ostwal has suggested resolving the documentation issue raised in issue #2030.*
 - Opened a [PR](https://github.com/crewAIInc/crewAI/pull/1985) in [crewAIInc/crewAI]: Added functionality to have json format as well for the logs (2025-01-27).
-  > *AI Summary: @Vidit-Ostwal has suggested adding a feature to save logs as a JSON file. To use this feature, set `output_log_file` to `True` or a file name, and set `save_as_json` to `True` when initializing the `Crew` object. The generated JSON file will consist of an array of JSON events, providing a convenient*
+  > *AI Summary: @Vidit-Ostwal has suggested adding support to save logs as a JSON file. Now, when initializing the crew, you can set output_log_file to either True or a file name (e.g., "log.json") and enable save_as_json by setting it to True. The generated JSON file contains an array of JSON events, making it*
 - Opened a [PR](https://github.com/explodinggradients/ragas/pull/1880) in [explodinggradients/ragas]: Changed the parse_run_traces to include last 4 letters of run_id (2025-01-25).
-  > *AI Summary: @Vidit-Ostwal has suggested a change to the `parse_run_traces` function. The change involves including the last 4 letters of the `run_id` of the trace, resulting in a unique key for each function call. This modification ensures that each call has a distinct identifier for better tracking and analysis.*
+  > *AI Summary: @Vidit-Ostwal has suggested changing the parse_run_traces function to include the last 4 letters of the run_id of the trace. This change ensures that every call has a unique key, resolving the issue with duplicate keys.*
 - Opened a [PR](https://github.com/explodinggradients/ragas/pull/1879) in [explodinggradients/ragas]: Change the validate_samples functionality (2025-01-24).
-  > *AI Summary: @Vidit-Ostwal has suggested modifying the validate_samples functionality to indicate the specific indexed sample causing any issues. This enhancement provides more precise error information, enabling developers to quickly identify and resolve sample-related problems.*
+  > *AI Summary: @Vidit-Ostwal has suggested modifying the validate_samples functionality to additionally identify the indexed sample responsible for any detected issues. This enhancement provides more specific error reporting, allowing for targeted troubleshooting and resolution.*
 
 ## ⭐ Starred Repositories
 - Starred [sentient-engineering/sentient](https://github.com/sentient-engineering/sentient) on 2025-02-08.
