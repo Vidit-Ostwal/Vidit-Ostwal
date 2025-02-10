@@ -1,48 +1,53 @@
 # Recent GitHub Activity for Vidit-Ostwal
 
 ## 💬 Recent Comments
+- [Commented](https://github.com/langfuse/langfuse/issues/5432#issuecomment-2648098489) in [langfuse/langfuse] on 2025-02-10.
+  > *AI Summary: @Vidit-Ostwal has suggested trying the logs again. Here are the logs for reference: - 1:C 10 Feb 2025 13:51:24.643 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo - 1:C 10 Feb 2025 13:51:24.643 * Redis version=7.4.2, bits=64, commit=00000000, modified=0, pid=1, just started - 1:C 10 Feb 2025 13:51:24.643 * Configuration loaded -*
+- [Commented](https://github.com/langfuse/langfuse/issues/5432#issuecomment-2648019685) in [langfuse/langfuse] on 2025-02-10.
+  > *AI Summary: @Vidit-Ostwal has suggested an update to the `docker-compose.yml` file to resolve an issue where changing ports for ClickHouse and Minio did not resolve the problem. They have updated the ports for ClickHouse migration URL and ClickHouse URL, as well as the ClickHouse external port and MinIO external port. They have*
 - [Commented](https://github.com/crewAIInc/crewAI/issues/2067#issuecomment-2646579129) in [crewAIInc/crewAI] on 2025-02-09.
-  > *AI Summary: @Vidit-Ostwal suggests updating the code to accept an instance of the `LLM` class for running evaluations. This change allows for greater flexibility and adaptability when executing evaluations within the codebase.*
+  > *AI Summary: @Vidit-Ostwal has suggested adding a PR to resolve the issue. The PR allows passing an instance of an `LLM` class to run the evals. This change enables the evaluation of different LLM models within the framework.*
 - [Commented](https://github.com/crewAIInc/crewAI/issues/2046#issuecomment-2646469809) in [crewAIInc/crewAI] on 2025-02-09.
-  > *AI Summary: @Vidit-Ostwal has suggested that the issue might be caused by a newline character (`\n`) passed in the comment. They recommend replacing it with a comma (`','`) or using triple double-quotes (`"""`) instead of single double-quotes (`""`). The suggested solution is to use `"""Dr. Mihir Shah , Rajendra Singh , Anupam*
+  > *AI Summary: @Vidit-Ostwal has suggested that the issue in the code might be due to using `\n` to separate text. They recommend replacing the `\n` with a comma `,` or using triple double quotes `"""` instead of single double quotes `""` to enclose the text. This should resolve the problem.*
 - [Commented](https://github.com/crewAIInc/crewAI/issues/2014#issuecomment-2646308001) in [crewAIInc/crewAI] on 2025-02-09.
-  > *AI Summary: @Vidit-Ostwal has suggested that the CREWAI_STORAGE_DIR environment variable can be used to specify the directory where Crew instance and memories will be stored. This variable can be set in the .env file. It is recommended to create a .env file and set this variable to the desired directory path. This*
+  > *AI Summary: @Vidit-Ostwal has suggested that @paarttipaabhalaji's original intent is unclear. To resolve this, @Vidit-Ostwal has set the CREWAI_STORAGE_DIR environment variable, directing the crew instance and memory storage to a specified directory as configured in the .env file.*
 - [Commented](https://github.com/crewAIInc/crewAI/issues/2046#issuecomment-2646302061) in [crewAIInc/crewAI] on 2025-02-09.
-  > *AI Summary: @Vidit-Ostwal has suggested that there might be an error in passing arguments to the tool. To troubleshoot, they recommend sharing the entire code for further inspection.*
+  > *AI Summary: @Vidit-Ostwal has suggested that there might be an error with how the argument is being passed to the tool. To assist in troubleshooting, they have requested that the entire code be shared for review.*
 - [Commented](https://github.com/crewAIInc/crewAI/issues/2054#issuecomment-2646300138) in [crewAIInc/crewAI] on 2025-02-09.
-  > *AI Summary: @Vidit-Ostwal has suggested that the complete code should be shared within the thread to provide more context and enable better understanding of the proposed changes. This would allow reviewers to easily evaluate the impact and implications of the code, leading to more informed discussions and decision-making.*
+  > *AI Summary: @Vidit-Ostwal has suggested providing the complete code for better context and analysis. This would eliminate the need for users to refer to external sources, ensuring a more cohesive and streamlined discussion. By having all the relevant information readily available, participants can engage in more informed and efficient exchanges.*
 - [Commented](https://github.com/crewAIInc/crewAI/issues/2065#issuecomment-2646298829) in [crewAIInc/crewAI] on 2025-02-09.
-  > *AI Summary: @Vidit-Ostwal has suggested exploring alternatives to Serper.dev for search engine result page (SERP) analysis. These alternatives should provide similar functionalities, such as keyword research, SERP tracking, and competitor analysis. The suggested alternatives should be reliable, accurate, and offer a comprehensive suite of features to aid in effective SERP analysis and*
+  > *AI Summary: @Vidit-Ostwal has suggested exploring alternative platforms to Serper.dev. They believe that there may be better options available for scraping and parsing search engine results. They encourage users to research and consider other platforms that align with their specific needs and requirements.*
 - [Commented](https://github.com/crewAIInc/crewAI/issues/2023#issuecomment-2644717512) in [crewAIInc/crewAI] on 2025-02-08.
-  > *AI Summary: @Vidit-Ostwal has suggested that the reported issue should be resolved with the created PR. They have requested the issue to be closed if the PR works as expected.*
+  > *AI Summary: @Vidit-Ostwal has suggested that the issue reported in this thread should be resolved with the PR that he linked. He has requested the issue creator, @heckfy88, to close the issue if the PR resolves the problem.*
 - [Commented](https://github.com/crewAIInc/crewAI/issues/2025#issuecomment-2644714108) in [crewAIInc/crewAI] on 2025-02-08.
-  > *AI Summary: @Vidit-Ostwal has suggested that when yielding a value during a flow execution, it is wrapped in a generator object. To retrieve the actual value, the generator must be iterated over. An example is provided in the comment, where a value is first yielded from the `generate_city` function and then received*
-- [Commented](https://github.com/crewAIInc/crewAI/issues/2055#issuecomment-2643704539) in [crewAIInc/crewAI] on 2025-02-07.
-  > *AI Summary: @Vidit-Ostwal has suggested that the issue might have been fixed. They recommend updating the crew version and checking out PR #2055 for more details.*
-- [Commented](https://github.com/crewAIInc/crewAI/pull/2047#issuecomment-2643616523) in [crewAIInc/crewAI] on 2025-02-07.
-  > *AI Summary: @Vidit-Ostwal has suggested that with the emergence of more agentic frameworks, built-in evaluations for CrewAI could be a significant addition. Such evaluations would assess tool outputs, agent performance, and task results based on predefined criteria like factual accuracy. @Vidit-Ostwal references the structured evaluations for retrieval-augmented generation in RAGAS as an*
+  > *AI Summary: @Vidit-Ostwal suggests a code modification to yield a particular value during flow execution. If the yielded value is a generator object, its first yielded value is obtained. This modification enables the use of the actual value in subsequent flow steps. Additionally, @Vidit-Ostwal inquires about potential use cases where using yield*
 
 ## 🐛 Issues Raised
 - Raised an [issue](https://github.com/langfuse/langfuse/issues/5432) in [langfuse/langfuse]: bug: Running Langfuse Locally Dcoker (2025-02-08).
-  > *AI Summary: @Vidit-Ostwal has suggested that port 9000, which is used by both ClickHouse and MinIO, is occupied by a system process. Changing the port via docker-compose does not resolve the issue, as the port is also used internally. The user has experienced an error while trying to setup LangFuse via Docker*
+  > *AI Summary: @Vidit-Ostwal has suggested that the bug in setting up LangFuse via Docker Compose is due to port 9000, used by ClickHouse and Minio, being occupied by another process. Changing this port elsewhere in the system is necessary. Despite attempts to modify the port, @Vidit-Ostwal believes there may be additional internal*
 - Raised an [issue](https://github.com/crewAIInc/crewAI/issues/2030) in [crewAIInc/crewAI]: Documentation Error in memory docs (2025-02-04).
-  > *AI Summary: @Vidit-Ostwal has suggested that in the sample code examples provided in the documentation for the Memory concept, the embedder takes the input of `model` instead of `model_name` as mentioned in the docs page. This issue occurs in multiple examples, including those for using Azure OpenAI, Google AI, Vertex AI, and*
+  > *AI Summary: @Vidit-Ostwal has suggested that the CrewAI documentation for memory mentions the embedder taking the input of `model` instead of `model_name`, which is incorrect. The documentation should be corrected to use `model_name` instead of `model`. The issue affects the following documentation pages:
+
+- https://docs.crewai.com/concepts/memory#using-azure-openai-embeddings
+- https://docs.crewai.com/concepts/memory#using-google-ai-embeddings
+- https://docs.crewai.com/concepts/memory#using-vertex-ai-embeddings
+- https://docs.crewai.com/concepts/memory#using-cohere-embeddings*
 - Raised an [issue](https://github.com/crewAIInc/crewAI/issues/1984) in [crewAIInc/crewAI]: output_log_file should also suppport JSON format. (2025-01-27).
-  > *AI Summary: @Vidit-Ostwal has suggested adding a JSON format option to the output_log_file, which currently has a .txt format and is not easily parsable. This change would also partially address issue #1970. They are willing to contribute a pull request for this feature.*
+  > *AI Summary: @Vidit-Ostwal has suggested to improve the logging by adding JSON format in the output_log_file. Currently, the file is in .txt format and since it's not parsable, adding JSON will enable further analysis and partially address issue #1970. @Vidit-Ostwal is willing to contribute by submitting a pull request.*
 - Raised an [issue](https://github.com/browser-use/browser-use/issues/407) in [browser-use/browser-use]: Use of use_vision while defining agent (2025-01-26).
-  > *AI Summary: @Vidit-Ostwal has suggested that the usage of `use_vision set = True` when defining an agent in the version 0.1.29 for the Gemini 1.5 Pro LLM model on MacOS requires clarification. They inquire about the function of this parameter, particularly whether it triggers multimodal processing of images or if the process*
+  > *AI Summary: @Vidit-Ostwal has suggested an exploration of the `use_vision` parameter when defining an agent. They question its functionality in terms of whether it triggers multimodal processing of images. @Vidit-Ostwal has not observed any significant output differences with or without `use_vision = True`, except for the saving of a .gif file. They*
 
 ## 🚀 Pull Requests
 - Opened a [PR](https://github.com/crewAIInc/crewAI/pull/2071) in [crewAIInc/crewAI]: Added functionality to have any llm run test functionality (2025-02-09).
-  > *AI Summary: @Vidit-Ostwal has suggested a fix for the issue raised in #2067. However, the specific details of the fix and the issue it addresses are not mentioned in the comment.*
+  > *AI Summary: @Vidit-Ostwal has suggested a fix for the issue reported in #2067. The details of the fix have not been provided in this comment, and further investigation is required to understand the specific solution implemented.*
 - Opened a [PR](https://github.com/crewAIInc/crewAI/pull/2047) in [crewAIInc/crewAI]: Added reset memories function inside crew class (2025-02-06).
-  > *AI Summary: @Vidit-Ostwal has suggested fixing the reset memories issue reported in issue #2023. They propose additional changes including removing the CLI command for resetting memories and updating the documentation. @Vidit-Ostwal will implement these changes if the solution aligns with the team's approach.*
+  > *AI Summary: @Vidit-Ostwal has suggested enhancements to address the reset memories issue raised in #2023. Beyond the fix, they propose removing the CLI command for memory reset and updating documentation. However, implementation of these changes is contingent upon the alignment of the proposed solution with the overall project goals.*
 - Opened a [PR](https://github.com/crewAIInc/crewAI/pull/2031) in [crewAIInc/crewAI]: Fixed the memory documentation (2025-02-04).
-  > *AI Summary: @Vidit-Ostwal has suggested that this commit fixes a documentation issue mentioned in issue number 2030.*
+  > *AI Summary: @Vidit-Ostwal has suggested a fix for the documentation issue raised in #2030. The solution addresses the specific problem mentioned in the issue and ensures that the documentation is accurate and up-to-date. By implementing this fix, users will have access to improved documentation, which will enhance their understanding and usage of*
 - Opened a [PR](https://github.com/crewAIInc/crewAI/pull/1985) in [crewAIInc/crewAI]: Added functionality to have json format as well for the logs (2025-01-27).
-  > *AI Summary: @Vidit-Ostwal has suggested adding support to save logs as a JSON file. This feature allows users to save the results of crew execution in a JSON format. By setting "output_log_file" to True or a specific file name and enabling "save_as_json," users can access logs in a structured JSON format, simplifying*
+  > *AI Summary: @Vidit-Ostwal has suggested adding a feature to save logs as a JSON file. Users can now set "output_log_file" to "True" or a desired file name, and set "save_as_json" to "True" while initializing "Crew." This will create a .json file containing an array of JSON events, facilitating easy parsing and manipulation*
 - Opened a [PR](https://github.com/explodinggradients/ragas/pull/1880) in [explodinggradients/ragas]: Changed the parse_run_traces to include last 4 letters of run_id (2025-01-25).
-  > *AI Summary: @Vidit-Ostwal has suggested a change to the parse_run_traces function, which includes the last 4 letters of the run_id of the trace as a unique key for each call. This change ensures uniqueness and allows for easier identification of traces.*
+  > *AI Summary: @Vidit-Ostwal has suggested modifying the `parse_run_traces` function to incorporate the last four characters of the run ID in each trace. This modification ensures that each call now has a distinct key, thereby eliminating duplicates. The updated function utilizes a combination of the run ID and trace ID to create unique*
 
 ## ⭐ Starred Repositories
 - Starred [sentient-engineering/sentient](https://github.com/sentient-engineering/sentient) on 2025-02-08.
