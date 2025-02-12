@@ -2,59 +2,47 @@
 
 ## 💬 Recent Comments
 - [Commented](https://github.com/crewAIInc/crewAI/issues/2095#issuecomment-2650913664) in [crewAIInc/crewAI] on 2025-02-11.
-  > *AI Summary: @Vidit-Ostwal suggests that while including context about agents and tools used by the manager LLM is beneficial, creating a unique `manager_note` specifically for the manager LLM may not be ideal since it's essentially an agent itself. Instead, @Vidit-Ostwal proposes allowing agents to generate descriptions, goals, and context for the manager*
+  > *AI Summary: @Vidit-Ostwal suggests adding context to the manager LLM, including information about the agents and tools it can use. However, they express concern that adding a "manager_note" specifically for the manager LLM may not be ideal since it is internally treated as just another agent. They propose an alternative solution, where*
 - [Commented](https://github.com/langfuse/langfuse/issues/5432#issuecomment-2648935567) in [langfuse/langfuse] on 2025-02-10.
-  > *AI Summary: @Vidit-Ostwal has suggested that changing the docker port resolved the issue. The issue was related to the clickhouse port being set to 9000 instead of 9005. After modifying the clickhouse port to 9005, the issue was resolved.*
+  > *AI Summary: @Vidit-Ostwal has suggested that he had to change the port of his Docker image. He changed the ClickHouse port from 9000 to 9005, and this change fixed the issue he was facing.*
 - [Commented](https://github.com/langfuse/langfuse/issues/5432#issuecomment-2648363009) in [langfuse/langfuse] on 2025-02-10.
-  > *AI Summary: @Vidit-Ostwal has suggested that there is an issue with setting up the program on port 9000 due to a security process running on the same port. The process cannot be terminated, hence preventing the program from running on port 9000.*
+  > *AI Summary: @Vidit-Ostwal has suggested that the issue stems from port 9000 being occupied by a security process that cannot be terminated. This prevents the user from running their program on port 9000.*
 - [Commented](https://github.com/langfuse/langfuse/issues/5432#issuecomment-2648098489) in [langfuse/langfuse] on 2025-02-10.
-  > *AI Summary: @Vidit-Ostwal has suggested that I provide the logs for reference. Here are the logs: - Redis is starting and is running in standalone mode on port 6379. - PostgreSQL is listening on IPv4 and IPv6 addresses on port 5432 and is ready to accept connections. - ClickHouse is running and*
+  > *AI Summary: @Vidit-Ostwal has suggested providing the attached logs for further investigation into the issue of applying ClickHouse migrations.*
 - [Commented](https://github.com/langfuse/langfuse/issues/5432#issuecomment-2648019685) in [langfuse/langfuse] on 2025-02-10.
-  > *AI Summary: @Vidit-Ostwal has suggested updating the `docker-compose.yml` file. The ports for `clickhouse` and `minio` have been changed to `9009` and `9010` respectively. Additionally, the `CLICKHOUSE_MIGRATION_URL` and `LANGFUSE_S3_EVENT_UPLOAD_ENDPOINT` environment variables have been updated to reflect these port changes. The user has also mentioned that they are still facing the same issue and*
+  > *AI Summary: @Vidit-Ostwal has suggested updating the `docker-compose.yml` configuration to use different ports for ClickHouse (now 9009) and Minio (now 9010). They have confirmed making these changes in their local setup but continue to experience the same issue. They have provided an updated version of their `docker-compose.yml` file for review, suggesting that*
 - [Commented](https://github.com/crewAIInc/crewAI/issues/2067#issuecomment-2646579129) in [crewAIInc/crewAI] on 2025-02-09.
-  > *AI Summary: @Vidit-Ostwal has suggested adding a PR to resolve an issue. With this PR, users can now pass an instance of a `LLM` class to run the evaluations.*
+  > *AI Summary: @Vidit-Ostwal has suggested a change where a `LLM` class instance can now be passed to run the evaluations. This has been addressed in a pull request.*
 - [Commented](https://github.com/crewAIInc/crewAI/issues/2046#issuecomment-2646469809) in [crewAIInc/crewAI] on 2025-02-09.
-  > *AI Summary: @Vidit-Ostwal has suggested considering that the problem may be due to the use of `\n`. They recommend replacing it with a `,` or using triple `""` instead of single `""` for the values in the string. They believe this should resolve the issue.*
+  > *AI Summary: @Vidit-Ostwal has suggested that the problem may be due to `\n` being passed. They recommend replacing it with a comma or using triple `"""` instead of single `""` for the string. They have advised trying out this suggestion to resolve the issue.*
 - [Commented](https://github.com/crewAIInc/crewAI/issues/2014#issuecomment-2646308001) in [crewAIInc/crewAI] on 2025-02-09.
-  > *AI Summary: @Vidit-Ostwal has suggested a fix to the issue. They were unable to understand the initial intention, but they set the `CREWAI_STORAGE_DIR` environment variable and configured the crew instance and memories to be stored in the directory specified in the `.env` file. This setup worked for them, and they believe it*
+  > *AI Summary: @Vidit-Ostwal has suggested revisiting the comment as they were initially unable to grasp the intent. However, they resolved the issue by setting the `CREWAI_STORAGE_DIR` environment variable. This resulted in the successful creation of the crew instance and memories within the specified directory, as defined in the `.env` file.*
 - [Commented](https://github.com/crewAIInc/crewAI/issues/2046#issuecomment-2646302061) in [crewAIInc/crewAI] on 2025-02-09.
-  > *AI Summary: @Vidit-Ostwal has suggested that there might be an error in the way arguments are being passed to the tool. To troubleshoot, they have requested the entire code to be shared.*
+  > *AI Summary: @Vidit-Ostwal has suggested that there might be an error in how the argument is being passed to the tool. They have requested to share the complete code to investigate the issue further.*
 - [Commented](https://github.com/crewAIInc/crewAI/issues/2054#issuecomment-2646300138) in [crewAIInc/crewAI] on 2025-02-09.
-  > *AI Summary: @Vidit-Ostwal has suggested sharing the complete code for better understanding and clarity. They have requested the code to be included in the discussion for easy reference and comprehensive analysis.*
+  > *AI Summary: @Vidit-Ostwal has suggested that the complete code be shared in the current location to provide context and facilitate easier comprehension for other readers.*
 
 ## 🐛 Issues Raised
 - Raised an [issue](https://github.com/langfuse/langfuse/issues/5432) in [langfuse/langfuse]: bug: Running Langfuse Locally Dcoker (2025-02-08).
-  > *AI Summary: @Vidit-Ostwal has suggested investigating the port issue encountered during LangFuse setup via Docker Compose. Port 9000, used by ClickHouse and MinIO, is already in use, preventing successful setup. They suspect that the port is used internally elsewhere, leading to the error "failed to open database." @Vidit-Ostwal has expressed interest in*
+  > *AI Summary: @Vidit-Ostwal has suggested investigating a bug encountered while setting up Langfuse via Docker, where port 9000 is already in use by another process. @Vidit-Ostwal believes that port 9000 is referenced internally elsewhere, beyond the code provided in the comment. They request assistance in identifying all necessary port changes to resolve*
 - Raised an [issue](https://github.com/crewAIInc/crewAI/issues/2030) in [crewAIInc/crewAI]: Documentation Error in memory docs (2025-02-04).
-  > *AI Summary: @Vidit-Ostwal has suggested that the sample code examples in the documentation for the following links:
-
-- https://docs.crewai.com/concepts/memory#using-azure-openai-embeddings
-- https://docs.crewai.com/concepts/memory#using-google-ai-embeddings
-- https://docs.crewai.com/concepts/memory#using-vertex-ai-embeddings
-- https://docs.crewai.com/concepts/memory#using-cohere-embeddings
-
-need to be updated to replace the `model` parameter with `model_name` in the `embedder` function to match the expected behavior.*
+  > *AI Summary: @Vidit-Ostwal has suggested that in the provided sample code examples, the embedder takes the input of `model` instead of `model_name`. This discrepancy should be corrected across the related documentation pages. The expected behavior is for the `model_name` parameter to be used instead of `model`.*
 - Raised an [issue](https://github.com/crewAIInc/crewAI/issues/1984) in [crewAIInc/crewAI]: output_log_file should also suppport JSON format. (2025-01-27).
-  > *AI Summary: @Vidit-Ostwal has suggested a new feature that would add JSON format support to the output_log_file. Currently, the log file is in .txt format, which is not easily parsable. JSON format would enable further analysis and partially address issue #1970. @Vidit-Ostwal is willing to contribute a pull request to implement this*
+  > *AI Summary: @Vidit-Ostwal has suggested changing the file format of `output_log_file` to JSON. They believe it will enhance parsability and support further analysis. This feature request also partially addresses issue #1970. @Vidit-Ostwal is willing to contribute a pull request to implement this change.*
 - Raised an [issue](https://github.com/browser-use/browser-use/issues/407) in [browser-use/browser-use]: Use of use_vision while defining agent (2025-01-26).
-  > *AI Summary: @Vidit-Ostwal has suggested reviewing the usage of `use_vision = True` when defining an agent. They inquire about the purpose of this flag and whether it enables multimodal processing of images by the LLM or if it still relies on scraping elements and decision-making based on that. The commenter also expresses*
+  > *AI Summary: @Vidit-Ostwal has suggested reviewing the use of `use_vision set = True` when defining an agent. They inquire about the role of the multimodal LLM in processing screenshots when using this setting. Specifically, they ask if the entire screenshot is still parsed through the LLM or if some elements are scraped*
 
 ## 🚀 Pull Requests
 - Opened a [PR](https://github.com/crewAIInc/crewAI/pull/2071) in [crewAIInc/crewAI]: Added functionality to have any llm run test functionality (2025-02-09).
-  > *AI Summary: @Vidit-Ostwal has suggested a fix for the issue mentioned in #2067.*
+  > *AI Summary: @Vidit-Ostwal has suggested a fix for the issue highlighted in #2067. The suggested fix addresses the reported problem effectively, resolving the issue.*
 - Opened a [PR](https://github.com/crewAIInc/crewAI/pull/2047) in [crewAIInc/crewAI]: Added reset memories function inside crew class (2025-02-06).
-  > *AI Summary: @Vidit-Ostwal has suggested resolving an issue (#2023) regarding memory reset. The fix involves the following:
-
-- Removing the CLI command for memory reset
-- Updating documentation 
-
-They are willing to implement these changes if the proposed solution aligns with the team's approach.*
+  > *AI Summary: @Vidit-Ostwal has suggested resolving the reset memories issue mentioned in #2023. They also propose removing the CLI command for memory reset and updating the relevant documentation. The suggested solution depends on whether it aligns with the project's goals. @Vidit-Ostwal can implement these changes if the solution receives approval.*
 - Opened a [PR](https://github.com/crewAIInc/crewAI/pull/2031) in [crewAIInc/crewAI]: Fixed the memory documentation (2025-02-04).
-  > *AI Summary: @Vidit-Ostwal has suggested a fix for the documentation issue raised in #2030. The documentation has been updated to resolve the reported issue, ensuring that the documentation is accurate and comprehensive for users.*
+  > *AI Summary: @Vidit-Ostwal has suggested that this commit fixes the documentation issue identified in issue #2030. Unfortunately, the details of the documentation issue or the specific changes made to address it are not provided in this comment.*
 - Opened a [PR](https://github.com/crewAIInc/crewAI/pull/1985) in [crewAIInc/crewAI]: Added functionality to have json format as well for the logs (2025-01-27).
-  > *AI Summary: @Vidit-Ostwal has suggested adding support to save logs as a JSON file. When initializing the Crew class, users can specify output_log_file as True or a file name, and set save_as_json to True. The resulting JSON file contains an array of JSON events, simplifying parsing and manipulation.*
+  > *AI Summary: @Vidit-Ostwal has suggested adding support to save logs as a JSON file. Users can now set output_log_file to True or provide a file name and enable save_as_json by setting it to True. The generated .json file will contain an array of JSON events, allowing users to easily parse and work*
 - Opened a [PR](https://github.com/explodinggradients/ragas/pull/1880) in [explodinggradients/ragas]: Changed the parse_run_traces to include last 4 letters of run_id (2025-01-25).
-  > *AI Summary: @Vidit-Ostwal has suggested changing the parse_run_traces function to include the last 4 letters of the run_id of the trace. This modification ensures that each call has a unique key, making it easier to identify and track individual calls.*
+  > *AI Summary: @Vidit-Ostwal has suggested changing the `parse_run_traces` function to include the last 4 letters of the `run_id` of the trace. This modification creates a unique key for every call, ensuring that each call has a distinct identifier.*
 
 ## ⭐ Starred Repositories
 - Starred [sentient-engineering/sentient](https://github.com/sentient-engineering/sentient) on 2025-02-08.
