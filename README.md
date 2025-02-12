@@ -1,48 +1,50 @@
 # Recent GitHub Activity for Vidit-Ostwal
 
 ## 💬 Recent Comments
+- [Commented](https://github.com/crewAIInc/crewAI/issues/2097#issuecomment-2651667767) in [crewAIInc/crewAI] on 2025-02-11.
+  > *AI Summary: @Vidit-Ostwal has suggested exploring incorporating a crew within a tool. The tool would have the capability to initiate a crew, which would be managed by a parent crew. Additionally, some parent agents would be included.*
+- [Commented](https://github.com/crewAIInc/crewAI/issues/2095#issuecomment-2651664099) in [crewAIInc/crewAI] on 2025-02-11.
+  > *AI Summary: @Vidit-Ostwal has suggested providing more control to users by allowing them to manage pre-computed templates or generalized managers rather than relying solely on default configurations. This would enable users to customize and adapt the templates to their specific needs, resulting in greater flexibility and control over the generated content.*
+- [Commented](https://github.com/crewAIInc/crewAI/issues/2092#issuecomment-2651660502) in [crewAIInc/crewAI] on 2025-02-11.
+  > *AI Summary: @Vidit-Ostwal has suggested that `human_input` is used after the task to ask for feedback on the generated response. Incorporating additional context during agent input may not be ideal. It is recommended to provide all necessary input during `crew.kickoff()` instead.*
 - [Commented](https://github.com/crewAIInc/crewAI/issues/2095#issuecomment-2650913664) in [crewAIInc/crewAI] on 2025-02-11.
-  > *AI Summary: @Vidit-Ostwal suggests adding context to the manager LLM, including information about the agents and tools it can use. However, they express concern that adding a "manager_note" specifically for the manager LLM may not be ideal since it is internally treated as just another agent. They propose an alternative solution, where*
+  > *AI Summary: @Vidit-Ostwal has suggested including context and information about the agents or tools that the manager LLM can use. However, they have raised a concern that adding a "manager_note" specifically for the manager LLM might not be ideal, since it is essentially just another agent internally. An alternative suggestion is to*
 - [Commented](https://github.com/langfuse/langfuse/issues/5432#issuecomment-2648935567) in [langfuse/langfuse] on 2025-02-10.
-  > *AI Summary: @Vidit-Ostwal has suggested that he had to change the port of his Docker image. He changed the ClickHouse port from 9000 to 9005, and this change fixed the issue he was facing.*
+  > *AI Summary: @Vidit-Ostwal has suggested that changing the Docker port resolved the issue. They had mistakenly set the ClickHouse port to 9000 but changing it to 9005 fixed the problem. They expressed gratitude to @Steffen911 for their assistance.*
 - [Commented](https://github.com/langfuse/langfuse/issues/5432#issuecomment-2648363009) in [langfuse/langfuse] on 2025-02-10.
-  > *AI Summary: @Vidit-Ostwal has suggested that the issue stems from port 9000 being occupied by a security process that cannot be terminated. This prevents the user from running their program on port 9000.*
+  > *AI Summary: @Vidit-Ostwal has suggested that the issue may arise due to a security process running on port 9000, preventing the application from functioning on that port. As a result, it is not possible to terminate the process and continue with the application's execution.*
 - [Commented](https://github.com/langfuse/langfuse/issues/5432#issuecomment-2648098489) in [langfuse/langfuse] on 2025-02-10.
-  > *AI Summary: @Vidit-Ostwal has suggested providing the attached logs for further investigation into the issue of applying ClickHouse migrations.*
+  > *AI Summary: @Vidit-Ostwal has suggested that logs from a series of container startup processes are included in the comment. These logs show successful startup of the Redis and PostgreSQL containers. However, there are multiple failed attempts at starting the Langfuse container due to the database being unavailable.*
 - [Commented](https://github.com/langfuse/langfuse/issues/5432#issuecomment-2648019685) in [langfuse/langfuse] on 2025-02-10.
-  > *AI Summary: @Vidit-Ostwal has suggested updating the `docker-compose.yml` configuration to use different ports for ClickHouse (now 9009) and Minio (now 9010). They have confirmed making these changes in their local setup but continue to experience the same issue. They have provided an updated version of their `docker-compose.yml` file for review, suggesting that*
+  > *AI Summary: @Vidit-Ostwal has suggested to update the `docker-compose.yml` file to include updated ports for ClickHouse and Minio. The updated external port for ClickHouse is 9009, and the updated external port for Minio is 9010. They also noticed that the issue could be originating from an internal file, but they have not*
 - [Commented](https://github.com/crewAIInc/crewAI/issues/2067#issuecomment-2646579129) in [crewAIInc/crewAI] on 2025-02-09.
-  > *AI Summary: @Vidit-Ostwal has suggested a change where a `LLM` class instance can now be passed to run the evaluations. This has been addressed in a pull request.*
+  > *AI Summary: @Vidit-Ostwal has suggested a code change via a pull request that enables passing an instance of the `LLM` class to execute evaluations. This modification addresses an existing issue.*
 - [Commented](https://github.com/crewAIInc/crewAI/issues/2046#issuecomment-2646469809) in [crewAIInc/crewAI] on 2025-02-09.
-  > *AI Summary: @Vidit-Ostwal has suggested that the problem may be due to `\n` being passed. They recommend replacing it with a comma or using triple `"""` instead of single `""` for the string. They have advised trying out this suggestion to resolve the issue.*
-- [Commented](https://github.com/crewAIInc/crewAI/issues/2014#issuecomment-2646308001) in [crewAIInc/crewAI] on 2025-02-09.
-  > *AI Summary: @Vidit-Ostwal has suggested revisiting the comment as they were initially unable to grasp the intent. However, they resolved the issue by setting the `CREWAI_STORAGE_DIR` environment variable. This resulted in the successful creation of the crew instance and memories within the specified directory, as defined in the `.env` file.*
-- [Commented](https://github.com/crewAIInc/crewAI/issues/2046#issuecomment-2646302061) in [crewAIInc/crewAI] on 2025-02-09.
-  > *AI Summary: @Vidit-Ostwal has suggested that there might be an error in how the argument is being passed to the tool. They have requested to share the complete code to investigate the issue further.*
-- [Commented](https://github.com/crewAIInc/crewAI/issues/2054#issuecomment-2646300138) in [crewAIInc/crewAI] on 2025-02-09.
-  > *AI Summary: @Vidit-Ostwal has suggested that the complete code be shared in the current location to provide context and facilitate easier comprehension for other readers.*
+  > *AI Summary: @Vidit-Ostwal has suggested that the error may be caused by the `\n` character passed in the code. As a solution, they proposed replacing it with a comma. Additionally, they suggested using triple double quotes `"""` instead of single double quotes `""` when passing multiple names, like this: `"""Dr. Mihir Shah*
 
 ## 🐛 Issues Raised
+- Raised an [issue](https://github.com/BerriAI/litellm/issues/8467) in [BerriAI/litellm]: [Bug]: Support to Google AI Studio (2025-02-11).
+  > *AI Summary: @Vidit-Ostwal has suggested revising the code to include contents in the GenerateContentRequest. The error occurred due to the absence of the contents parameter. No ML Ops Team is involved, and the LiteLLM version being used is 1.60.2.*
 - Raised an [issue](https://github.com/langfuse/langfuse/issues/5432) in [langfuse/langfuse]: bug: Running Langfuse Locally Dcoker (2025-02-08).
-  > *AI Summary: @Vidit-Ostwal has suggested investigating a bug encountered while setting up Langfuse via Docker, where port 9000 is already in use by another process. @Vidit-Ostwal believes that port 9000 is referenced internally elsewhere, beyond the code provided in the comment. They request assistance in identifying all necessary port changes to resolve*
+  > *AI Summary: @Vidit-Ostwal has suggested investigating an installation issue with Langfuse using Docker Compose. The problem arises from port 9000 being occupied by another process, causing conflicts with ClickHouse and Minio. Despite attempts to change the port, internal references to port 9000 persist. @Vidit-Ostwal seeks assistance in identifying all necessary port changes*
 - Raised an [issue](https://github.com/crewAIInc/crewAI/issues/2030) in [crewAIInc/crewAI]: Documentation Error in memory docs (2025-02-04).
-  > *AI Summary: @Vidit-Ostwal has suggested that in the provided sample code examples, the embedder takes the input of `model` instead of `model_name`. This discrepancy should be corrected across the related documentation pages. The expected behavior is for the `model_name` parameter to be used instead of `model`.*
+  > *AI Summary: @Vidit-Ostwal has suggested that the input parameter in the CrewAI docs for the `embedder` should be `model_name` instead of `model`. This issue is present in examples for different embedding providers, including Azure OpenAI, Google AI, Vertex AI, and Cohere.*
 - Raised an [issue](https://github.com/crewAIInc/crewAI/issues/1984) in [crewAIInc/crewAI]: output_log_file should also suppport JSON format. (2025-01-27).
-  > *AI Summary: @Vidit-Ostwal has suggested changing the file format of `output_log_file` to JSON. They believe it will enhance parsability and support further analysis. This feature request also partially addresses issue #1970. @Vidit-Ostwal is willing to contribute a pull request to implement this change.*
+  > *AI Summary: @Vidit-Ostwal has suggested adding a JSON format option to the output_log_file for better parsability and further analysis. This would partially address issue #1970. @Vidit-Ostwal is willing to contribute a pull request.*
 - Raised an [issue](https://github.com/browser-use/browser-use/issues/407) in [browser-use/browser-use]: Use of use_vision while defining agent (2025-01-26).
-  > *AI Summary: @Vidit-Ostwal has suggested reviewing the use of `use_vision set = True` when defining an agent. They inquire about the role of the multimodal LLM in processing screenshots when using this setting. Specifically, they ask if the entire screenshot is still parsed through the LLM or if some elements are scraped*
+  > *AI Summary: @Vidit-Ostwal has suggested reviewing the purpose and functionality of `use_vision set = True` when defining an agent. They want to know if the screenshot is processed by the multimodal LLM for parsing or if it still relies on scraping elements. Additionally, they have found that the primary difference when using*
 
 ## 🚀 Pull Requests
 - Opened a [PR](https://github.com/crewAIInc/crewAI/pull/2071) in [crewAIInc/crewAI]: Added functionality to have any llm run test functionality (2025-02-09).
-  > *AI Summary: @Vidit-Ostwal has suggested a fix for the issue highlighted in #2067. The suggested fix addresses the reported problem effectively, resolving the issue.*
+  > *AI Summary: @Vidit-Ostwal has suggested a fix for the issue raised in #2067. However, no specific details about the fix are provided in the comment.*
 - Opened a [PR](https://github.com/crewAIInc/crewAI/pull/2047) in [crewAIInc/crewAI]: Added reset memories function inside crew class (2025-02-06).
-  > *AI Summary: @Vidit-Ostwal has suggested resolving the reset memories issue mentioned in #2023. They also propose removing the CLI command for memory reset and updating the relevant documentation. The suggested solution depends on whether it aligns with the project's goals. @Vidit-Ostwal can implement these changes if the solution receives approval.*
+  > *AI Summary: @Vidit-Ostwal suggests a solution that resolves the reset memory issue reported in #2023. To implement this fix, @Vidit-Ostwal proposes removing the CLI command for memory reset and updating the documentation accordingly. However, implementation is contingent on approval of the proposed solution.*
 - Opened a [PR](https://github.com/crewAIInc/crewAI/pull/2031) in [crewAIInc/crewAI]: Fixed the memory documentation (2025-02-04).
-  > *AI Summary: @Vidit-Ostwal has suggested that this commit fixes the documentation issue identified in issue #2030. Unfortunately, the details of the documentation issue or the specific changes made to address it are not provided in this comment.*
+  > *AI Summary: @Vidit-Ostwal has suggested a fix for the documentation issue reported in #2030. The proposed changes address the specific concerns raised in that issue and provide clearer and more accurate information to users. By implementing these suggestions, the documentation will be improved, enhancing the user experience and reducing potential confusion.*
 - Opened a [PR](https://github.com/crewAIInc/crewAI/pull/1985) in [crewAIInc/crewAI]: Added functionality to have json format as well for the logs (2025-01-27).
-  > *AI Summary: @Vidit-Ostwal has suggested adding support to save logs as a JSON file. Users can now set output_log_file to True or provide a file name and enable save_as_json by setting it to True. The generated .json file will contain an array of JSON events, allowing users to easily parse and work*
+  > *AI Summary: @Vidit-Ostwal has suggested adding support to save logs in JSON format. Users can now set `output_log_file` to `True` or provide a file name and set `save_as_json` to `True` to enable this feature. The generated JSON file includes an array of JSON events, simplifying parsing and handling.*
 - Opened a [PR](https://github.com/explodinggradients/ragas/pull/1880) in [explodinggradients/ragas]: Changed the parse_run_traces to include last 4 letters of run_id (2025-01-25).
-  > *AI Summary: @Vidit-Ostwal has suggested changing the `parse_run_traces` function to include the last 4 letters of the `run_id` of the trace. This modification creates a unique key for every call, ensuring that each call has a distinct identifier.*
+  > *AI Summary: @Vidit-Ostwal has suggested modifying the `parse_run_traces` function to incorporate the final four characters of each trace's `run_id`. This alteration generates a unique identifier for each function call.*
 
 ## ⭐ Starred Repositories
 - Starred [sentient-engineering/sentient](https://github.com/sentient-engineering/sentient) on 2025-02-08.
