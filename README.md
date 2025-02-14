@@ -2,57 +2,49 @@
 
 ## 💬 Recent Comments
 - [Commented](https://github.com/crewAIInc/crewAI/issues/2105#issuecomment-2653744764) in [crewAIInc/crewAI] on 2025-02-12.
-  > *AI Summary: @Vidit-Ostwal has suggested that it is a nice observation to ask whether the content also gets appended to the Python output.*
+  > *AI Summary: @Vidit-Ostwal has suggested that we should check if the output in the Python script is being appended correctly. They raised this question after observing the behavior of the script. The exact details of the code or the specific output in question are not mentioned in the comment.*
 - [Commented](https://github.com/crewAIInc/crewAI/pull/2071#issuecomment-2653722469) in [crewAIInc/crewAI] on 2025-02-12.
-  > *AI Summary: @Vidit-Ostwal has suggested that the changes in this pull request should be merged into the main branch. They did not provide any specific details or reasons for requesting the merge.*
+  > *AI Summary: @Vidit-Ostwal has suggested that @joaomdmoura merge this.*
 - [Commented](https://github.com/crewAIInc/crewAI/issues/2097#issuecomment-2651667767) in [crewAIInc/crewAI] on 2025-02-11.
-  > *AI Summary: @Vidit-Ostwal has suggested incorporating a crew within a tool. Additionally, parent agents should be included with the tool's capability to commence a crew, which will be supervised by a parent crew. This proposed design aims to improve the organization and management of crews within the tool.*
+  > *AI Summary: @Vidit-Ostwal has suggested incorporating a crew within a tool, along with parent agents. The tool should have the capability to kick off a crew, managed by a parent crew. This approach will facilitate hierarchical organization and task delegation within the tool.*
 - [Commented](https://github.com/crewAIInc/crewAI/issues/2095#issuecomment-2651664099) in [crewAIInc/crewAI] on 2025-02-11.
-  > *AI Summary: @Vidit-Ostwal has suggested that while pre-computed or generalized managers may be available, it is preferable to retain control over such operations. This allows for greater flexibility and customization to meet specific requirements.*
+  > *AI Summary: @Vidit-Ostwal has suggested that instead of using a pre-computed or generalized manager, it would be better to have more control over the management process. This would allow for a more customized approach to managing the specific task or project at hand.*
 - [Commented](https://github.com/crewAIInc/crewAI/issues/2092#issuecomment-2651660502) in [crewAIInc/crewAI] on 2025-02-11.
-  > *AI Summary: @Vidit-Ostwal has suggested that there may be a misunderstanding about `human_input`. It is not intended to be used to incorporate additional context during task execution. Instead, it is called after the task is performed to ask the user to evaluate the generated response. It is recommended to provide all necessary*
+  > *AI Summary: @Vidit-Ostwal has suggested that `human_input` is used to assess the generated response after a task is performed. While incorporating additional context during agent input may not be optimal, providing all necessary input during `crew.kickoff()` could be a better approach. This ensures that the agent has the required context before task*
 - [Commented](https://github.com/crewAIInc/crewAI/issues/2095#issuecomment-2650913664) in [crewAIInc/crewAI] on 2025-02-11.
-  > *AI Summary: @Vidit-Ostwal suggests that including context and information about the manager LLM's tools and agents is a valuable addition. However, they express concern that adding a "manager_note" specifically for the manager LLM might not be ideal, as it's essentially just another agent internally. They also propose exploring the possibility of instructing*
+  > *AI Summary: Vidit-Ostwal has suggested including context about the agents or tools a manager LLM can use in the context hints section. However, they believe adding a `manager_note` specifically for one agent may not be optimal due to the LLM's internal structure, where it functions as an agent. Additionally, they suggest that*
 - [Commented](https://github.com/langfuse/langfuse/issues/5432#issuecomment-2648935567) in [langfuse/langfuse] on 2025-02-10.
-  > *AI Summary: @Vidit-Ostwal has suggested changing the Docker port to resolve the issue. They specifically changed the ClickHouse port from 9000 to 9005, which resolved the problem. They have also expressed gratitude to @Steffen911 for their assistance.*
+  > *AI Summary: @Vidit-Ostwal has suggested that changing the Docker port and ClickHouse port from 9000 to 9005 resolved the issue. They changed both the ports, and it worked successfully.*
 - [Commented](https://github.com/langfuse/langfuse/issues/5432#issuecomment-2648363009) in [langfuse/langfuse] on 2025-02-10.
-  > *AI Summary: @Vidit-Ostwal has suggested that port 9000 is causing the issue because a security process is running on it. This security process cannot be stopped.*
+  > *AI Summary: @Vidit-Ostwal has suggested that the root of the problem lies in the inability to use port 9000. This is because a security process is running on that port and cannot be terminated. As a result, they are unable to proceed with their current course of action.*
 - [Commented](https://github.com/langfuse/langfuse/issues/5432#issuecomment-2648098489) in [langfuse/langfuse] on 2025-02-10.
-  > *AI Summary: @Vidit-Ostwal has suggested that they have just tried the command again with logs for reference. The logs indicate that the Redis server is starting, and that the PostgreSQL database is ready to accept connections. However, there are several errors suggesting that the ClickHouse migrations failed due to the database being*
+  > *AI Summary: @Vidit-Ostwal has suggested re-trying a command that failed due to an issue with the database being unavailable. The logs provided show that Redis and PostgreSQL are running, but clickhouse migrations have repeatedly failed due to the database being unavailable.*
 - [Commented](https://github.com/langfuse/langfuse/issues/5432#issuecomment-2648019685) in [langfuse/langfuse] on 2025-02-10.
-  > *AI Summary: @Vidit-Ostwal has updated the `docker-compose.yml` file and changed the ports for both ClickHouse and MinIO to resolve a persistent issue. The specific ports updated are 9009 for ClickHouse and 9010 for MinIO. Additionally, @Vidit-Ostwal has suggested that if the problem persists, it may be within a different internal file.*
+  > *AI Summary: @Vidit-Ostwal has suggested updating the ports in the `docker-compose.yml` file to resolve the issue faced while running the containers. The ports for ClickHouse and MinIO have been updated, and the relevant environment variables have been adjusted accordingly. @Vidit-Ostwal has also mentioned that if the problem persists, the issue might be*
 
 ## 🐛 Issues Raised
 - Raised an [issue](https://github.com/crewAIInc/crewAI/issues/2111) in [crewAIInc/crewAI]: [BUG] LiteLLM call fails, when `human_input` set to True (2025-02-12).
-  > *AI Summary: @Vidit-Ostwal has suggested that the `human_input` in the provided code is set to `True`, but it fails for any input provided by the user. This is because the lite LLM, when called, is not given the user role in the messages. Therefore, the lite LLM is unable to process user*
+  > *AI Summary: @Vidit-Ostwal has suggested a solution for the failure of the crew due to the lack of the user role in the llm when called. They recommend adding feedback in the user role to address this issue. The provided code demonstrates the implementation of the agents, tasks, and crew configuration with*
 - Raised an [issue](https://github.com/BerriAI/litellm/issues/8467) in [BerriAI/litellm]: [Bug]: Support to Google AI Studio (2025-02-11).
-  > *AI Summary: @Vidit-Ostwal has suggested that while using the litellm API with the Google Studio API, they received a `BadRequestError` exception with the message "* GenerateContentRequest.contents: contents is not specified\n". They provided a code snippet where they are trying to call the `completion()` function without specifying the `contents` parameter. They are using*
+  > *AI Summary: @Vidit-Ostwal has suggested that you are getting a BadRequestError when calling the litellm completion API because the contents field in the GenerateContentRequest is not specified. They have shared code snippets to demonstrate the issue and the error message. Additionally, they have confirmed that they are using LiteLLM version 1.60.2 and*
 - Raised an [issue](https://github.com/langfuse/langfuse/issues/5432) in [langfuse/langfuse]: bug: Running Langfuse Locally Dcoker (2025-02-08).
-  > *AI Summary: @Vidit-Ostwal has suggested that the bug is due to port 9000 being used by another system process which cannot be killed. As a result, ClickHouse and MinIO cannot listen on port 9000 while setting up LangFuse via Docker, causing migration failures. They are requesting assistance in identifying all locations where*
+  > *AI Summary: @Vidit-Ostwal has suggested that the port 9000, used by both ClickHouse and MinIO, is already in use by another system process. They have tried to change the port but believe it is also used internally. Additionally, they are unable to apply ClickHouse migrations due to a database unavailability issue, resulting*
 - Raised an [issue](https://github.com/crewAIInc/crewAI/issues/2030) in [crewAIInc/crewAI]: Documentation Error in memory docs (2025-02-04).
-  > *AI Summary: @Vidit-Ostwal has suggested that the sample code examples for embedding input should use `model_name` instead of `model`. This change should be made in the following documentation pages:
-
-- https://docs.crewai.com/concepts/memory#using-azure-openai-embeddings
-- https://docs.crewai.com/concepts/memory#using-google-ai-embeddings
-- https://docs.crewai.com/concepts/memory#using-vertex-ai-embeddings
-- https://docs.crewai.com/concepts/memory#using-cohere-embeddings*
+  > *AI Summary: @Vidit-Ostwal has suggested that in the sample code examples for using embeddings in CrewAI, the parameter `model_name` is incorrectly named and should be replaced with `model`. This affects examples for Azure OpenAI, Google AI, Vertex AI, and Cohere embeddings.*
 - Raised an [issue](https://github.com/crewAIInc/crewAI/issues/1984) in [crewAIInc/crewAI]: output_log_file should also suppport JSON format. (2025-01-27).
-  > *AI Summary: @Vidit-Ostwal has suggested enhancing the output_log_file's functionality by adding a JSON format option alongside the current .txt format. This JSON format would facilitate further analysis and partially address issue #1970. They are willing to contribute a pull request to implement this feature.*
+  > *AI Summary: @Vidit-Ostwal has suggested introducing a JSON format option for the output_log_file, which currently uses a .txt format. The JSON format would facilitate further analysis, partially addressing issue #1970. @Vidit-Ostwal is willing to contribute a pull request for this feature.*
 
 ## 🚀 Pull Requests
 - Opened a [PR](https://github.com/crewAIInc/crewAI/pull/2112) in [crewAIInc/crewAI]: Added user message before calling litellm (2025-02-12).
-  > *AI Summary: @Vidit-Ostwal has suggested that the issue #2111 has been addressed. Additionally, a formatted user message by `feedback` has been included as part of the fix. No further information or action items are mentioned in the comment.*
+  > *AI Summary: @Vidit-Ostwal has suggested a fix for issue #2111 by adding a user message formatted by the `feedback` function. This change addresses a specific problem that was causing an issue within the system. By implementing this fix, the overall functionality of the system is expected to improve, resulting in a better*
 - Opened a [PR](https://github.com/crewAIInc/crewAI/pull/2071) in [crewAIInc/crewAI]: Added functionality to have any llm run test functionality (2025-02-09).
-  > *AI Summary: @Vidit-Ostwal has suggested a fix for the issue raised in #2067. The exact details of the fix haven't been specified in this comment.*
+  > *AI Summary: @Vidit-Ostwal has suggested a fix for the issue highlighted in issue #2067. The fix should resolve the problem associated with the issue.*
 - Opened a [PR](https://github.com/crewAIInc/crewAI/pull/2047) in [crewAIInc/crewAI]: Added reset memories function inside crew class (2025-02-06).
-  > *AI Summary: @Vidit-Ostwal has suggested further improvements to the fix that resolves the memory reset issue reported in #2023. These include:
-
-- Removing the CLI command to reset memories
-- Making necessary documentation changes*
+  > *AI Summary: @Vidit-Ostwal has suggested fixing the reset memories issue raised in #2023. This fix involves removing the CLI command for resetting memories and making appropriate documentation changes. @Vidit-Ostwal has indicated willingness to implement these additional changes if the proposed solution is deemed suitable.*
 - Opened a [PR](https://github.com/crewAIInc/crewAI/pull/2031) in [crewAIInc/crewAI]: Fixed the memory documentation (2025-02-04).
-  > *AI Summary: @Vidit-Ostwal has suggested a commit that resolves the documentation issue brought up in issue #2030. This commit modifies the documentation to address the concerns raised in the issue, thereby improving the clarity and accuracy of the documentation.*
+  > *AI Summary: @Vidit-Ostwal has suggested a fix for the documentation issue that was raised in issue #2030. The details of the fix and any relevant code examples are not provided in this comment.*
 - Opened a [PR](https://github.com/crewAIInc/crewAI/pull/1985) in [crewAIInc/crewAI]: Added functionality to have json format as well for the logs (2025-01-27).
-  > *AI Summary: @Vidit-Ostwal has suggested adding support to save logs in a JSON file format. You can now specify the output_log_file argument to set a file name and enable save_as_json to True while initializing the Crew object. This will create a JSON file containing an array of JSON events, allowing for convenient*
+  > *AI Summary: @Vidit-Ostwal has suggested adding support for saving logs in JSON format. Users can now set `output_log_file` to a file name when initializing `Crew` and set `save_as_json` to `True`. The saved JSON file will include an array of JSON events, making it easy to analyze and use.*
 
 ## ⭐ Starred Repositories
 - Starred [dipanjanS/training-fine-tuning-large-language-models-workshop-dhs2024](https://github.com/dipanjanS/training-fine-tuning-large-language-models-workshop-dhs2024) on 2025-02-12.
