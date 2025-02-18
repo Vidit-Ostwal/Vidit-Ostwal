@@ -2,55 +2,54 @@
 
 ## 💬 Recent Comments
 - [Commented](https://github.com/crewAIInc/crewAI/issues/2131#issuecomment-2660681309) in [crewAIInc/crewAI] on 2025-02-15.
-  > *AI Summary: @Vidit-Ostwal has suggested that it would be helpful to provide the entire code.*
+  > *AI Summary: @Vidit-Ostwal has suggested that it would be helpful if the entire code could be shared. This would provide a more comprehensive understanding of the project and its implementation.*
 - [Commented](https://github.com/crewAIInc/crewAI/issues/2102#issuecomment-2659922689) in [crewAIInc/crewAI] on 2025-02-14.
-  > *AI Summary: @Vidit-Ostwal has suggested checking if updating the package resolves the issue with sessions ending prematurely. He reported that the sessions end without any issues on his end.*
+  > *AI Summary: @Vidit-Ostwal has suggested that @ashishpatel26 try updating the package as the sessions may end prematurely due to an outdated package. @Vidit-Ostwal has confirmed that the sessions end smoothly for them.*
 - [Commented](https://github.com/crewAIInc/crewAI/issues/2105#issuecomment-2659884693) in [crewAIInc/crewAI] on 2025-02-14.
-  > *AI Summary: @Vidit-Ostwal has suggested that the issue might be specific to the user's case, as they were unable to reproduce the issue. @Vidit-Ostwal recommends checking the goals and description provided, and trying to get the output in a different format, possibly JSON.*
+  > *AI Summary: @Vidit-Ostwal has suggested that the issue might be specific to the user's case and could not be reproduced. They recommend checking the provided goals and description, or trying to get the output in a different format, such as JSON.*
 - [Commented](https://github.com/crewAIInc/crewAI/issues/2123#issuecomment-2659864458) in [crewAIInc/crewAI] on 2025-02-14.
-  > *AI Summary: @Vidit-Ostwal has suggested that you confirm whether the file path where your crew is running is the same as the path in the terminal where you are executing the `crewai reset-memories -a` command. This is to ensure the command is executed successfully.*
+  > *AI Summary: @Vidit-Ostwal has suggested confirming whether the file path where your crew is running is the same as the path in the terminal where you're executing `crewai reset-memories -a`. This ensures the command is executed in the correct directory.*
 - [Commented](https://github.com/crewAIInc/crewAI/issues/2105#issuecomment-2653744764) in [crewAIInc/crewAI] on 2025-02-12.
-  > *AI Summary: @Vidit-Ostwal has suggested considering whether the observation about stateful elements appending to the Python output also applies.*
+  > *AI Summary: @Vidit-Ostwal has suggested checking whether the observation made by @ninad-opsverse regarding the appendation of information to the Python output is valid.*
 - [Commented](https://github.com/crewAIInc/crewAI/pull/2071#issuecomment-2653722469) in [crewAIInc/crewAI] on 2025-02-12.
-  > *AI Summary: @Vidit-Ostwal has suggested to proceed with merging the current change.*
+  > *AI Summary: @Vidit-Ostwal has suggested that @joaomdmoura should merge the current pull request.*
 - [Commented](https://github.com/crewAIInc/crewAI/issues/2097#issuecomment-2651667767) in [crewAIInc/crewAI] on 2025-02-11.
-  > *AI Summary: @Vidit-Ostwal has suggested incorporating a crew inside a tool, along with parent agents. The tool should have the capability to kick off a crew, which would be managed by a parent crew. This structure could potentially enhance the tool's functionality and allow for better crew management.*
+  > *AI Summary: @Vidit-Ostwal has suggested incorporating a crew within a tool and setting up parent agents. The crew inside the tool can be managed by a parent crew. This will allow the tool to kick off a crew based on the commands from the parent crew. By implementing this, we can achieve*
 - [Commented](https://github.com/crewAIInc/crewAI/issues/2095#issuecomment-2651664099) in [crewAIInc/crewAI] on 2025-02-11.
-  > *AI Summary: @Vidit-Ostwal has suggested that it's better to have control over pre-computed or generalized managers within the software rather than relying on external resources or generalizing. They believe this approach provides greater customization and flexibility for the user.*
+  > *AI Summary: @Vidit-Ostwal has suggested that pre-computed or generalized managers may be available, but it would be advantageous to maintain control over such aspects within the code. This would allow for greater customization and flexibility in managing the desired behavior and functionality.*
 - [Commented](https://github.com/crewAIInc/crewAI/issues/2092#issuecomment-2651660502) in [crewAIInc/crewAI] on 2025-02-11.
-  > *AI Summary: @Vidit-Ostwal has suggested that there seems to be a misunderstanding about how `human_input` is used. He clarified that `human_input` is called after the task has been performed and asks for feedback on the generated response. Providing additional context during crew execution may not be ideal. Instead, it is recommended to*
+  > *AI Summary: @Vidit-Ostwal suggests that the `human_input` function should be called after the task has been performed and used to gather feedback on the quality of the generated response. Adding additional input context during the crew execution is discouraged. Instead, all necessary inputs should be provided during the `crew.kickoff()` method.*
 - [Commented](https://github.com/crewAIInc/crewAI/issues/2095#issuecomment-2650913664) in [crewAIInc/crewAI] on 2025-02-11.
-  > *AI Summary: @Vidit-Ostwal suggests incorporating context, tools, and agents into the manager LLM to enhance its capabilities. However, he cautions against creating a unique `manager_note` for a single agent, as the manager LLM operates like an agent itself. He proposes an alternative approach where agents can be prompted to provide descriptions, goals,*
+  > *AI Summary: @Vidit-Ostwal has suggested that including context about the agents or tools available to the manager LLM is a good idea. However, they raise the concern that adding a `manager_note` specifically for the manager LLM may not be the best approach since it is essentially just another agent internally. Instead, they*
 
 ## 🐛 Issues Raised
 - Raised an [issue](https://github.com/crewAIInc/crewAI/issues/2111) in [crewAIInc/crewAI]: [BUG] LiteLLM call fails, when `human_input` set to True (2025-02-12).
-  > *AI Summary: @Vidit-Ostwal has suggested that there is an issue while trying to run a crew with "human_input" set to True. When called, the lite llm is not given the user role in the messages, causing the crew to fail for any user input. To resolve this, @Vidit-Ostwal has recommended adding feedback*
+  > *AI Summary: @Vidit-Ostwal has suggested that the crew fails for any user input because lite llm is not given the user role in the messages. They have provided a code snippet and a screenshot to illustrate the issue and have suggested adding feedback in the user role as a possible solution.*
 - Raised an [issue](https://github.com/BerriAI/litellm/issues/8467) in [BerriAI/litellm]: [Bug]: Support to Google AI Studio (2025-02-11).
-  > *AI Summary: @Vidit-Ostwal has suggested looking into a BadRequestError when calling litellm with the Google Studio API. The error message indicates that the contents parameter is missing in the GenerateContentRequest. The code provided shows that the messages parameter is set, but the contents parameter is not.*
+  > *AI Summary: Vidit-Ostwal has suggested that when calling litellm with Google Studio API, there is an issue where a BadRequestError is raised with the message "* GenerateContentRequest.contents: contents is not specified\n". This error occurs when the contents field in the GenerateContentRequest is not specified. Vidit-Ostwal is using litellm version 1.60.2 and is*
 - Raised an [issue](https://github.com/langfuse/langfuse/issues/5432) in [langfuse/langfuse]: bug: Running Langfuse Locally Dcoker (2025-02-08).
-  > *AI Summary: @Vidit-Ostwal has suggested that the bug in setting up LangFuse via Docker Compose is due to port 9000 being used by another system process. They have attempted to change the port, but believe it is also internally used elsewhere. They have requested assistance in identifying where the port changes need*
+  > *AI Summary: @Vidit-Ostwal has suggested addressing a port conflict issue during Langfuse setup using Docker Compose. Specifically, port 9000, used by both Clickhouse and Minio, is already occupied. Changing the port externally may not resolve the issue as it is likely used internally as well. The commenter seeks assistance in identifying all*
 - Raised an [issue](https://github.com/crewAIInc/crewAI/issues/2030) in [crewAIInc/crewAI]: Documentation Error in memory docs (2025-02-04).
-  > *AI Summary: @Vidit-Ostwal has suggested that the input of the embedder should be updated from `model` to `model_name`. This suggestion is based on the observation that the embedder input is `model_name` in multiple sample code examples in the following documentation pages:
-
-- https://docs.crewai.com/concepts/memory
-- https://docs.crewai.com/concepts/memory#using-azure-openai-embeddings
-- https://docs.crewai.com/concepts/memory#using-google-ai-embeddings
-- https://docs.crewai.com/concepts/memory#using-vertex-ai-embeddings
-- https://docs.crewai.com/concepts/memory#using-cohere-embeddings*
+  > *AI Summary: @Vidit-Ostwal has suggested that the CrewAI documentation for embeddings samples should use `model` as the parameter instead of `model_name` to match the actual usage. This is recommended for the CrewAI documentation pages covering Azure OpenAI, Google AI, Vertex AI, and Cohere embeddings. The reason for this change is to align*
 - Raised an [issue](https://github.com/crewAIInc/crewAI/issues/1984) in [crewAIInc/crewAI]: output_log_file should also suppport JSON format. (2025-01-27).
-  > *AI Summary: @Vidit-Ostwal has suggested enhancing the logging functionality by adding JSON format support to the output log file, enabling further data analysis. This change aims to address issue #1970 partially. @Vidit-Ostwal has expressed willingness to contribute to the project by submitting a pull request.*
+  > *AI Summary: @Vidit-Ostwal has suggested adding a JSON format option to the output_log_file to enhance its parsability for analysis purposes. This would partially address issue #1970. They are willing to contribute a pull request for this improvement.*
 
 ## 🚀 Pull Requests
 - Opened a [PR](https://github.com/crewAIInc/crewAI/pull/2112) in [crewAIInc/crewAI]: Added user message before calling litellm (2025-02-12).
-  > *AI Summary: @Vidit-Ostwal has suggested a fix for issue #2111 by adding a formatted user message through the `feedback` function. The change has resolved the issue.*
+  > *AI Summary: @Vidit-Ostwal has suggested a fix for issue #2111 by adding a user message formatted by "feedback." This update addresses the issue that was previously reported.*
 - Opened a [PR](https://github.com/crewAIInc/crewAI/pull/2071) in [crewAIInc/crewAI]: Added functionality to have any llm run test functionality (2025-02-09).
-  > *AI Summary: @Vidit-Ostwal has suggested that this commit resolves the problem reported in issue #2067, assuring that the functionality mentioned there is now working as intended. Additionally, comments have been included to provide greater clarity and understanding of the code.*
+  > *AI Summary: @Vidit-Ostwal has suggested the inclusion of a fix for the issue highlighted in #2067. This modification aims to resolve the reported problem effectively.*
 - Opened a [PR](https://github.com/crewAIInc/crewAI/pull/2047) in [crewAIInc/crewAI]: Added reset memories function inside crew class (2025-02-06).
-  > *AI Summary: @Vidit-Ostwal has suggested a fix to address the reset memories issue reported in #2023. However, he emphasizes that additional changes are required to fully resolve the issue. These include: 1. Removing the CLI command used to reset memories 2. Making necessary documentation updates @Vidit-Ostwal is willing to implement these additional*
+  > *AI Summary: @Vidit-Ostwal has suggested fixing the reset memories issue reported in #2023. Additionally, they recommend:
+
+- Removing the CLI command for resetting memories
+- Making documentation changes
+
+@Vidit-Ostwal is available to implement these changes if the proposed solution is accepted.*
 - Opened a [PR](https://github.com/crewAIInc/crewAI/pull/2031) in [crewAIInc/crewAI]: Fixed the memory documentation (2025-02-04).
-  > *AI Summary: @Vidit-Ostwal has suggested a fix for the documentation issue mentioned in issue #2030.*
+  > *AI Summary: @Vidit-Ostwal has suggested that this change fixes the documentation issue raised in #2030. No further details or code snippets were provided in the comment.*
 - Opened a [PR](https://github.com/crewAIInc/crewAI/pull/1985) in [crewAIInc/crewAI]: Added functionality to have json format as well for the logs (2025-01-27).
-  > *AI Summary: @Vidit-Ostwal has suggested adding support to save logs as a JSON file. When initializing the Crew class, set `output_log_file` to `True` or provide a filename. Additionally, set `save_as_json` to `True` to enable saving logs in JSON format. The resulting JSON file will contain an array of JSON events, which simplifies*
+  > *AI Summary: @Vidit-Ostwal has suggested adding support to save logs as a JSON file. When initializing the crew, you can set output_log_file to True or provide a filename (e.g., "log.json") and enable save_as_json to True. This generates a .json file containing an array of JSON events, making it easier to parse and*
 
 ## ⭐ Starred Repositories
 - Starred [bespokelabsai/curator](https://github.com/bespokelabsai/curator) on 2025-02-13.
