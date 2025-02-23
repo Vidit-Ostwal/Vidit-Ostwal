@@ -2,49 +2,49 @@
 
 ## 💬 Recent Comments
 - [Commented](https://github.com/explodinggradients/ragas/issues/1932#issuecomment-2676191712) in [explodinggradients/ragas] on 2025-02-22.
-  > *AI Summary: @Vidit-Ostwal has suggested that you share the problem you are facing. Providing details about the issue you are experiencing will help others understand the context and provide more relevant assistance. Sharing specific error messages or code snippets can help identify the root cause and facilitate a faster resolution.*
+  > *AI Summary: @Vidit-Ostwal has suggested that it would be helpful to share the problem being faced so that they can understand the context and provide more specific advice or assistance. They emphasize the importance of providing detailed information about the issue to facilitate a more effective troubleshooting process.*
 - [Commented](https://github.com/explodinggradients/ragas/issues/1731#issuecomment-2676190883) in [explodinggradients/ragas] on 2025-02-22.
-  > *AI Summary: @Vidit-Ostwal has suggested sharing code to reproduce @zoey-lyu's issue. This would be helpful for understanding the root cause and finding a solution.*
+  > *AI Summary: @Vidit-Ostwal has suggested sharing code examples to reproduce @zoey-lyu's findings. They believe this will aid in understanding and troubleshooting the reported issue.*
 - [Commented](https://github.com/crewAIInc/crewAI/issues/2051#issuecomment-2671690311) in [crewAIInc/crewAI] on 2025-02-20.
-  > *AI Summary: @Vidit-Ostwal has suggested that to create a GitHub Action that automatically generates a summary of a pull request, the following guidelines should be followed: - Fetch the pull request details using the GitHub API. - Tokenize the pull request body and merge conflict files (if any). - Group the tokenized*
+  > *AI Summary: @Vidit-Ostwal has suggested adding specific guidelines for comment summarization. These guidelines include: - Create a 100-word summary of the entire comment, covering all critical information. - Avoid mentioning users and external links. - Ignore code examples, focusing on key messages. - Ensure accuracy and completeness, reflecting all relevant details. -*
 - [Commented](https://github.com/crewAIInc/crewAI/issues/2123#issuecomment-2670361982) in [crewAIInc/crewAI] on 2025-02-20.
-  > *AI Summary: @Vidit-Ostwal suggests that the current discussion is within the scope of a flow. @Vidit-Ostwal also tags @yqup for confirmation. Additionally, @Vidit-Ostwal requests clarification from @lorenzejay on the topic.*
+  > *AI Summary: @Vidit-Ostwal has suggested that the issue is within the scope of a flow, and tagged a user to verify this. Additionally, @Vidit-Ostwal has requested further clarification from the original commenter to better understand their inquiry.*
 - [Commented](https://github.com/crewAIInc/crewAI/issues/2123#issuecomment-2670361167) in [crewAIInc/crewAI] on 2025-02-20.
-  > *AI Summary: @Vidit-Ostwal has suggested that the search for the "crew.py" file should be conducted recursively within all files and folders of the current directory, regardless of the crewai project structure.*
+  > *AI Summary: @Vidit-Ostwal has suggested that the code snippet he provided is independent of the crewai project structure. It recursively searches for a file named "crew.py" within all the files and folders of the current directory.*
 - [Commented](https://github.com/microsoft/autogen/issues/5591#issuecomment-2666323375) in [microsoft/autogen] on 2025-02-18.
-  > *AI Summary: @Vidit-Ostwal has suggested exploring alternative methods to clone the autogen repo. They specifically seek a solution that allows them to use the repo in an environment while also having the ability to modify and edit it. @jackgerrits has been tagged for their input on this matter.*
+  > *AI Summary: @Vidit-Ostwal has suggested looking into alternative methods for cloning the autogen repo to utilize it in an environment while also allowing for modifications and edits. They have specifically asked about whether any such options exist.*
 - [Commented](https://github.com/crewAIInc/crewAI/pull/1985#issuecomment-2665955523) in [crewAIInc/crewAI] on 2025-02-18.
-  > *AI Summary: @Vidit-Ostwal has suggested that the issue #1984 has been fixed.*
+  > *AI Summary: @Vidit-Ostwal has suggested closing the issue #1984 as fixed. The issue was related to an unspecified bug that has now been resolved. No further action is required.*
 - [Commented](https://github.com/microsoft/autogen/issues/5579#issuecomment-2665605410) in [microsoft/autogen] on 2025-02-18.
-  > *AI Summary: @Vidit-Ostwal has suggested that @fniedtner does not have access to the current webpage. This suggestion is likely made in reference to the error message displayed on the screen.*
+  > *AI Summary: @Vidit-Ostwal has suggested showing that you don't have access to the current page by adding a new alert system. This system would utilize the alert component, and the alert would be triggered when the user tries to access a page they do not have access to. The alert would display*
 - [Commented](https://github.com/crewAIInc/crewAI/issues/2123#issuecomment-2664518371) in [crewAIInc/crewAI] on 2025-02-18.
-  > *AI Summary: @Vidit-Ostwal has suggested that the simplest way to address this issue is to utilize the `crew.reset_memories('all')` function. This suggestion has been implemented in a pull request, along with a fix to the CLI command to ensure it retrieves the correct attribute.*
+  > *AI Summary: @Vidit-Ostwal has suggested using `crew.reset_memories('all')` to provide the simplest way to reset the memories. They have implemented this change in their PR and also fixed the CLI command to fetch the correct attribute.*
 - [Commented](https://github.com/crewAIInc/crewAI/issues/2131#issuecomment-2660681309) in [crewAIInc/crewAI] on 2025-02-15.
-  > *AI Summary: @Vidit-Ostwal has suggested that it would be helpful if the entire code can be shared once for reference. This would provide a complete overview of the code and make it easier to understand the context and structure of the project.*
+  > *AI Summary: @Vidit-Ostwal has suggested sharing the entire code in one place for ease of reference. They believe that having all the code in one location would make it simpler to understand and review.*
 
 ## 🐛 Issues Raised
 - Raised an [issue](https://github.com/microsoft/autogen/issues/5591) in [microsoft/autogen]: Error while installing autogen in editable version (2025-02-18).
-  > *AI Summary: @Vidit-Ostwal has suggested looking into a file structuring issue when attempting to install autogen in editable version. The error encountered suggests multiple top-level packages exist in a flat-layout, which setuptools does not support. To resolve this, the user can consider custom discovery, src-layout, or explicitly setting `py_modules` or `packages`.*
+  > *AI Summary: @Vidit-Ostwal has suggested looking into a file structuring issue when installing autogen in editable version. They encountered an error indicating multiple top-level packages discovered in a flat layout. They recommend exploring custom discovery, src-layout, or explicitly setting py_modules or packages to resolve this issue. Resources to understand the error better*
 - Raised an [issue](https://github.com/crewAIInc/crewAI/issues/2111) in [crewAIInc/crewAI]: [BUG] LiteLLM call fails, when `human_input` set to True (2025-02-12).
-  > *AI Summary: @Vidit-Ostwal has suggested a possible solution to an issue where a crew with `human_input` set to True fails to run due to the lite llm not being given the user role in the messages. They have proposed adding feedback in the user role to resolve this issue.*
+  > *AI Summary: @Vidit-Ostwal has suggested adding feedback in the user role to fix the issue where the lite LLM is not given the user role in the messages when called. This is causing the crew to fail for any input provided by the user.*
 - Raised an [issue](https://github.com/BerriAI/litellm/issues/8467) in [BerriAI/litellm]: [Bug]: Support to Google AI Studio (2025-02-11).
-  > *AI Summary: @Vidit-Ostwal has suggested that when calling the litellm API through Google Studio, a BadRequestError is encountered due to unspecified contents in the GenerateContentRequest. The error code is 400, and the error message is "contents is not specified". The code provided demonstrates the issue.*
+  > *AI Summary: @Vidit-Ostwal has suggested that a BadRequestError was encountered when attempting to call litellm with the Google Studio API. The error message indicates that the contents of the GenerateContentRequest are not specified. The code sample provided does not include the contents parameter, so it must be added to the request. The*
 - Raised an [issue](https://github.com/langfuse/langfuse/issues/5432) in [langfuse/langfuse]: bug: Running Langfuse Locally Dcoker (2025-02-08).
-  > *AI Summary: @Vidit-Ostwal has suggested that the port 9000 conflict issue can be resolved by changing the port in the docker compose file. However, they believe that the port may be used internally elsewhere and needs to be changed in additional locations. They've provided a reproduction scenario but have not specified the*
+  > *AI Summary: @Vidit-Ostwal has suggested that port 9000 is being used by another system process, preventing langfuse from setting up correctly via docker compose up. They believe port 9000 is referenced internally in multiple places, making it difficult to change. They are willing to contribute a fix if necessary.*
 - Raised an [issue](https://github.com/crewAIInc/crewAI/issues/2030) in [crewAIInc/crewAI]: Documentation Error in memory docs (2025-02-04).
-  > *AI Summary: @Vidit-Ostwal has suggested that the documentation for `Embedder` incorrectly specifies `model` as the input parameter instead of `model_name`. This affects several examples in the documentation, including those for Azure OpenAI, Google AI, Vertex AI, and Cohere embeddings. The issue is present on macOS Monterey, Python 3.10, and the latest versions*
+  > *AI Summary: @Vidit-Ostwal has suggested that the sample code examples provided in the CrewAI documentation for using embeddings should be updated. In the current examples, the embedder function takes the input parameter `model` instead of `model_name`. This inconsistency is observed across multiple examples, including those using Azure OpenAI, Google AI, Vertex AI,*
 
 ## 🚀 Pull Requests
 - Opened a [PR](https://github.com/crewAIInc/crewAI/pull/2155) in [crewAIInc/crewAI]: Fixed the issue 2123 around memory command with CLI (2025-02-17).
-  > *AI Summary: @Vidit-Ostwal has suggested resolving issue #2123 by patching the `get_crew()` function to obtain the correct object. This addresses the core problem that was causing the issue and is expected to fix the error.*
+  > *AI Summary: @Vidit-Ostwal has suggested patching the `get_crew()` function to resolve issue #2123. The patch ensures the function returns the correct object, addressing the issue.*
 - Opened a [PR](https://github.com/crewAIInc/crewAI/pull/2112) in [crewAIInc/crewAI]: Added user message before calling litellm (2025-02-12).
-  > *AI Summary: @Vidit-Ostwal has suggested fixing issue #2111 by adding a user message formatted by "feedback". The specific details of the code implementation using "feedback" to format the user message are not provided in this comment.*
+  > *AI Summary: @Vidit-Ostwal has suggested a fix for issue #2111. The fix involves adding user message formatted by `feedback`. Unfortunately, no further details or context are available in the comment.*
 - Opened a [PR](https://github.com/crewAIInc/crewAI/pull/2071) in [crewAIInc/crewAI]: Added functionality to have any llm run test functionality (2025-02-09).
-  > *AI Summary: @Vidit-Ostwal has suggested a fix for the issue reported in #2067. The proposed solution addresses the problem that was previously encountered, ensuring that the issue is resolved in this update.*
+  > *AI Summary: @Vidit-Ostwal has suggested a fix for the issue mentioned in issue #2067. Unfortunately, they did not provide any additional details on the nature of the fix or the specific changes implemented. Therefore, it is unclear what the fix entails or how it resolves the issue.*
 - Opened a [PR](https://github.com/crewAIInc/crewAI/pull/2047) in [crewAIInc/crewAI]: Added reset memories function inside crew class (2025-02-06).
-  > *AI Summary: @Vidit-Ostwal has suggested resolving the reset memories issue reported in issue #2023. Additionally, they recommend removing the relevant CLI command and making necessary documentation updates. However, they emphasize that these changes are contingent on the solution's overall alignment.*
+  > *AI Summary: @Vidit-Ostwal has suggested changes to resolve the reset memories issue reported in #2023. Their proposed solution involves: 1. Removing the CLI command for resetting memories 2. Making necessary documentation updates @Vidit-Ostwal has indicated a willingness to implement these changes upon confirmation that the suggested solution is aligned with the project's*
 - Opened a [PR](https://github.com/crewAIInc/crewAI/pull/2031) in [crewAIInc/crewAI]: Fixed the memory documentation (2025-02-04).
-  > *AI Summary: @Vidit-Ostwal has suggested a fix for the documentation issue raised in issue #2030. The specific details are not provided in the comment, but it is understood that this change addresses the concerns mentioned in the issue. It is recommended to review the code changes and ensure that they adequately resolve*
+  > *AI Summary: @Vidit-Ostwal has suggested that this commit fixes the documentation issue mentioned in #2030. This is expected to resolve the problem.*
 
 ## ⭐ Starred Repositories
 - Starred [huggingface/picotron](https://github.com/huggingface/picotron) on 2025-02-20.
