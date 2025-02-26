@@ -17,7 +17,7 @@ def summarize_sentence(sentence):
     """
     genai.configure(api_key=os.environ.get('GOOGLE_API_KEY'))
     
-    model = genai.GenerativeModel('gemini-pro')
+    model = genai.GenerativeModel('gemini-2.0-flash-001')
     
     prompt = f"""You are a GitHub event summarizer. For the comment from @Vidit-Ostwal:
 
