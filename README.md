@@ -1,6 +1,10 @@
 # Recent GitHub Activity for Vidit-Ostwal
 
 ## 💬 Recent Comments
+- [Commented](https://github.com/crewAIInc/crewAI/issues/2206#issuecomment-2682256443) in [crewAIInc/crewAI] on 2025-02-25.
+  > *AI Summary: Error summarizing: 404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.*
+- [Commented](https://github.com/crewAIInc/crewAI/pull/2210#issuecomment-2682236822) in [crewAIInc/crewAI] on 2025-02-25.
+  > *AI Summary: Error summarizing: 404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.*
 - [Commented](https://github.com/crewAIInc/crewAI-tools/issues/223#issuecomment-2679221846) in [crewAIInc/crewAI-tools] on 2025-02-24.
   > *AI Summary: Error summarizing: 404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.*
 - [Commented](https://github.com/crewAIInc/crewAI/issues/2209#issuecomment-2679194991) in [crewAIInc/crewAI] on 2025-02-24.
@@ -16,10 +20,6 @@
 - [Commented](https://github.com/crewAIInc/crewAI/issues/2206#issuecomment-2677521676) in [crewAIInc/crewAI] on 2025-02-24.
   > *AI Summary: Error summarizing: 404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.*
 - [Commented](https://github.com/crewAIInc/crewAI/issues/2197#issuecomment-2676858424) in [crewAIInc/crewAI] on 2025-02-23.
-  > *AI Summary: Error summarizing: 404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.*
-- [Commented](https://github.com/explodinggradients/ragas/issues/1932#issuecomment-2676191712) in [explodinggradients/ragas] on 2025-02-22.
-  > *AI Summary: Error summarizing: 404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.*
-- [Commented](https://github.com/explodinggradients/ragas/issues/1731#issuecomment-2676190883) in [explodinggradients/ragas] on 2025-02-22.
   > *AI Summary: Error summarizing: 404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.*
 
 ## 🐛 Issues Raised
