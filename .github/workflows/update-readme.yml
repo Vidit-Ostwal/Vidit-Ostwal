@@ -21,7 +21,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install requests
         pip install google-generativeai
-        pip instal litellm
+        pip install litellm
     
     - name: Generate GitHub Activity
       env:
