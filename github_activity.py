@@ -202,6 +202,8 @@ def main():
     print("Fetched GitHub activities successfully!")
 
     markdown_content = generate_markdown(username, activities)
+    print("Generated markdown content successfully!")
+    print(markdown_content)
     
     # Optional: Write to README.md
     with open('README.md', 'w') as f:
