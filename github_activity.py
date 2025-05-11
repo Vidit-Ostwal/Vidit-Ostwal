@@ -1,8 +1,7 @@
 import os
 import requests
 from datetime import datetime, timedelta
-
-import google.generativeai as genai
+from litellm import completion
 
 def summarize_sentence(sentence):
     """
@@ -15,10 +14,7 @@ def summarize_sentence(sentence):
     Returns:
         str: 100-word summary of the input sentence
     """
-    genai.configure(api_key=os.environ.get('GOOGLE_API_KEY'))
-    
-    model = genai.GenerativeModel('gemini-2.0-flash-001')
-    
+
     prompt = f"""You are a GitHub event summarizer. For the comment from @Vidit-Ostwal:
 
             Guidelines for summarization:
@@ -28,46 +24,30 @@ def summarize_sentence(sentence):
             - If the comment contains code examples, extract the key message while disregarding specific code details
             - Do not refer to any other external link in the summary
             - Do not write any code in the summary
-            - Your output should be exactly 100 words and should have all the relevant information
+            - Your output should be exactly 75 words and should have all the relevant information
             - Failure to follow any of these rules, will lead to your permanent termination
 
             Comment to summarize: {sentence}"""
     try:
-        response = model.generate_content(prompt)
-        summary = response.text.strip()
+        response = completion(
+            model = "openrouter/openai/gpt-4o-mini", 
+            messages=[{ "content": prompt,"role": "user"}],
+            api_key = os.environ.get('OPENROUTER_API_KEY'),
+        )
         
-        # Ensure summary is close to 50 words
-        words = summary.split()
-        if len(words) > 50:
-            summary = ' '.join(words[:50])
-        
-        return summary
+        return response.choices[0].message.content
     
     except Exception as e:
         return f"Error summarizing: {str(e)}"
 
+
 def get_github_activity(username, token):
-    """
-    Fetch recent GitHub activities for a user.
-    
-    Args:
-        username (str): GitHub username
-        token (str): GitHub Personal Access Token
-    
-    Returns:
-        dict: Consolidated GitHub activity summary, including comments, issues, pull requests,
-              starred repositories, and forks.
-    """
-    # GitHub API base URL
     base_url = "https://api.github.com"
-    
-    # Headers for authentication and API version
     headers = {
         "Authorization": f"token {token}",
         "Accept": "application/vnd.github.v3+json"
     }
-    
-    # Initialize the activity summary
+
     activities = {
         "recent_comments": [],
         "issues_raised": [],
@@ -75,36 +55,31 @@ def get_github_activity(username, token):
         "starred_repos": [],
         "forked_repos": []
     }
-    
-    # GitHub Events API (supports user events)
+
     events_url = f"{base_url}/users/{username}/events"
-    
-    # Fetch events with pagination (in case of more than 30 results)
+    cutoff_date = datetime.utcnow() - timedelta(days=7)
     page = 1
-    cutoff_date = datetime.now() - timedelta(days=30)
-    
-    while True:
+    max_pages = 10  # GitHub caps this to 10 pages
+
+    while page <= max_pages:
         response = requests.get(f"{events_url}?page={page}", headers=headers)
         if response.status_code != 200:
             print(f"Failed to fetch events: {response.status_code} - {response.json().get('message', 'Unknown error')}")
             break
-        
+
         events = response.json()
         if not events:
-            break  # No more events to process
-        
+            break
+
         for event in events:
             try:
                 event_date = datetime.strptime(event['created_at'], "%Y-%m-%dT%H:%M:%SZ")
                 if event_date < cutoff_date:
-                    break  # Stop if the event is older than 30 days
-                
-                # Collect comments
-                # Fetch full comment details for IssueCommentEvent
+                    return activities  # Stop processing older events
+
                 if event['type'] == 'IssueCommentEvent':
                     comment_url = event['payload']['comment']['url']
                     comment_response = requests.get(comment_url, headers=headers)
-                    
                     if comment_response.status_code == 200:
                         comment_details = comment_response.json()
                         activities['recent_comments'].append({
@@ -113,18 +88,16 @@ def get_github_activity(username, token):
                             'comment_text': comment_details['body'],
                             'date': event_date.strftime("%Y-%m-%d")
                         })
-                
-                # Collect issues raised
+
                 elif event['type'] == 'IssuesEvent' and event['payload']['action'] == 'opened':
                     activities['issues_raised'].append({
                         'repo': event['repo']['name'],
                         'issue_title': event['payload']['issue']['title'],
-                        'issue_description': event['payload']['issue']['body'], 
+                        'issue_description': event['payload']['issue']['body'],
                         'issue_url': event['payload']['issue']['html_url'],
                         'date': event_date.strftime("%Y-%m-%d")
                     })
-                
-                # Collect pull requests
+
                 elif event['type'] == 'PullRequestEvent' and event['payload']['action'] == 'opened':
                     activities['pull_requests'].append({
                         'repo': event['repo']['name'],
@@ -133,8 +106,7 @@ def get_github_activity(username, token):
                         'pr_url': event['payload']['pull_request']['html_url'],
                         'date': event_date.strftime("%Y-%m-%d")
                     })
-                                
-                # Collect starred repositories
+
                 elif event['type'] == 'WatchEvent' and event['payload']['action'] == 'started':
                     activities['starred_repos'].append({
                         'repo': event['repo']['name'],
@@ -142,21 +114,20 @@ def get_github_activity(username, token):
                         'date': event_date.strftime("%Y-%m-%d")
                     })
 
-                # Collect forked repositories
                 elif event['type'] == 'ForkEvent':
                     activities['forked_repos'].append({
                         'repo': event['repo']['name'],
                         'fork_url': event['payload']['forkee']['html_url'],
                         'date': event_date.strftime("%Y-%m-%d")
                     })
-            
+
             except KeyError as e:
                 print(f"Missing key in event: {e}")
-        
-        # Go to the next page
+
         page += 1
-    
+
     return activities
+
 
 def generate_markdown(username, activities):
     """
@@ -174,7 +145,7 @@ def generate_markdown(username, activities):
     # Recent Comments Section
     markdown += "## 💬 Recent Comments\n"
     if activities['recent_comments']:
-        for comment in activities['recent_comments'][:10]:  # Limit to 10 comments
+        for comment in activities['recent_comments'][:5]:  # Limit to 10 comments
             markdown += f"- [Commented]({comment['comment_url']}) in [{comment['repo']}] on {comment['date']}.\n"
             markdown += f"  > *AI Summary: {summarize_sentence(comment['comment_text'])}*\n"
     else:
@@ -228,6 +199,8 @@ def main():
     
     # Fetch and generate activities
     activities = get_github_activity(username, token)
+    print("Fetched GitHub activities successfully!")
+
     markdown_content = generate_markdown(username, activities)
     
     # Optional: Write to README.md
