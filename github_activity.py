@@ -129,6 +129,14 @@ def get_github_activity(username, token):
     return activities
 
 
+def generate_blogs_markdown(blog_name_list, blog_url, blog_posting_date):
+    markdown = ""
+    for name, url, date in zip(blog_name_list, blog_url, blog_posting_date):
+        markdown += f"- [{name}]({url}) - *{date}*\n"
+    return markdown
+
+
+
 def generate_markdown(username, activities):
     """
     Generate a markdown summary of GitHub activities.
@@ -140,8 +148,19 @@ def generate_markdown(username, activities):
     Returns:
         str: Markdown formatted activity summary
     """
+    blog_name_list = ['Training the Tokenizer']
+    blog_url = [
+        'https://www.notion.so/207e478805d48090b34fcc5c8e8c3c01?v=207e478805d480cfac6c000ca3c80482'
+    ]
+    blog_posting_date = ['03-06-2025']
+    blog_markdown = generate_blogs_markdown(blog_name_list, blog_url, blog_posting_date)
+
     markdown = f"# Recent GitHub Activity for {username}\n\n"
     
+    # Blog Section
+    markdown += '## 📝 Recent Blogs\n'
+    markdown += blog_markdown
+
     # Recent Comments Section
     markdown += "## 💬 Recent Comments\n"
     if activities['recent_comments']:
