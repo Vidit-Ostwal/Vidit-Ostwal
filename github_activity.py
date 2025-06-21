@@ -2,6 +2,9 @@ import os
 import requests
 from datetime import datetime, timedelta
 from litellm import completion
+import json
+from dotenv import load_dotenv
+load_dotenv()
 
 def summarize_sentence(sentence):
     """
@@ -148,11 +151,13 @@ def generate_markdown(username, activities):
     Returns:
         str: Markdown formatted activity summary
     """
-    blog_name_list = ['Training the Tokenizer']
-    blog_url = [
-        'https://www.notion.so/207e478805d48090b34fcc5c8e8c3c01?v=207e478805d480cfac6c000ca3c80482'
-    ]
-    blog_posting_date = ['03-06-2025']
+
+    with open('blogs.json', 'r') as f:
+        blog_json = json.load(f)
+    blog_name_list = blog_json['blogs_name_list']
+    blog_url = blog_json['blogs_url']
+    blog_posting_date = blog_json['blogs_posting_date']
+
     blog_markdown = generate_blogs_markdown(blog_name_list, blog_url, blog_posting_date)
 
     markdown = f"# Recent GitHub Activity for {username}\n\n"
