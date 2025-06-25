@@ -132,12 +132,13 @@ def get_github_activity(username, token):
     return activities
 
 
-def generate_blogs_markdown(blog_name_list, blog_url, blog_posting_date):
+def generate_blogs_markdown(blogs):
     markdown = ""
-    for name, url, date in zip(blog_name_list, blog_url, blog_posting_date):
-        markdown += f"- [{name}]({url}) - *{date}*\n"
+    for blog in blogs:
+        markdown += f"- [{blog['blog_name']}]({blog['blog_url']}) - *{blog['blog_posting_date']}*\n"
+        for sub_blog in blog.get("sub_blogs", []):
+            markdown += f"  - [{sub_blog['blog_name']}]({sub_blog['blog_url']}) - *{sub_blog['blog_posting_date']}*\n"
     return markdown
-
 
 
 def generate_markdown(username, activities):
@@ -154,12 +155,8 @@ def generate_markdown(username, activities):
 
     with open('blogs.json', 'r') as f:
         blog_json = json.load(f)
-    blog_name_list = blog_json['blogs_name_list']
-    blog_url = blog_json['blogs_url']
-    blog_posting_date = blog_json['blogs_posting_date']
 
-    blog_markdown = generate_blogs_markdown(blog_name_list, blog_url, blog_posting_date)
-
+    blog_markdown = generate_blogs_markdown(blog_json['blogs'])
     markdown = f"# Recent GitHub Activity for {username}\n\n"
     
     # Blog Section
