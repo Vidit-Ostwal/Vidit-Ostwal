@@ -6,15 +6,15 @@
   - [Masked Self-Attention](https://www.notion.so/viditostwal/Self-Attention-in-Transformers-216e478805d48005b515fac90e1d76e0) - *25-06-2025*
 ## 💬 Recent Comments
 - [Commented](https://github.com/ishandutta0098/mukh/issues/31#issuecomment-3016869771) in [ishandutta0098/mukh] on 2025-06-29.
-  > *AI Summary: @Vidit-Ostwal has suggested that the task can be assigned as previously discussed. They confirmed their readiness to take on the assignment and encouraged the other party to go ahead with the assignment process. The communication indicates a clear agreement and readiness to proceed with the discussed plans.*
+  > *AI Summary: @Vidit-Ostwal has suggested that the task can be assigned as previously discussed.*
 - [Commented](https://github.com/crewAIInc/crewAI/pull/3033#issuecomment-3009492499) in [crewAIInc/crewAI] on 2025-06-26.
-  > *AI Summary: @Vidit-Ostwal has suggested validating the current approach and questioned the necessity of a fallback. The inquiry seeks to determine whether implementing such a fallback is essential within the given context. This suggestion indicates that the evaluation of the current method's effectiveness may lead to considerations about simplifying the process or addressing potential issues without additional layers of complexity. Clarity on the requirement for a fallback could influence decisions regarding the overall strategy employed in the project.*
+  > *AI Summary: @Vidit-Ostwal has suggested that the validation of the current approach is underway and questions the necessity of implementing a fallback option. The focus is on evaluating whether such a fallback is truly needed within the context of the project. By raising this concern, he encourages a closer examination of the approach's effectiveness and efficiency without additional contingencies. This prompt aims to ensure that all aspects are thoroughly considered before deciding on the fallback's implementation.*
 - [Commented](https://github.com/huggingface/smolagents/issues/1489#issuecomment-3009486713) in [huggingface/smolagents] on 2025-06-26.
-  > *AI Summary: @Vidit-Ostwal has suggested that the issue in question appears to be resolved in the latest version of the software. This indicates that any previous concerns or problems related to this matter have likely been addressed in recent updates. It may be beneficial for users to ensure they are utilizing the most current version to take advantage of the fixes implemented. Overall, this development suggests a positive progression towards improved functionality and user experience.*
+  > *AI Summary: @Vidit-Ostwal has suggested that the issue in question appears to have been resolved in the latest version. This implies that updates or changes made in the most recent release have addressed the concerns previously raised. Consequently, users are encouraged to utilize this updated version to benefit from the improvements or fixes implemented. Overall, the suggestion emphasizes the importance of keeping software up-to-date for optimal performance and problem resolution.*
 - [Commented](https://github.com/huggingface/smolagents/issues/1489#issuecomment-3009484509) in [huggingface/smolagents] on 2025-06-26.
-  > *AI Summary: @Vidit-Ostwal has suggested that following an attempt to replicate a code execution in Python, a list of monuments in Paris and their respective heights in meters was compiled. The Eiffel Tower was identified as the tallest structure, with an average height calculation yielding approximately 194.67 meters based on the heights of key monuments. The execution steps involved gathering data through web search, processing the heights, and ultimately calculating the average, which reflects the overall scaling of notable Parisian landmarks.*
+  > *AI Summary: @Vidit-Ostwal has suggested a process that involves listing monuments in Paris along with their heights, ultimately calculating their average height. The initial step involves searching for monument height data, followed by logging execution results. The subsequent steps include establishing a list of heights for key monuments such as the Eiffel Tower and Montparnasse Tower, and executing calculations to derive the average height. The final computed average height of the selected Parisian monuments is approximately 194.67 meters.*
 - [Commented](https://github.com/ariG23498/gemma3-object-detection/pull/13#issuecomment-3005001380) in [ariG23498/gemma3-object-detection] on 2025-06-25.
-  > *AI Summary: @Vidit-Ostwal has suggested adding the training with QLORA directly in the main.py file. An additional command-line interface (CLI) parameter, `--peft_with_qlora`, has been introduced to facilitate training with QLORA. Feedback on this approach is welcomed, indicating openness to modifications if necessary. Alternatively, changes can be implemented directly in the train_qlora.py file if preferred. This flexible approach aims to enhance the training process while accommodating different user preferences.*
+  > *AI Summary: @Vidit-Ostwal has suggested that the training with QLORA has been incorporated directly into the main.py file. Additionally, a parameter called `--peft_with_qlora` can be included in the command-line interface to facilitate training with QLORA. They invite feedback on this approach and express willingness to modify the train_qlora.py file if needed.*
 
 ## 🐛 Issues Raised
 No issues raised recently.
@@ -23,7 +23,7 @@ No issues raised recently.
 No pull requests opened recently.
 
 ## ⭐ Starred Repositories
-No repositories starred recently.
+- Starred [huggingface/huggingface-gemma-recipes](https://github.com/huggingface/huggingface-gemma-recipes) on 2025-06-30.
 
 ## 🍴 Forked Repositories
 No repositories forked recently.
