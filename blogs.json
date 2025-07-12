@@ -17,6 +17,12 @@
           "blog_posting_date": "25-06-2025"
         }
       ]
+    },
+    {
+      "blog_name": "Temperature in LLM",
+      "blog_url": "https://open.substack.com/pub/viditostwal/p/how-does-temperature-changes-the?r=m52qu&utm_campaign=post&utm_medium=web&showWelcomeOnShare=false",
+      "blog_posting_date": "10-07-2025",
+      "sub_blogs": []
     }
   ]
 }
