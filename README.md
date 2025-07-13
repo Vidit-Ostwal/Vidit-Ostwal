@@ -6,16 +6,16 @@
   - [Masked Self-Attention](https://www.notion.so/viditostwal/Self-Attention-in-Transformers-216e478805d48005b515fac90e1d76e0) - *25-06-2025*
 - [Temperature in LLM](https://open.substack.com/pub/viditostwal/p/how-does-temperature-changes-the?r=m52qu&utm_campaign=post&utm_medium=web&showWelcomeOnShare=false) - *10-07-2025*
 ## 💬 Recent Comments
+- [Commented](https://github.com/crewAIInc/crewAI/pull/2893#issuecomment-3064863452) in [crewAIInc/crewAI] on 2025-07-12.
+  > *AI Summary: @Vidit-Ostwal has suggested that there is a need for a response regarding a pull request, as they are awaiting feedback from another team member. They acknowledged forgetting to reach out earlier and mentioned a necessary change in a parameter in line with documentation updates. Additionally, they asked for comments to be addressed, emphasizing the importance of including specific parameters like version and output_format. Lastly, they are still waiting for input related to a configuration setting that is pending from another team.*
 - [Commented](https://github.com/crewAIInc/crewAI/pull/2831#issuecomment-3063107533) in [crewAIInc/crewAI] on 2025-07-11.
-  > *AI Summary: @Vidit-Ostwal has suggested that the reported test was unreliable. He believes that the issue has been resolved and the code is now prepared for merging.*
+  > *AI Summary: @Vidit-Ostwal has suggested that the current issue was identified as a flaky test. He believes the changes are now ready to be merged.*
 - [Commented](https://github.com/crewAIInc/crewAI/pull/2831#issuecomment-3063065803) in [crewAIInc/crewAI] on 2025-07-11.
-  > *AI Summary: @Vidit-Ostwal has suggested that they are unable to reproduce the issue being discussed. They included a screenshot to support their observation but did not detail the content of the screenshot or any specific aspects of the problem. Their comment indicates a need for further clarification or information to resolve the matter at hand, indicating that the current data or context is insufficient to replicate the situation effectively.*
+  > *AI Summary: @Vidit-Ostwal has suggested that the issue in question could not be reproduced. This indicates that attempts to replicate the problem were unsuccessful, which may point to inconsistencies or variations in the environment or conditions under which the issue was observed. Further investigation may be necessary to identify the underlying factors that could lead to differences in reproduction results. Providing additional context or details might help in resolving this matter more effectively.*
 - [Commented](https://github.com/crewAIInc/crewAI/pull/2831#issuecomment-3063050188) in [crewAIInc/crewAI] on 2025-07-11.
-  > *AI Summary: @Vidit-Ostwal has suggested that he acknowledged a recent workaround implemented in the GitHub Runner, which he finds impressive. However, he also noted that another, unrelated test case is now encountering failures. This indicates an ongoing need for team collaboration to resolve emerging issues while also maintaining the effectiveness of the new workaround. Overall, he appreciates the workaround while highlighting the importance of addressing new challenges that may arise from recent changes.*
+  > *AI Summary: @Vidit-Ostwal has suggested that the recent workaround implemented for the issue is commendable, specifically highlighting the changes made in the GitHub Runner. However, it has also been noted that there is an unrelated test case that is currently failing, indicating that while the solution was successful for one problem, it may have inadvertently caused complications elsewhere. This points to the need for further troubleshooting and testing to ensure overall system functionality remains intact.*
 - [Commented](https://github.com/crewAIInc/crewAI/pull/2831#issuecomment-3062553886) in [crewAIInc/crewAI] on 2025-07-11.
-  > *AI Summary: @Vidit-Ostwal has suggested that after spending several hours debugging, a specific issue has been identified, but a solution remains elusive. This problem is also affecting the tool repository. Additionally, there is a query regarding whether the issue is related to memory management, and inquiries are made about the possibility of reproducing the problem locally. The comment indicates the ongoing challenges in resolving this matter, highlighting the difficulties encountered during the debugging process.*
-- [Commented](https://github.com/crewAIInc/crewAI/pull/3120#issuecomment-3062551554) in [crewAIInc/crewAI] on 2025-07-11.
-  > *AI Summary: @Vidit-Ostwal has suggested that there are unrelated test cases failing and is currently investigating the issue. They have inquired whether the problem could be replicated locally and mentioned that they attempted to run the tests using Python version 3.10.16. The comment indicates ongoing troubleshooting efforts to understand the unexpected test failures. Debugging the situation is essential for resolving the issues presented in the test cases encountered during their work.*
+  > *AI Summary: @Vidit-Ostwal has suggested that after spending several hours debugging, the reason for the encountered issue is understood, but he was unable to implement a fix. The same error appears to affect the tool repository as well. Additionally, there is a question regarding whether the issue can be reproduced locally, pointing to a related SQLlite error and referencing a previous pull request for further context. Overall, the debugging efforts did not lead to a resolution.*
 
 ## 🐛 Issues Raised
 No issues raised recently.
@@ -28,7 +28,6 @@ No pull requests opened recently.
 - Starred [BAI-LAB/MemoryOS](https://github.com/BAI-LAB/MemoryOS) on 2025-07-11.
 - Starred [jackjackbits/bitchat](https://github.com/jackjackbits/bitchat) on 2025-07-09.
 - Starred [ariG23498/mmdp](https://github.com/ariG23498/mmdp) on 2025-07-09.
-- Starred [bytedance/trae-agent](https://github.com/bytedance/trae-agent) on 2025-07-05.
 
 ## 🍴 Forked Repositories
 No repositories forked recently.
