@@ -6,27 +6,28 @@
   - [Masked Self-Attention](https://www.notion.so/viditostwal/Self-Attention-in-Transformers-216e478805d48005b515fac90e1d76e0) - *25-06-2025*
 - [Temperature in LLM](https://open.substack.com/pub/viditostwal/p/how-does-temperature-changes-the?r=m52qu&utm_campaign=post&utm_medium=web&showWelcomeOnShare=false) - *10-07-2025*
 ## 💬 Recent Comments
-- [Commented](https://github.com/crewAIInc/crewAI/pull/2893#issuecomment-3082360208) in [crewAIInc/crewAI] on 2025-07-17.
-  > *AI Summary: @Vidit-Ostwal has suggested that infer being set to False was maintained in the current configuration, and they seek clarification on whether this decision was intentional. They noted that this setup may be preventing them from utilizing an essential feature of Mem0. Additionally, they referenced documentation related to this parameter while requesting input on the situation. Furthermore, @Vidit-Ostwal is inquiring about any updates regarding this matter.*
-- [Commented](https://github.com/ishandutta0098/mukh/issues/31#issuecomment-3076805336) in [ishandutta0098/mukh] on 2025-07-16.
-  > *AI Summary: @Vidit-Ostwal has suggested inquiring about the current status or progress related to a specific issue or topic. The comment emphasizes the need for an update, indicating that there is a level of anticipation or urgency associated with the matter at hand. This implies that previous discussions or actions may have occurred, and an update is sought to clarify the current situation or next steps regarding it.*
-- [Commented](https://github.com/crewAIInc/crewAI/issues/3165#issuecomment-3073010763) in [crewAIInc/crewAI] on 2025-07-15.
-  > *AI Summary: @Vidit-Ostwal has suggested inquiring whether Litellm supports Oracle's OCI infrastructure. If it does not, seeking additional information from relevant documentation may be beneficial. Understanding the compatibility of Litellm with OCI is important for users who rely on Oracle's cloud services for their projects. This inquiry highlights the need for clear information about integration capabilities, ensuring that users can make informed decisions regarding infrastructure choices when utilizing Litellm for their applications.*
-- [Commented](https://github.com/crewAIInc/crewAI/issues/3152#issuecomment-3071801980) in [crewAIInc/crewAI] on 2025-07-15.
-  > *AI Summary: @Vidit-Ostwal has suggested sharing the entire log to aid in understanding the issue. They are currently working on a similar pull request related to Mem0 and believe they have the ability to contribute a patch for this issue as well. Sharing the log could enhance collaboration and potentially expedite the resolution process, as insights gained from reviewing the log may inform their work on the related pull request. Overall, this suggestion aims to foster teamwork and problem-solving.*
-- [Commented](https://github.com/crewAIInc/crewAI/pull/3155#issuecomment-3069177899) in [crewAIInc/crewAI] on 2025-07-14.
-  > *AI Summary: @Vidit-Ostwal has suggested that the maintainer should consider adding the project to the repository. This addition would enhance the resources available and potentially benefit users interested in the project. By including this project, it may attract more contributors and provide valuable examples or references. The suggestion aims to improve the overall quality and quantity of shared knowledge within the community, fostering collaboration and innovation among users associated with the project.*
+- [Commented](https://github.com/crewAIInc/crewAI/issues/3152#issuecomment-3090238977) in [crewAIInc/crewAI] on 2025-07-18.
+  > *AI Summary: @Vidit-Ostwal has suggested that there is currently no retention of user and assistant interactions in memory, only the final output is saved. It raises a question about whether to maintain this approach in future implementations. Additionally, for memory version 0, a specific final messaging query prototype is provided, indicating that future recommendations should avoid thrillers while focusing on sci-fi movies. This emphasizes the importance of refining user interactions for improved responsiveness and personalized suggestions in the system.*
+- [Commented](https://github.com/crewAIInc/crewAI/issues/3152#issuecomment-3089949730) in [crewAIInc/crewAI] on 2025-07-18.
+  > *AI Summary: @Vidit-Ostwal has suggested that they are taking initiative on a particular task or issue. This implies readiness to engage actively in the project or discussion at hand. The comment reflects a willingness to contribute and suggests that the individual is likely looking to move forward with the responsibilities involved. There is an acknowledgment of the task's importance, indicating that the work will be addressed promptly and with dedicated effort. Overall, it highlights a proactive approach to the assigned duties.*
+- [Commented](https://github.com/crewAIInc/crewAI/issues/3152#issuecomment-3089947377) in [crewAIInc/crewAI] on 2025-07-18.
+  > *AI Summary: @Vidit-Ostwal has suggested that input should be structured as a list of dictionaries, representing messages between a user and an assistant. It includes a user seeking movie recommendations, and the assistant tailoring suggestions based on user preferences. Additionally, a method is proposed for saving messages, indicating different memory types such as short-term, long-term, entities, and external, each with specific metadata. This approach aims to enhance user interactions by storing and recalling relevant data effectively without code specifics.*
+- [Commented](https://github.com/crewAIInc/crewAI/pull/2893#issuecomment-3089817947) in [crewAIInc/crewAI] on 2025-07-18.
+  > *AI Summary: @Vidit-Ostwal has suggested creating a Loom video to demonstrate the functionality with CrewAI, which would highlight all memory features. However, there is a challenge, as these new features are only available in the Mem0 Enterprise version, and the user does not have access to the necessary keys to utilize them. Thus, without access to the required resources, producing the requested demonstration becomes problematic.*
+- [Commented](https://github.com/crewAIInc/crewAI/pull/2893#issuecomment-3089515608) in [crewAIInc/crewAI] on 2025-07-18.
+  > *AI Summary: @Vidit-Ostwal has suggested that if a certain parameter is not supported by Mem0, it should be dropped. However, it has been clarified that this parameter is indeed supported. When `infer` is set to false, an important functionality of Mem0 is not utilized, specifically the memory deduction phase, which is bypassed. The decision is whether to change the implementation or retain the current approach.*
 
 ## 🐛 Issues Raised
 No issues raised recently.
 
 ## 🚀 Pull Requests
-No pull requests opened recently.
+- Opened a [PR](https://github.com/crewAIInc/crewAI/pull/3187) in [crewAIInc/crewAI]: fixed save method, changed the test cases (2025-07-18).
+  > *AI Summary: @Vidit-Ostwal has suggested addressing the issue related to a previous bug or feature request, indicated by the reference to the issue number 3152. The suggestion implies that there is a need for a resolution or improvement in response to this identified problem. The comment calls for attention to ensure proper fixes or enhancements are applied to the relevant aspect of the project in question, contributing to its overall functionality and user experience without providing specific implementation details.*
 
 ## ⭐ Starred Repositories
+- Starred [huggingface/flux-fast](https://github.com/huggingface/flux-fast) on 2025-07-18.
+- Starred [deepspeedai/DeepSpeed](https://github.com/deepspeedai/DeepSpeed) on 2025-07-18.
 - Starred [YuvrajSingh-mist/Reinforcement-Learning](https://github.com/YuvrajSingh-mist/Reinforcement-Learning) on 2025-07-14.
-- Starred [google-gemini/genai-processors](https://github.com/google-gemini/genai-processors) on 2025-07-11.
-- Starred [BAI-LAB/MemoryOS](https://github.com/BAI-LAB/MemoryOS) on 2025-07-11.
 
 ## 🍴 Forked Repositories
 No repositories forked recently.
