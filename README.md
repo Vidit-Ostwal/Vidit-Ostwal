@@ -8,15 +8,15 @@
 - [KV Caching in Transformers](https://open.substack.com/pub/viditostwal/p/kv-key-value-cache-in-transformers?r=m52qu&utm_campaign=post&utm_medium=web&showWelcomeOnShare=false) - *26-07-2025*
 ## 💬 Recent Comments
 - [Commented](https://github.com/crewAIInc/crewAI/pull/3290#issuecomment-3168674395) in [crewAIInc/crewAI] on 2025-08-08.
-  > *AI Summary: @Vidit-Ostwal has suggested not to include certain elements in the pull request to maintain a smaller scope. He believes that this approach will help in focusing on the current changes without overwhelming the main purpose of the PR. He acknowledges the potential for incorporating the omitted elements in future updates, indicating a willingness to revisit and enhance the project down the line. This strategy promotes a more manageable and streamlined process for the current submission.*
+  > *AI Summary: @Vidit-Ostwal has suggested not to include certain elements in the current pull request to maintain a smaller scope. This approach allows for a more focused review process and helps streamline progress. He acknowledges that these elements can be added in the future, indicating an openness to revisiting the topic later. Overall, the emphasis is on keeping the current changes concise while ensuring the potential for expansion remains available for subsequent updates.*
 - [Commented](https://github.com/crewAIInc/crewAI/pull/3290#issuecomment-3168621637) in [crewAIInc/crewAI] on 2025-08-08.
-  > *AI Summary: @Vidit-Ostwal has suggested that the list of messages should exclude the system prompt and retain only the user and assistant messages. This change aims to streamline the information presented, ensuring that only relevant dialogues between the user and the assistant are displayed. By doing so, the focus remains on the interactions that matter most, enhancing clarity and ease of understanding within the messaging framework. Overall, this suggestion emphasizes the importance of concise communication in the system's design.*
+  > *AI Summary: @Vidit-Ostwal has suggested that in the list of messages, the system prompt should be removed. The focus should solely be on retaining the user and assistant messages. This change is intended to streamline the message display by eliminating unnecessary information, ensuring that only relevant content is presented to users. This simplification could enhance clarity and improve the overall user experience by making it easier to follow the conversation without the distraction of the system prompt.*
 - [Commented](https://github.com/crewAIInc/crewAI/pull/3290#issuecomment-3168612374) in [crewAIInc/crewAI] on 2025-08-08.
-  > *AI Summary: @Vidit-Ostwal has suggested enhancing the Mem0 Storage by modifying the save function to better handle message storage for external memory implementations. The suggestion includes refining the structure of the messages to ensure a more coherent approach in capturing user interactions and responses. This adjustment aims to facilitate improved memory retention and personalized experiences in conversation, allowing the chatbot to better serve users by recalling context and providing meaningful responses to queries.*
+  > *AI Summary: @Vidit-Ostwal has suggested that the exposure of exchanged messages by the Agent for external memory allows each storage implementation to select relevant messages. Additionally, he proposed making modifications to the Mem0 Storage, specifically in the save function. The objective of the suggested changes is to enhance the structure of messages, aligning them with a more engaging and personalized assistant approach. This improvement aims to ensure that responses are contextually appropriate, helpful, and maintain user engagement, while adhering to specified response formats.*
 - [Commented](https://github.com/crewAIInc/crewAI/pull/3294#issuecomment-3167722072) in [crewAIInc/crewAI] on 2025-08-08.
-  > *AI Summary: I'm sorry, but I cannot access external content, including images or screenshots. If you provide the text of the comment instead, I'll be happy to help summarize it according to your guidelines.*
+  > *AI Summary: I'm sorry, but I can't summarize the comment as it does not contain any text to work with. Please provide a text comment for summarization.*
 - [Commented](https://github.com/crewAIInc/crewAI/pull/3294#issuecomment-3167715855) in [crewAIInc/crewAI] on 2025-08-08.
-  > *AI Summary: @Vidit-Ostwal has suggested that there are currently additional test cases that are failing.*
+  > *AI Summary: @Vidit-Ostwal has suggested that there are additional test cases currently failing.*
 
 ## 🐛 Issues Raised
 No issues raised recently.
@@ -25,6 +25,7 @@ No issues raised recently.
 No pull requests opened recently.
 
 ## ⭐ Starred Repositories
+- Starred [huggingface/aisheets](https://github.com/huggingface/aisheets) on 2025-08-13.
 - Starred [docling-project/docling](https://github.com/docling-project/docling) on 2025-08-09.
 
 ## 🍴 Forked Repositories
