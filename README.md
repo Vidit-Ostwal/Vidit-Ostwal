@@ -8,7 +8,7 @@
 - [KV Caching in Transformers](https://open.substack.com/pub/viditostwal/p/kv-key-value-cache-in-transformers?r=m52qu&utm_campaign=post&utm_medium=web&showWelcomeOnShare=false) - *26-07-2025*
 ## 💬 Recent Comments
 - [Commented](https://github.com/crewAIInc/crewAI/pull/3293#issuecomment-3189340602) in [crewAIInc/crewAI] on 2025-08-14.
-  > *AI Summary: @Vidit-Ostwal has suggested that a review is needed from a specific user. This indicates the importance of obtaining feedback or approval on a certain matter or change. The request highlights a collaborative effort within the project, emphasizing the need for input from others to ensure quality and alignment with project goals. Overall, it underscores the significance of peer review in the development process, aiming to enhance the project's effectiveness and reliability through collective contributions.*
+  > *AI Summary: @Vidit-Ostwal has suggested that a review is needed.*
 
 ## 🐛 Issues Raised
 No issues raised recently.
@@ -18,7 +18,6 @@ No pull requests opened recently.
 
 ## ⭐ Starred Repositories
 - Starred [huggingface/aisheets](https://github.com/huggingface/aisheets) on 2025-08-13.
-- Starred [docling-project/docling](https://github.com/docling-project/docling) on 2025-08-09.
 
 ## 🍴 Forked Repositories
 No repositories forked recently.
