@@ -8,16 +8,18 @@
 - [KV Caching in Transformers](https://open.substack.com/pub/viditostwal/p/kv-key-value-cache-in-transformers?r=m52qu&utm_campaign=post&utm_medium=web&showWelcomeOnShare=false) - *26-07-2025*
 ## 💬 Recent Comments
 - [Commented](https://github.com/crewAIInc/crewAI/pull/3293#issuecomment-3189340602) in [crewAIInc/crewAI] on 2025-08-14.
-  > *AI Summary: @Vidit-Ostwal has suggested that a review is needed.*
+  > *AI Summary: @Vidit-Ostwal has suggested that a review be requested from a specific individual. The comment indicates a need for feedback or approval on certain work or changes that have been made. This implies that the progress of the project may depend on this review process, highlighting the importance of communication and collaboration within the team. The request illustrates a proactive approach to ensure that all necessary reviews are completed in a timely manner.*
 
 ## 🐛 Issues Raised
 No issues raised recently.
 
 ## 🚀 Pull Requests
-No pull requests opened recently.
+- Opened a [PR](https://github.com/aryagxr/woRLdle/pull/1) in [aryagxr/woRLdle]: Fix requirements.txt and docstring in reward function (2025-08-16).
+  > *AI Summary: @Vidit-Ostwal has suggested appreciation for the project and shared his experience in learning to implement reinforcement learning. He faced challenges due to the absence of a requirements file and difficulties understanding regex functionality. To assist beginners, he proposes adding a docstring to the project to enhance clarity. He offers to make adjustments if needed, indicating his willingness to collaborate and improve the documentation for future users, enhancing the overall utility of the project.*
 
 ## ⭐ Starred Repositories
+- Starred [aryagxr/woRLdle](https://github.com/aryagxr/woRLdle) on 2025-08-16.
 - Starred [huggingface/aisheets](https://github.com/huggingface/aisheets) on 2025-08-13.
 
 ## 🍴 Forked Repositories
-No repositories forked recently.
+- Forked [aryagxr/woRLdle](https://github.com/Vidit-Ostwal/woRLdle) on 2025-08-16.
