@@ -16,9 +16,9 @@ No issues raised recently.
 No pull requests opened recently.
 
 ## ⭐ Starred Repositories
+- Starred [open-thought/reasoning-gym](https://github.com/open-thought/reasoning-gym) on 2025-08-31.
 - Starred [Agent-on-the-Fly/Memento](https://github.com/Agent-on-the-Fly/Memento) on 2025-08-29.
 - Starred [openai/baselines](https://github.com/openai/baselines) on 2025-08-28.
-- Starred [willccbb/verifiers](https://github.com/willccbb/verifiers) on 2025-08-24.
 
 ## 🍴 Forked Repositories
-- Forked [github/github-mcp-server](https://github.com/Vidit-Ostwal/github-mcp-server) on 2025-08-24.
+No repositories forked recently.
