@@ -18,7 +18,6 @@ No pull requests opened recently.
 ## ⭐ Starred Repositories
 - Starred [open-thought/reasoning-gym](https://github.com/open-thought/reasoning-gym) on 2025-08-31.
 - Starred [Agent-on-the-Fly/Memento](https://github.com/Agent-on-the-Fly/Memento) on 2025-08-29.
-- Starred [openai/baselines](https://github.com/openai/baselines) on 2025-08-28.
 
 ## 🍴 Forked Repositories
 No repositories forked recently.
