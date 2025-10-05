@@ -7,8 +7,7 @@
 - [Temperature in LLM](https://open.substack.com/pub/viditostwal/p/how-does-temperature-changes-the?r=m52qu&utm_campaign=post&utm_medium=web&showWelcomeOnShare=false) - *10-07-2025*
 - [KV Caching in Transformers](https://open.substack.com/pub/viditostwal/p/kv-key-value-cache-in-transformers?r=m52qu&utm_campaign=post&utm_medium=web&showWelcomeOnShare=false) - *26-07-2025*
 ## 💬 Recent Comments
-- [Commented](https://github.com/crewAIInc/crewAI/pull/3225#issuecomment-3341342430) in [crewAIInc/crewAI] on 2025-09-27.
-  > *AI Summary: @Vidit-Ostwal has suggested raising another issue.*
+No recent comments.
 
 ## 🐛 Issues Raised
 No issues raised recently.
