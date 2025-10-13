@@ -65,6 +65,7 @@ def get_github_activity(username, token):
     max_pages = 10  # GitHub caps this to 10 pages
 
     while page <= max_pages:
+        print(f"Fetching Page {page}.....")
         response = requests.get(f"{events_url}?page={page}", headers=headers)
         if response.status_code != 200:
             print(f"Failed to fetch events: {response.status_code} - {response.json().get('message', 'Unknown error')}")
@@ -77,10 +78,10 @@ def get_github_activity(username, token):
         for event in events:
             try:
                 event_date = datetime.strptime(event['created_at'], "%Y-%m-%dT%H:%M:%SZ")
-                if event_date < cutoff_date:
-                    return activities  # Stop processing older events
 
                 if event['type'] == 'IssueCommentEvent':
+                    if len(activities['recent_comments']) == 10:
+                        continue
                     comment_url = event['payload']['comment']['url']
                     comment_response = requests.get(comment_url, headers=headers)
                     if comment_response.status_code == 200:
@@ -93,6 +94,8 @@ def get_github_activity(username, token):
                         })
 
                 elif event['type'] == 'IssuesEvent' and event['payload']['action'] == 'opened':
+                    if len(activities['issues_raised']) == 5:
+                        continue
                     activities['issues_raised'].append({
                         'repo': event['repo']['name'],
                         'issue_title': event['payload']['issue']['title'],
@@ -102,6 +105,8 @@ def get_github_activity(username, token):
                     })
 
                 elif event['type'] == 'PullRequestEvent' and event['payload']['action'] == 'opened':
+                    if len(activities['pull_requests']) == 5:
+                        continue
                     activities['pull_requests'].append({
                         'repo': event['repo']['name'],
                         'pr_title': event['payload']['pull_request']['title'],
