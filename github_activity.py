@@ -149,6 +149,7 @@ def generate_blogs_markdown():
             markdown += f"  - [{sub_blog['blog_name']}]({sub_blog['blog_url']}) - *{sub_blog['blog_posting_date']}*\n"
 
     substack_feed = os.environ.get('SUBSTACK_FEED')
+    print("Number of substack blogs: ", len(substack_feed))
     substack_blogs = get_all_substack_blogs(substack_feed)
     for blog in substack_blogs:
         markdown += f"- [{blog['title']}]({blog['link']}) - *{blog['published']}*\n"
