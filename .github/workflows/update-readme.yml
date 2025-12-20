@@ -22,6 +22,7 @@ jobs:
         pip install requests
         pip install google-generativeai
         pip install litellm
+        pip install feedparser
     
     - name: Generate GitHub Activity
       env:
