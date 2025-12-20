@@ -1,22 +1,25 @@
 # Recent GitHub Activity for Vidit-Ostwal
 
-## 📝 Recent Blogs
-- [Training the Tokenizer](https://www.notion.so/207e478805d48090b34fcc5c8e8c3c01?v=207e478805d480cfac6c000ca3c80482) - *03-06-2025*
-- [Self-Attention in Transformers](https://www.notion.so/viditostwal/Self-Attention-in-Transformers-216e478805d48005b515fac90e1d76e0) - *21-06-2025*
-  - [Masked Self-Attention](https://www.notion.so/viditostwal/Self-Attention-in-Transformers-216e478805d48005b515fac90e1d76e0) - *25-06-2025*
-- [Temperature in LLM](https://open.substack.com/pub/viditostwal/p/how-does-temperature-changes-the?r=m52qu&utm_campaign=post&utm_medium=web&showWelcomeOnShare=false) - *10-07-2025*
-- [KV Caching in Transformers](https://open.substack.com/pub/viditostwal/p/kv-key-value-cache-in-transformers?r=m52qu&utm_campaign=post&utm_medium=web&showWelcomeOnShare=false) - *26-07-2025*
-## 💬 Recent Comments
-No recent comments.
+## ✍️ Recent Writing & Blogs
 
-## 🐛 Issues Raised
-No issues raised recently.
+### 🧠 Transformers & LLM Internals
+- **[Training the Tokenizer](https://www.notion.so/207e478805d48090b34fcc5c8e8c3c01?v=207e478805d480cfac6c000ca3c80482)**  
+  <sub>📅 03 Jun 2025</sub>
 
-## 🚀 Pull Requests
-No pull requests opened recently.
+- **[Self-Attention in Transformers](https://www.notion.so/viditostwal/Self-Attention-in-Transformers-216e478805d48005b515fac90e1d76e0)**  
+  <sub>📅 21 Jun 2025</sub>  
+  ↳ **[Masked Self-Attention](https://www.notion.so/viditostwal/Self-Attention-in-Transformers-216e478805d48005b515fac90e1d76e0)**  
+  <sub>📅 25 Jun 2025</sub>
 
-## ⭐ Starred Repositories
-No repositories starred recently.
+- **[KV (Key-Value) Cache in Transformers](https://viditostwal.substack.com/p/kv-key-value-cache-in-transformers)**  
+  <sub>📅 26 Jul 2025 · Reducing inference latency using KV cache</sub>
 
-## 🍴 Forked Repositories
-No repositories forked recently.
+### 🌡️ LLM Behavior & Sampling
+- **[How Does Temperature Change LLM Responses?](https://viditostwal.substack.com/p/how-does-temperature-changes-the)**  
+  <sub>📅 09 Jul 2025 · Effect of temperature on next-token probability distribution</sub>
+
+### 🤖 Agentic Systems & Tooling
+- **[Building MakeMyDocsBot](https://viditostwal.substack.com/p/building-makemydocsbot)**  
+  <sub>📅 20 Dec 2025 · Automated multi-language documentation sync across feature branches</sub>
+
+
