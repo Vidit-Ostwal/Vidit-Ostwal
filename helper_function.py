@@ -135,7 +135,17 @@ def get_all_substack_blogs(url):
         except ValueError:
             return None
             
-    feed = feedparser.parse(url)
+    headers = {
+    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+                  "AppleWebKit/537.36 (KHTML, like Gecko) "
+                  "Chrome/120.0.0.0 Safari/537.36",
+    "Accept": "application/rss+xml,application/xml;q=0.9,*/*;q=0.8"
+}
+
+    resp = requests.get("https://viditostwal.substack.com/feed", headers=headers, timeout=30)
+    resp.raise_for_status()
+
+    feed = feedparser.parse(resp.text)
     blogs_list = [
         {"title": e.title, "link": e.link, "published": parse_to_dd_mm_yyyy(e.published)}
         for e in feed.entries
