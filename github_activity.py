@@ -177,49 +177,69 @@ def generate_markdown(username, activities):
     markdown += blog_markdown
 
     # Recent Comments Section
-    markdown += "## 💬 Recent Comments\n"
-    if activities['recent_comments']:
+    if len(activities['recent_comments']):
+        markdown += "## 💬 Recent Comments\n"
         for comment in activities['recent_comments'][:5]:  # Limit to 10 comments
             markdown += f"- [Commented]({comment['comment_url']}) in [{comment['repo']}] on {comment['date']}.\n"
             markdown += f"  > *AI Summary: {summarize_sentence(comment['comment_text'])}*\n"
-    else:
-        markdown += "No recent comments.\n"
     
     # Issues Raised Section
-    markdown += "\n## 🐛 Issues Raised\n"
-    if activities['issues_raised']:
+    if len(activities['issues_raised']):
+        markdown += "\n## 🐛 Issues Raised\n"
         for issue in activities['issues_raised'][:5]:  # Limit to 5 issues
             markdown += f"- Raised an [issue]({issue['issue_url']}) in [{issue['repo']}]: {issue['issue_title']} ({issue['date']}).\n"
             markdown += f"  > *AI Summary: {summarize_sentence(issue['issue_description'])}*\n"
-    else:
-        markdown += "No issues raised recently.\n"
     
     # Pull Requests Section
-    markdown += "\n## 🚀 Pull Requests\n"
-    if activities['pull_requests']:
+    if len(activities['pull_requests']):
+        markdown += "\n## 🚀 Pull Requests\n"
         for pr in activities['pull_requests'][:5]:  # Limit to 5 PRs
             markdown += f"- Opened a [PR]({pr['pr_url']}) in [{pr['repo']}]: {pr['pr_title']} ({pr['date']}).\n"
             markdown += f"  > *AI Summary: {summarize_sentence(pr['pr_description'])}*\n"
-    else:
-        markdown += "No pull requests opened recently.\n"
     
     # Starred Repositories Section
-    markdown += "\n## ⭐ Starred Repositories\n"
-    if activities['starred_repos']:
+    if len(activities['starred_repos']):
+        markdown += "\n## ⭐ Starred Repositories\n"
         for star in activities['starred_repos'][:5]:  # Limit to 5 starred repos
             markdown += f"- Starred [{star['repo']}]({star['repo_link']}) on {star['date']}.\n"
-    else:
-        markdown += "No repositories starred recently.\n"
-        
+    
     # Forked Repositories Section
-    markdown += "\n## 🍴 Forked Repositories\n"
-    if activities['forked_repos']:
+    if len(activities['forked_repos']):
+        markdown += "\n## 🍴 Forked Repositories\n"
         for fork in activities['forked_repos'][:5]:  # Limit to 5 forks
             markdown += f"- Forked [{fork['repo']}]({fork['fork_url']}) on {fork['date']}.\n"
-    else:
-        markdown += "No repositories forked recently.\n"
     
     return markdown
+
+
+def main():
+    # Get GitHub username and personal access token from environment variables
+    username = os.environ.get('GITHUB_USERNAME')
+    token = os.environ.get('GITHUB_TOKEN')
+    token_2 = os.environ.get('GITHUB_TOKEN_2')
+    
+    if not username or not token:
+        print("Please set GITHUB_USERNAME and GITHUB_TOKEN environment variables.")
+        return
+    
+    # Fetch and generate activities
+    activities = get_github_activity(username, token)
+    print("Fetched GitHub activities successfully!")
+    
+    # Generate README markdown
+    markdown = generate_markdown(username, activities)
+    print("Generated README markdown successfully!")
+    
+    # Write README markdown to file
+    with open('README.md', 'w') as f:
+        f.write(markdown)
+    print("Wrote README markdown to file successfully!")
+                
+    # Commit and push changes
+    commit_and_push(username, token_2)
+    print("Committed and pushed changes successfully!")
+    
+    print("GitHub activity updated successfully!")
 
 
 def main():
