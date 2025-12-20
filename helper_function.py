@@ -125,31 +125,24 @@ def send_email(
         server.send_message(msg)
 
 
-def get_all_substack_blogs(url):
-    def parse_to_dd_mm_yyyy(date_str: str) -> str | None:
-        try:
-            dt = datetime.strptime(date_str, "%Y-%m-%dT%H:%M:%S.%fZ")
-            return dt.strftime("%d-%m-%Y")
-        except ValueError:
-            return None
+def get_all_substack_blogs(feed_url):
+    feed = feedparser.parse(feed_url)
 
-    headers = {
-        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
-                    "AppleWebKit/537.36 (KHTML, like Gecko) "
-                    "Chrome/120.0.0.0 Safari/537.36",
-        "Accept": "application/rss+xml,application/xml;q=0.9,*/*;q=0.8"
-    }
+    if feed.bozo:
+        raise RuntimeError(f"RSS parse failed: {feed.bozo_exception}")
 
-    substack_feed = os.getenv("SUBSTACK_FEED")
-    posts = requests.get(
-        substack_feed,
-        headers=headers
-    ).json()
-            
-    blogs_list = [
-        {"title": e['title'], "link": e['canonical_url'], "published": parse_to_dd_mm_yyyy(e['post_date'])}
-        for e in posts
-        if e['title'] != "Coming soon"
-    ]
+    blogs = []
+    for entry in feed.entries:
+        if entry.title != 'Coming soon':
+            blogs.append({
+                "title": entry.title,
+                "link": entry.link,
+                "published": (
+                    datetime(*entry.published_parsed[:6]).strftime("%d-%m-%Y")
+                    if entry.get("published_parsed")
+                    else None
+                ),
+            }
+            )
 
-    return blogs_list[::-1]
+    return blogs[::-1]
