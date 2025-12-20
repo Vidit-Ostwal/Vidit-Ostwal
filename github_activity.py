@@ -148,12 +148,13 @@ def generate_blogs_markdown():
         for sub_blog in blog.get("sub_blogs", []):
             markdown += f"  - [{sub_blog['blog_name']}]({sub_blog['blog_url']}) - *{sub_blog['blog_posting_date']}*\n"
 
-    substack_feed = os.environ.get('SUBSTACK_FEED')
- 
-    substack_blogs = get_all_substack_blogs(substack_feed)
+    substack_blogs = get_all_substack_blogs()
     print("Number of substack blogs: ", len(substack_blogs))
     for blog in substack_blogs:
         markdown += f"- [{blog['title']}]({blog['link']}) - *{blog['published']}*\n"
+        markdown += f"{blog['subtitle']}\n"
+
+    print("Generated blogs markdown successfully!")
 
     return markdown
 
@@ -170,12 +171,13 @@ def generate_markdown(username, activities):
         str: Markdown formatted activity summary
     """
 
-    blog_markdown = generate_blogs_markdown()
+    
     markdown = f"# Recent GitHub Activity for {username}\n\n"
     
     # Blog Section
-    markdown += '## 📝 Recent Blogs\n'
+    blog_markdown = open('blogs.md', 'r').read()
     markdown += blog_markdown
+    markdown += "\n\n"
 
     # Recent Comments Section
     if len(activities['recent_comments']):
@@ -211,36 +213,6 @@ def generate_markdown(username, activities):
             markdown += f"- Forked [{fork['repo']}]({fork['fork_url']}) on {fork['date']}.\n"
     
     return markdown
-
-
-def main():
-    # Get GitHub username and personal access token from environment variables
-    username = os.environ.get('GITHUB_USERNAME')
-    token = os.environ.get('GITHUB_TOKEN')
-    token_2 = os.environ.get('GITHUB_TOKEN_2')
-    
-    if not username or not token:
-        print("Please set GITHUB_USERNAME and GITHUB_TOKEN environment variables.")
-        return
-    
-    # Fetch and generate activities
-    activities = get_github_activity(username, token)
-    print("Fetched GitHub activities successfully!")
-    
-    # Generate README markdown
-    markdown = generate_markdown(username, activities)
-    print("Generated README markdown successfully!")
-    
-    # Write README markdown to file
-    with open('README.md', 'w') as f:
-        f.write(markdown)
-    print("Wrote README markdown to file successfully!")
-
-    # Commit and push changes
-    commit_and_push(username, token_2)
-    print("Committed and pushed changes successfully!")
-    
-    print("GitHub activity updated successfully!")
 
 
 def main():

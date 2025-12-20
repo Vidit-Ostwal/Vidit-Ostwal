@@ -125,24 +125,3 @@ def send_email(
         server.send_message(msg)
 
 
-def get_all_substack_blogs(feed_url):
-    feed = feedparser.parse(feed_url)
-
-    if feed.bozo:
-        raise RuntimeError(f"RSS parse failed: {feed.bozo_exception}")
-
-    blogs = []
-    for entry in feed.entries:
-        if entry.title != 'Coming soon':
-            blogs.append({
-                "title": entry.title,
-                "link": entry.link,
-                "published": (
-                    datetime(*entry.published_parsed[:6]).strftime("%d-%m-%Y")
-                    if entry.get("published_parsed")
-                    else None
-                ),
-            }
-            )
-
-    return blogs[::-1]
