@@ -4,9 +4,7 @@ from datetime import datetime, timedelta
 from litellm import completion
 import json
 from dotenv import load_dotenv
-import smtplib
-import ssl
-from email.message import EmailMessage
+from helper_function import check_new_github_followers, send_email, get_all_substack_blogs
 load_dotenv()
 
 def summarize_sentence(sentence):
@@ -140,12 +138,21 @@ def get_github_activity(username, token):
     return activities
 
 
-def generate_blogs_markdown(blogs):
+def generate_blogs_markdown():
+    with open('blogs.json', 'r') as f:
+        blog_json = json.load(f)
+
     markdown = ""
-    for blog in blogs:
+    for blog in blog_json['blogs']:
         markdown += f"- [{blog['blog_name']}]({blog['blog_url']}) - *{blog['blog_posting_date']}*\n"
         for sub_blog in blog.get("sub_blogs", []):
             markdown += f"  - [{sub_blog['blog_name']}]({sub_blog['blog_url']}) - *{sub_blog['blog_posting_date']}*\n"
+
+    substack_feed = os.environ.get('SUBSTACK_FEED')
+    substack_blogs = get_all_substack_blogs(substack_feed)
+    for blog in substack_blogs:
+        markdown += f"- [{blog['title']}]({blog['link']}) - *{blog['published']}*\n"
+
     return markdown
 
 
@@ -161,10 +168,7 @@ def generate_markdown(username, activities):
         str: Markdown formatted activity summary
     """
 
-    with open('blogs.json', 'r') as f:
-        blog_json = json.load(f)
-
-    blog_markdown = generate_blogs_markdown(blog_json['blogs'])
+    blog_markdown = generate_blogs_markdown()
     markdown = f"# Recent GitHub Activity for {username}\n\n"
     
     # Blog Section
@@ -215,124 +219,6 @@ def generate_markdown(username, activities):
         markdown += "No repositories forked recently.\n"
     
     return markdown
-
-
-def check_new_github_followers(username, token):
-    """
-    Fetches the list of followers for a given GitHub username, compares them
-    with a local 'followers.json' file, identifies new followers, and updates
-    the local file.
-
-    Args:
-        username (str): The GitHub username.
-        token (str): Your GitHub Personal Access Token with 'read:user' scope.
-
-    Returns:
-        list: A list of new follower dictionaries (login, profile_url),
-              or an empty list if no new followers or an error occurs.
-    """
-    followers_file = "followers.json"
-
-    # Load existing followers from file
-    existing_followers_data = []
-    if os.path.exists(followers_file):
-        try:
-            with open(followers_file, 'r') as f:
-                existing_followers_data = json.load(f)
-        except json.JSONDecodeError:
-            print(f"Warning: {followers_file} is corrupted or empty. Starting with an empty list of existing followers.")
-            existing_followers_data = []
-    
-    existing_follower_logins = {f['login'] for f in existing_followers_data}
-
-    # Fetch current followers from GitHub API
-    url = f"https://api.github.com/users/{username}/followers"
-    headers = {
-        "Authorization": f"token {token}",
-        "Accept": "application/vnd.github.v3+json"
-    }
-
-    current_followers_info = []
-    try:
-        response = requests.get(url, headers=headers)
-        response.raise_for_status()
-        followers_data = response.json()
-        current_followers_info = [{'login': follower['login'], 'profile_url': follower['html_url']} for follower in followers_data]
-    except requests.exceptions.RequestException as e:
-        print(f"Error fetching current followers from GitHub: {e}")
-        return []
-
-    # Identify new followers
-    new_followers = []
-    for follower in current_followers_info:
-        if follower['login'] not in existing_follower_logins:
-            new_followers.append(follower)
-    
-    # Update the followers.json file with the current list of followers
-    try:
-        with open(followers_file, 'w') as f:
-            json.dump(current_followers_info, f, indent=4)
-        print(f"Updated {followers_file} with {len(current_followers_info)} followers.")
-    except IOError as e:
-        print(f"Error writing to {followers_file}: {e}")
-
-    return new_followers
-
-
-def send_email(
-    sender_email: str,
-    receiver_email: str,
-    app_password: str,
-    subject: str,
-    followers: list[dict],
-):
-    msg = EmailMessage()
-    msg["From"] = sender_email
-    msg["To"] = receiver_email
-    msg["Subject"] = subject
-
-    # -------- Plain text fallback --------
-    text_lines = ["New GitHub followers:\n"]
-    for f in followers:
-        text_lines.append(f"- {f['login']}: {f['profile_url']}")
-
-    msg.set_content("\n".join(text_lines))
-
-    # -------- HTML version --------
-    html_items = "".join(
-        f"""
-        <li>
-          <a href="{f['profile_url']}" target="_blank">
-            <strong>{f['login']}</strong>
-          </a>
-        </li>
-        """
-        for f in followers
-    )
-
-    html_body = f"""
-    <html>
-      <body style="font-family: Arial, sans-serif;">
-        <h2>🎉 New GitHub Followers</h2>
-        <p>You got <strong>{len(followers)}</strong> new follower(s):</p>
-        <ul>
-          {html_items}
-        </ul>
-        <hr />
-        <p style="color: #777; font-size: 12px;">
-          Sent automatically by your GitHub follower notifier.
-        </p>
-      </body>
-    </html>
-    """
-
-    msg.add_alternative(html_body, subtype="html")
-
-    # -------- Send email --------
-    context = ssl.create_default_context()
-    with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
-        server.login(sender_email, app_password)
-        server.send_message(msg)
 
 
 def main():
