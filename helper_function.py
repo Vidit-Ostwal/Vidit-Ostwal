@@ -141,4 +141,5 @@ def get_all_substack_blogs(url):
         for e in feed.entries
         if e.title != "Coming soon"
     ]
+
     return blogs_list[::-1]

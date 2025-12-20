@@ -149,8 +149,9 @@ def generate_blogs_markdown():
             markdown += f"  - [{sub_blog['blog_name']}]({sub_blog['blog_url']}) - *{sub_blog['blog_posting_date']}*\n"
 
     substack_feed = os.environ.get('SUBSTACK_FEED')
-    print("Number of substack blogs: ", len(substack_feed))
+ 
     substack_blogs = get_all_substack_blogs(substack_feed)
+    print("Number of substack blogs: ", len(substack_blogs))
     for blog in substack_blogs:
         markdown += f"- [{blog['title']}]({blog['link']}) - *{blog['published']}*\n"
 
@@ -234,7 +235,7 @@ def main():
     with open('README.md', 'w') as f:
         f.write(markdown)
     print("Wrote README markdown to file successfully!")
-                
+
     # Commit and push changes
     commit_and_push(username, token_2)
     print("Committed and pushed changes successfully!")
