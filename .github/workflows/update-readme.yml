@@ -33,6 +33,7 @@ jobs:
         SEND_GMAIL: ${{ secrets.SEND_GMAIL }}
         RECIEVE_GMAIL: ${{ secrets.RECIEVE_GMAIL }}
         GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+        SUBSTACK_FEED: ${{ secrets.SUBSTACK_FEED }}
       run: python github_activity.py
     
     - name: Commit and push
