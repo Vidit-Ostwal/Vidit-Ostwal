@@ -126,30 +126,30 @@ def send_email(
 
 
 def get_all_substack_blogs(url):
-    def parse_to_dd_mm_yyyy(date_str: str) -> str:
+    def parse_to_dd_mm_yyyy(date_str: str) -> str | None:
         try:
-            dt = datetime.strptime(
-                date_str, "%a, %d %b %Y %H:%M:%S GMT"
-            )
+            dt = datetime.strptime(date_str, "%Y-%m-%dT%H:%M:%S.%fZ")
             return dt.strftime("%d-%m-%Y")
         except ValueError:
             return None
-            
+
     headers = {
-    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
-                  "AppleWebKit/537.36 (KHTML, like Gecko) "
-                  "Chrome/120.0.0.0 Safari/537.36",
-    "Accept": "application/rss+xml,application/xml;q=0.9,*/*;q=0.8"
-}
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+                    "AppleWebKit/537.36 (KHTML, like Gecko) "
+                    "Chrome/120.0.0.0 Safari/537.36",
+        "Accept": "application/rss+xml,application/xml;q=0.9,*/*;q=0.8"
+    }
 
-    resp = requests.get("https://viditostwal.substack.com/feed", headers=headers, timeout=30)
-    resp.raise_for_status()
-
-    feed = feedparser.parse(resp.text)
+    substack_feed = os.getenv("SUBSTACK_FEED")
+    posts = requests.get(
+        substack_feed,
+        headers=headers
+    ).json()
+            
     blogs_list = [
-        {"title": e.title, "link": e.link, "published": parse_to_dd_mm_yyyy(e.published)}
-        for e in feed.entries
-        if e.title != "Coming soon"
+        {"title": e['title'], "link": e['canonical_url'], "published": parse_to_dd_mm_yyyy(e['post_date'])}
+        for e in posts
+        if e['title'] != "Coming soon"
     ]
 
     return blogs_list[::-1]
