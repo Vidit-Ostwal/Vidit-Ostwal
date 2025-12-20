@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 from litellm import completion
 import json
 from dotenv import load_dotenv
-from helper_function import check_new_github_followers, send_email, get_all_substack_blogs
+from helper_function import check_new_github_followers, send_email
 load_dotenv()
 
 def summarize_sentence(sentence):
