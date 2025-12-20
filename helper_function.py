@@ -136,6 +136,9 @@ def get_all_substack_blogs(url):
             return None
             
     feed = feedparser.parse(url)
-    blogs_list = [feedparser.FeedParserDict(title=e.title, link=e.link, published=parse_to_dd_mm_yyyy(e.published)) for e in feed.entries if e.title != "Coming soon"]
-    
+    blogs_list = [
+        {"title": e.title, "link": e.link, "published": parse_to_dd_mm_yyyy(e.published)}
+        for e in feed.entries
+        if e.title != "Coming soon"
+    ]
     return blogs_list[::-1]
