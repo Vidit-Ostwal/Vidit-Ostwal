@@ -22,4 +22,11 @@
 - **[Building MakeMyDocsBot](https://viditostwal.substack.com/p/building-makemydocsbot)**  
   <sub>📅 20 Dec 2025 · Automated multi-language documentation sync across feature branches</sub>
 
+### 🧩 RLM Interactive Console
+- **[RLM Interactive Console (Live Demo)](https://huggingface.co/spaces/ViditOstwal/RLM-Interactive-Console)**  
+  <sub>📅 21/01/25 · Interactive REPL-style environment for exploring Retrieval + LLM reasoning pipelines</sub>  
+  ↳ **[Source Code: RLM Demo Repository](https://github.com/Vidit-Ostwal/RLM-demo)**  
+  <sub>FastAPI backend + Next.js frontend · Deployed on Hugging Face Spaces</sub>
+
+
 
