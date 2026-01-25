@@ -225,18 +225,18 @@ def main():
         print("Please set GITHUB_USERNAME and GITHUB_TOKEN environment variables.")
         return
     
-    # Fetch and generate activities
-    activities = get_github_activity(username, token)
-    print("Fetched GitHub activities successfully!")
+    # # Fetch and generate activities
+    # activities = get_github_activity(username, token)
+    # print("Fetched GitHub activities successfully!")
 
-    markdown_content = generate_markdown(username, activities)
-    print("Generated markdown content successfully!")
+    # markdown_content = generate_markdown(username, activities)
+    # print("Generated markdown content successfully!")
     
-    # Optional: Write to README.md
-    with open('README.md', 'w') as f:
-        f.write(markdown_content)
+    # # Optional: Write to README.md
+    # with open('README.md', 'w') as f:
+    #     f.write(markdown_content)
     
-    print("GitHub activity summary generated successfully!")
+    # print("GitHub activity summary generated successfully!")
 
     # Check for new followers
     new_followers = check_new_github_followers(username, token_2)
