@@ -24,9 +24,15 @@
 
 ### 🧩 RLM Interactive Console
 - **[RLM Interactive Console (Live Demo)](https://huggingface.co/spaces/ViditOstwal/RLM-Interactive-Console)**  
-  <sub>📅 21/01/25 · Interactive REPL-style environment for exploring Retrieval + LLM reasoning pipelines</sub>  
+  <sub>📅 21 Jan 2026 · Interactive REPL-style environment for exploring Retrieval + LLM reasoning pipelines</sub>  
   ↳ **[Source Code: RLM Demo Repository](https://github.com/Vidit-Ostwal/RLM-demo)**  
   <sub>FastAPI backend + Next.js frontend · Deployed on Hugging Face Spaces</sub>
+
+### 🧠 Mixture of Experts (MoE) Internals – Hands-on
+- **[MoE Routing Calculation (Excel Walkthrough)](https://docs.google.com/spreadsheets/d/1jVwHc-BfOCop92g6tAfQOeTDb8Nfl3yunvQ3dwR1gI0/edit?usp=sharing)**  
+  <sub>📅 25 Jan 2026 · Step-by-step Excel breakdown of router logits → top-k selection → normalized expert probabilities</sub>  
+  <sub>Includes: top-k masking, -∞ replacement, softmax, and final expert routing weights</sub>
+
 
 
 
