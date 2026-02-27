@@ -18,22 +18,30 @@ def check_new_github_followers(username, token):
         token (str): Your GitHub Personal Access Token with 'read:user' scope.
 
     Returns:
-        list: A list of new follower dictionaries (login, profile_url),
-              or an empty list if no new followers or an error occurs.
+        tuple[list[dict], list[dict]]: Two lists containing new followers and
+        lost followers as dictionaries (login, profile_url). Returns
+        ([], []) if an error occurs.
     """
     followers_file = "followers.json"
 
     # Load existing followers from file
-    existing_followers_data = []
+    existing_followers_data = {}
     if os.path.exists(followers_file):
         try:
             with open(followers_file, 'r') as f:
                 existing_followers_data = json.load(f)
         except json.JSONDecodeError:
-            print(f"Warning: {followers_file} is corrupted or empty. Starting with an empty list of existing followers.")
-            existing_followers_data = []
+            print(f"Warning: {followers_file} is corrupted or empty. Starting with an empty follower map.")
+            existing_followers_data = {}
     
-    existing_follower_logins = {f['login'] for f in existing_followers_data}
+    if isinstance(existing_followers_data, list):
+        # Backward compatibility with older list-based JSON format.
+        existing_followers_data = {
+            follower["login"]: follower["profile_url"]
+            for follower in existing_followers_data
+        }
+    existing_follower_logins = set(existing_followers_data.keys())
+    
 
     # Fetch current followers from GitHub API
     url = f"https://api.github.com/users/{username}/followers"
@@ -42,21 +50,32 @@ def check_new_github_followers(username, token):
         "Accept": "application/vnd.github.v3+json"
     }
 
-    current_followers_info = []
+    current_followers_info = {}
     try:
         response = requests.get(url, headers=headers)
         response.raise_for_status()
         followers_data = response.json()
-        current_followers_info = [{'login': follower['login'], 'profile_url': follower['html_url']} for follower in followers_data]
+        current_followers_info = {
+            follower['login']: follower['html_url']
+            for follower in followers_data
+        }
     except requests.exceptions.RequestException as e:
         print(f"Error fetching current followers from GitHub: {e}")
-        return []
+        return [], []
+
+    follower_login_from_api = set(current_followers_info.keys())
 
     # Identify new followers
     new_followers = []
-    for follower in current_followers_info:
-        if follower['login'] not in existing_follower_logins:
-            new_followers.append(follower)
+    for login, profile_url in current_followers_info.items():
+        if login not in existing_follower_logins:
+            new_followers.append({'login': login, 'profile_url': profile_url})
+
+    # Identify lost followers (users present before but missing now)
+    lost_followers = []
+    for login, profile_url in existing_followers_data.items():
+        if login not in follower_login_from_api:
+            lost_followers.append({'login': login, 'profile_url': profile_url})
     
     # Update the followers.json file with the current list of followers
     try:
@@ -66,7 +85,7 @@ def check_new_github_followers(username, token):
     except IOError as e:
         print(f"Error writing to {followers_file}: {e}")
 
-    return new_followers
+    return new_followers, lost_followers
 
 
 def send_email(
@@ -74,7 +93,8 @@ def send_email(
     receiver_email: str,
     app_password: str,
     subject: str,
-    followers: list[dict],
+    new_followers: list[dict],
+    lost_followers: list[dict],
 ):
     msg = EmailMessage()
     msg["From"] = sender_email
@@ -82,14 +102,25 @@ def send_email(
     msg["Subject"] = subject
 
     # -------- Plain text fallback --------
-    text_lines = ["New GitHub followers:\n"]
-    for f in followers:
-        text_lines.append(f"- {f['login']}: {f['profile_url']}")
+    text_lines = []
+    if new_followers:
+        text_lines.append("New GitHub followers:")
+        for f in new_followers:
+            text_lines.append(f"- {f['login']}: {f['profile_url']}")
+        text_lines.append("")
+
+    if lost_followers:
+        text_lines.append("Lost GitHub followers:")
+        for f in lost_followers:
+            text_lines.append(f"- {f['login']}: {f['profile_url']}")
+
+    if not text_lines:
+        text_lines.append("No follower changes.")
 
     msg.set_content("\n".join(text_lines))
 
     # -------- HTML version --------
-    html_items = "".join(
+    new_html_items = "".join(
         f"""
         <li>
           <a href="{f['profile_url']}" target="_blank">
@@ -97,17 +128,45 @@ def send_email(
           </a>
         </li>
         """
-        for f in followers
+        for f in new_followers
     )
+
+    lost_html_items = "".join(
+        f"""
+        <li>
+          <a href="{f['profile_url']}" target="_blank">
+            <strong>{f['login']}</strong>
+          </a>
+        </li>
+        """
+        for f in lost_followers
+    )
+
+    new_section = ""
+    if new_followers:
+        new_section = f"""
+        <h2>🎉 New GitHub Followers</h2>
+        <p>You got <strong>{len(new_followers)}</strong> new follower(s):</p>
+        <ul>
+          {new_html_items}
+        </ul>
+        """
+
+    lost_section = ""
+    if lost_followers:
+        lost_section = f"""
+        <h2>👋 Lost GitHub Followers</h2>
+        <p>You lost <strong>{len(lost_followers)}</strong> follower(s):</p>
+        <ul>
+          {lost_html_items}
+        </ul>
+        """
 
     html_body = f"""
     <html>
       <body style="font-family: Arial, sans-serif;">
-        <h2>🎉 New GitHub Followers</h2>
-        <p>You got <strong>{len(followers)}</strong> new follower(s):</p>
-        <ul>
-          {html_items}
-        </ul>
+        {new_section}
+        {lost_section}
         <hr />
         <p style="color: #777; font-size: 12px;">
           Sent automatically by your GitHub follower notifier.
@@ -123,5 +182,3 @@ def send_email(
     with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
         server.login(sender_email, app_password)
         server.send_message(msg)
-
-

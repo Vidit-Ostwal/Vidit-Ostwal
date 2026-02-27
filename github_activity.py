@@ -238,15 +238,16 @@ def main():
     
     # print("GitHub activity summary generated successfully!")
 
-    # Check for new followers
-    new_followers = check_new_github_followers(username, token_2)
-    if new_followers:
+    # Check for follower changes
+    new_followers, lost_followers = check_new_github_followers(username, token_2)
+    if new_followers or lost_followers:
         send_email(
             sender_email=os.environ.get('SEND_GMAIL'),
             receiver_email=os.environ.get('RECIEVE_GMAIL'),
             app_password=os.environ.get('GMAIL_APP_PASSWORD'),
-            subject="🎉 New GitHub Followers Today",
-            followers=new_followers,
+            subject="GitHub Follower Updates",
+            new_followers=new_followers,
+            lost_followers=lost_followers,
         )
         print("Email sent successfully!")
 

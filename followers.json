@@ -1,98 +1,26 @@
-[
-    {
-        "login": "gadgethome",
-        "profile_url": "https://github.com/gadgethome"
-    },
-    {
-        "login": "JardelCunha",
-        "profile_url": "https://github.com/JardelCunha"
-    },
-    {
-        "login": "jelspace",
-        "profile_url": "https://github.com/jelspace"
-    },
-    {
-        "login": "sahil9001",
-        "profile_url": "https://github.com/sahil9001"
-    },
-    {
-        "login": "Connor9994",
-        "profile_url": "https://github.com/Connor9994"
-    },
-    {
-        "login": "MaharshPatelX",
-        "profile_url": "https://github.com/MaharshPatelX"
-    },
-    {
-        "login": "standardgalactic",
-        "profile_url": "https://github.com/standardgalactic"
-    },
-    {
-        "login": "YDS854394028",
-        "profile_url": "https://github.com/YDS854394028"
-    },
-    {
-        "login": "niketan-byte",
-        "profile_url": "https://github.com/niketan-byte"
-    },
-    {
-        "login": "vikasswebdev",
-        "profile_url": "https://github.com/vikasswebdev"
-    },
-    {
-        "login": "sabaul",
-        "profile_url": "https://github.com/sabaul"
-    },
-    {
-        "login": "sanghvian",
-        "profile_url": "https://github.com/sanghvian"
-    },
-    {
-        "login": "Abhishek-cmd13",
-        "profile_url": "https://github.com/Abhishek-cmd13"
-    },
-    {
-        "login": "siddharth7113",
-        "profile_url": "https://github.com/siddharth7113"
-    },
-    {
-        "login": "MathavanSG",
-        "profile_url": "https://github.com/MathavanSG"
-    },
-    {
-        "login": "phntmzn",
-        "profile_url": "https://github.com/phntmzn"
-    },
-    {
-        "login": "NILAY1556",
-        "profile_url": "https://github.com/NILAY1556"
-    },
-    {
-        "login": "lalomorales22",
-        "profile_url": "https://github.com/lalomorales22"
-    },
-    {
-        "login": "CodePhyt",
-        "profile_url": "https://github.com/CodePhyt"
-    },
-    {
-        "login": "77AXEL",
-        "profile_url": "https://github.com/77AXEL"
-    },
-    {
-        "login": "abressiddique",
-        "profile_url": "https://github.com/abressiddique"
-    },
-    {
-        "login": "shryshrm",
-        "profile_url": "https://github.com/shryshrm"
-    },
-    {
-        "login": "omkar-334k",
-        "profile_url": "https://github.com/omkar-334k"
-    },
-    {
-        "login": "muzzamilshahzad-alt",
-        "profile_url": "https://github.com/muzzamilshahzad-alt"
-    }
-]
+{
+    "gadgethome": "https://github.com/gadgethome",
+    "JardelCunha": "https://github.com/JardelCunha",
+    "jelspace": "https://github.com/jelspace",
+    "sahil9001": "https://github.com/sahil9001",
+    "Connor9994": "https://github.com/Connor9994",
+    "MaharshPatelX": "https://github.com/MaharshPatelX",
+    "standardgalactic": "https://github.com/standardgalactic",
+    "YDS854394028": "https://github.com/YDS854394028",
+    "niketan-byte": "https://github.com/niketan-byte",
+    "vikasswebdev": "https://github.com/vikasswebdev",
+    "sabaul": "https://github.com/sabaul",
+    "sanghvian": "https://github.com/sanghvian",
+    "Abhishek-cmd13": "https://github.com/Abhishek-cmd13",
+    "siddharth7113": "https://github.com/siddharth7113",
+    "MathavanSG": "https://github.com/MathavanSG",
+    "phntmzn": "https://github.com/phntmzn",
+    "NILAY1556": "https://github.com/NILAY1556",
+    "lalomorales22": "https://github.com/lalomorales22",
+    "CodePhyt": "https://github.com/CodePhyt",
+    "77AXEL": "https://github.com/77AXEL",
+    "abressiddique": "https://github.com/abressiddique",
+    "shryshrm": "https://github.com/shryshrm",
+    "omkar-334k": "https://github.com/omkar-334k",
+    "muzzamilshahzad-alt": "https://github.com/muzzamilshahzad-alt"
+}
