@@ -22,3 +22,5 @@ After that, my curiosity shifted toward **RL environments**.
 I started exploring projects like **Prime Intellect** and **OpenEnv**, built a few playful environments, and became increasingly interested in building environments genuinely useful for training frontier models.
 
 Building, experimenting, and learning in public.
+
+Know more about my work here: https://vidit-ostwal.github.io/
