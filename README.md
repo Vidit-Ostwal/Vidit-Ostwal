@@ -1,38 +1,24 @@
-# Recent GitHub Activity for Vidit-Ostwal
+# Hi, I'm Vidit Ostwal 👋
 
-## ✍️ Recent Writing & Blogs
+GenAI Engineer passionate about agents, RL environments, and open-source AI tooling.
 
-### 🧠 Transformers & LLM Internals
-- **[Training the Tokenizer](https://www.notion.so/207e478805d48090b34fcc5c8e8c3c01?v=207e478805d480cfac6c000ca3c80482)**  
-  <sub>📅 03 Jun 2025</sub>
+---
 
-- **[Self-Attention in Transformers](https://www.notion.so/viditostwal/Self-Attention-in-Transformers-216e478805d48005b515fac90e1d76e0)**  
-  <sub>📅 21 Jun 2025</sub>  
-  ↳ **[Masked Self-Attention](https://www.notion.so/viditostwal/Self-Attention-in-Transformers-216e478805d48005b515fac90e1d76e0)**  
-  <sub>📅 25 Jun 2025</sub>
+## 🚀 My Story
 
-- **[KV (Key-Value) Cache in Transformers](https://viditostwal.substack.com/p/kv-key-value-cache-in-transformers)**  
-  <sub>📅 26 Jul 2025 · Reducing inference latency using KV cache</sub>
+I graduated from **BITS Pilani** in 2023 and have been working as a GenAI Engineer since then — building and iterating on agents, RAG pipelines, and fine-tuning workflows. Outside of work, I actively contribute to open-source projects.
 
-### 🌡️ LLM Behavior & Sampling
-- **[How Does Temperature Change LLM Responses?](https://viditostwal.substack.com/p/how-does-temperature-changes-the)**  
-  <sub>📅 09 Jul 2025 · Effect of temperature on next-token probability distribution</sub>
+Around January 2025, I started exploring **CrewAI** because I wanted to deeply understand how agent orchestration frameworks are built.
 
-### 🤖 Agentic Systems & Tooling
-- **[Building MakeMyDocsBot](https://viditostwal.substack.com/p/building-makemydocsbot)**  
-  <sub>📅 20 Dec 2025 · Automated multi-language documentation sync across feature branches</sub>
+That curiosity turned into:
 
-### 🧩 RLM Interactive Console
-- **[RLM Interactive Console (Live Demo)](https://huggingface.co/spaces/ViditOstwal/RLM-Interactive-Console)**  
-  <sub>📅 21 Jan 2026 · Interactive REPL-style environment for exploring Retrieval + LLM reasoning pipelines</sub>  
-  ↳ **[Source Code: RLM Demo Repository](https://github.com/Vidit-Ostwal/RLM-demo)**  
-  <sub>FastAPI backend + Next.js frontend · Deployed on Hugging Face Spaces</sub>
+- **60+ pull requests** merged
+- Becoming a **Top 10 contributor**
+- Winning **2nd Runner-Up** at the CrewAI Fall Hackathon
+- Joining the **review team** for an upcoming book on the framework
 
-### 🧠 Mixture of Experts (MoE) Internals – Hands-on
-- **[MoE Routing Calculation (Excel Walkthrough)](https://docs.google.com/spreadsheets/d/1jVwHc-BfOCop92g6tAfQOeTDb8Nfl3yunvQ3dwR1gI0/edit?usp=sharing)**  
-  <sub>📅 25 Jan 2026 · Step-by-step Excel breakdown of router logits → top-k selection → normalized expert probabilities</sub>  
-  <sub>Includes: top-k masking, -∞ replacement, softmax, and final expert routing weights</sub>
+After that, my curiosity shifted toward **RL environments**.
 
+I started exploring projects like **Prime Intellect** and **OpenEnv**, built a few playful environments, and became increasingly interested in building environments genuinely useful for training frontier models.
 
-
-
+Building, experimenting, and learning in public.
