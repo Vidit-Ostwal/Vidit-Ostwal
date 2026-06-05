@@ -239,7 +239,7 @@ def main():
     # print("GitHub activity summary generated successfully!")
 
     # Check for follower changes
-    new_followers, lost_followers = check_new_github_followers(username, token_2)
+    new_followers, lost_followers, total_followers = check_new_github_followers(username, token_2)
     if new_followers or lost_followers:
         send_email(
             sender_email=os.environ.get('SEND_GMAIL'),
@@ -248,6 +248,7 @@ def main():
             subject="GitHub Follower Updates",
             new_followers=new_followers,
             lost_followers=lost_followers,
+            total_followers=total_followers,
         )
         print("Email sent successfully!")
 

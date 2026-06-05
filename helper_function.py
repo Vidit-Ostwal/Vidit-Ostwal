@@ -52,16 +52,27 @@ def check_new_github_followers(username, token):
 
     current_followers_info = {}
     try:
-        response = requests.get(url, headers=headers)
-        response.raise_for_status()
-        followers_data = response.json()
-        current_followers_info = {
-            follower['login']: follower['html_url']
-            for follower in followers_data
-        }
+        page = 1
+        while True:
+            response = requests.get(
+                url,
+                headers=headers,
+                params={"per_page": 100, "page": page},
+            )
+            response.raise_for_status()
+            followers_data = response.json()
+
+            if not followers_data:
+                break
+
+            current_followers_info.update({
+                follower['login']: follower['html_url']
+                for follower in followers_data
+            })
+            page += 1
     except requests.exceptions.RequestException as e:
         print(f"Error fetching current followers from GitHub: {e}")
-        return [], []
+        return [], [], 0
 
     follower_login_from_api = set(current_followers_info.keys())
 
@@ -85,7 +96,7 @@ def check_new_github_followers(username, token):
     except IOError as e:
         print(f"Error writing to {followers_file}: {e}")
 
-    return new_followers, lost_followers
+    return new_followers, lost_followers, len(current_followers_info)
 
 
 def send_email(
@@ -95,6 +106,7 @@ def send_email(
     subject: str,
     new_followers: list[dict],
     lost_followers: list[dict],
+    total_followers: int,
 ):
     msg = EmailMessage()
     msg["From"] = sender_email
@@ -102,7 +114,7 @@ def send_email(
     msg["Subject"] = subject
 
     # -------- Plain text fallback --------
-    text_lines = []
+    text_lines = [f"Current GitHub follower count: {total_followers}", ""]
     if new_followers:
         text_lines.append("New GitHub followers:")
         for f in new_followers:
@@ -165,6 +177,10 @@ def send_email(
     html_body = f"""
     <html>
       <body style="font-family: Arial, sans-serif;">
+        <p>
+          Current GitHub follower count:
+          <strong>{total_followers}</strong>
+        </p>
         {new_section}
         {lost_section}
         <hr />
