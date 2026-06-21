@@ -12,8 +12,8 @@ Around January 2025, I started exploring **CrewAI** because I wanted to deeply u
 
 That curiosity turned into:
 
-- **60+ pull requests** merged
-- Becoming a **Top 10 contributor**
+- **35+ pull requests** merged
+- Becoming a **Top 11 contributor**
 - Winning **2nd Runner-Up** at the CrewAI Fall Hackathon
 - Joining the **review team** for an upcoming book on the framework
 
