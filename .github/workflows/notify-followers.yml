@@ -1,4 +1,4 @@
-name: Update GitHub Profile README
+name: Notify GitHub Followers
 
 on:
   schedule:
@@ -6,42 +6,34 @@ on:
   workflow_dispatch:  # Allow manual triggering
 
 jobs:
-  update-readme:
+  notify-followers:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    
+
     - name: Set up Python
       uses: actions/setup-python@v3
       with:
         python-version: '3.11'
-    
+
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install requests
-        pip install google-generativeai
-        pip install litellm
-        pip install feedparser
-    
-    - name: Generate GitHub Activity
+
+    - name: Check GitHub Followers
       env:
         GITHUB_USERNAME: ${{ secrets.GH_USERNAME }}
         GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-        GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
-        OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
-        GITHUB_TOKEN_2: ${{ secrets.GH_TOKEN_2 }}
         SEND_GMAIL: ${{ secrets.SEND_GMAIL }}
         RECIEVE_GMAIL: ${{ secrets.RECIEVE_GMAIL }}
         GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
-        SUBSTACK_FEED: ${{ secrets.SUBSTACK_FEED }}
       run: python github_activity.py
-    
+
     - name: Commit and push
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git add README.md
         git add followers.json
-        git commit -m "Update GitHub activity" || exit 0
+        git commit -m "Update GitHub followers" || exit 0
         git push
