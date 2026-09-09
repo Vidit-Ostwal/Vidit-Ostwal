@@ -4,8 +4,6 @@ import requests
 import ssl
 import smtplib
 from email.message import EmailMessage
-from datetime import datetime
-import feedparser
 
 def check_new_github_followers(username, token):
     """
@@ -99,6 +97,18 @@ def check_new_github_followers(username, token):
     return new_followers, lost_followers, len(current_followers_info)
 
 
+def follower_email_subject(new_followers: list[dict], lost_followers: list[dict]) -> str:
+    gained = len(new_followers)
+    lost = len(lost_followers)
+    if gained and lost:
+        return f"Ching Chang +{gained} · Womp Womp -{lost} GitHub Followers"
+    if gained:
+        return f"Ching Chang! {gained} New GitHub Follower{'s' if gained != 1 else ''}"
+    if lost:
+        return f"Womp Womp... {lost} Lost GitHub Follower{'s' if lost != 1 else ''}"
+    return "GitHub Follower Updates"
+
+
 def send_email(
     sender_email: str,
     receiver_email: str,
@@ -116,17 +126,19 @@ def send_email(
     # -------- Plain text fallback --------
     text_lines = [f"Current GitHub follower count: {total_followers}", ""]
     if new_followers:
-        text_lines.append("New GitHub followers:")
+        text_lines.append("💰 Ching Chang! New GitHub Followers")
+        text_lines.append(f"The register just rang — {len(new_followers)} new follower(s) just walked in:")
         for f in new_followers:
             text_lines.append(f"- {f['login']}: {f['profile_url']}")
         text_lines.append("")
 
     if lost_followers:
-        text_lines.append("Lost GitHub followers:")
+        text_lines.append("👋 Womp Womp... Lost GitHub Followers")
+        text_lines.append(f"The sad trombone played — {len(lost_followers)} follower(s) slipped away:")
         for f in lost_followers:
             text_lines.append(f"- {f['login']}: {f['profile_url']}")
 
-    if not text_lines:
+    if not new_followers and not lost_followers:
         text_lines.append("No follower changes.")
 
     msg.set_content("\n".join(text_lines))
@@ -157,8 +169,8 @@ def send_email(
     new_section = ""
     if new_followers:
         new_section = f"""
-        <h2>🎉 New GitHub Followers</h2>
-        <p>You got <strong>{len(new_followers)}</strong> new follower(s):</p>
+        <h2>💰 Ching Chang! New GitHub Followers</h2>
+        <p>The register just rang — <strong>{len(new_followers)}</strong> new follower(s) just walked in:</p>
         <ul>
           {new_html_items}
         </ul>
@@ -167,8 +179,8 @@ def send_email(
     lost_section = ""
     if lost_followers:
         lost_section = f"""
-        <h2>👋 Lost GitHub Followers</h2>
-        <p>You lost <strong>{len(lost_followers)}</strong> follower(s):</p>
+        <h2>👋 Womp Womp... Lost GitHub Followers</h2>
+        <p>The sad trombone played — <strong>{len(lost_followers)}</strong> follower(s) slipped away:</p>
         <ul>
           {lost_html_items}
         </ul>
