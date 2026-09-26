@@ -2,7 +2,7 @@ name: Notify GitHub Followers
 
 on:
   schedule:
-    - cron: '0 0 * * *'  # Run daily at midnight
+    - cron: '30 5 * * *'  # 11:00 AM IST (05:30 UTC)
   workflow_dispatch:  # Allow manual triggering
 
 jobs:
