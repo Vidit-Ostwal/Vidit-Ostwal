@@ -35,5 +35,6 @@ jobs:
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git add followers.json
-        git commit -m "Update GitHub followers" || exit 0
+        if [ -f usd_tt_buy.json ]; then git add usd_tt_buy.json; fi
+        git commit -m "Update GitHub followers and USD TT buy rates" || exit 0
         git push
