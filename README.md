@@ -20,18 +20,18 @@ Know more about my work here: https://vidit-ostwal.github.io/
 
 ## 🔗 Links
 
-- [LinkedIn](https://www.linkedin.com/in/viditostwal/)
-- [X](https://x.com/ViditOstwal)
-- [Email](mailto:viditostwal@gmail.com)
-- [Anonymous feedback](https://www.admonymous.co/vidit-ostwal)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/viditostwal/)
+[![X](https://img.shields.io/badge/X-000000?style=for-the-badge&logo=x&logoColor=white)](https://x.com/ViditOstwal)
+[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:viditostwal@gmail.com)
+[![Anonymous Feedback](https://img.shields.io/badge/Anonymous_Feedback-6C5CE7?style=for-the-badge&logo=speakerdeck&logoColor=white)](https://www.admonymous.co/vidit-ostwal)
 
 ## 🌱 Open Source Contributions
 
-- [CrewAI](https://github.com/crewAIInc/crewAI)
-- [Ragas](https://github.com/vibrantlabsai/ragas)
-- [GitHub MCP](https://github.com/github/github-mcp-server)
-- [OpenEnv](https://github.com/meta-pytorch/OpenEnv)
-- [Prime Intellect](https://github.com/PrimeIntellect-ai/verifiers)
+[![CrewAI](https://img.shields.io/badge/CrewAI-FF5A1F?style=flat-square&logo=github&logoColor=white)](https://github.com/crewAIInc/crewAI)
+[![Ragas](https://img.shields.io/badge/Ragas-1A1A2E?style=flat-square&logo=github&logoColor=white)](https://github.com/vibrantlabsai/ragas)
+[![GitHub MCP](https://img.shields.io/badge/GitHub_MCP-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/github/github-mcp-server)
+[![OpenEnv](https://img.shields.io/badge/OpenEnv-4B32C3?style=flat-square&logo=github&logoColor=white)](https://github.com/meta-pytorch/OpenEnv)
+[![Prime Intellect](https://img.shields.io/badge/Prime_Intellect-0F62FE?style=flat-square&logo=github&logoColor=white)](https://github.com/PrimeIntellect-ai/verifiers)
 
 ---
 
