@@ -1,29 +1,37 @@
 # Hi, I'm Vidit Ostwal 👋
 
-GenAI Engineer passionate about agents, RL environments, and open-source AI tooling.
+ML/AI Engineer building agentic AI systems and RL environments.
 
 ---
 
 ## 🚀 My Story
 
-I graduated from **BITS Pilani** in 2023 and have been working as a GenAI Engineer since then — building and iterating on agents, RAG pipelines, and fine-tuning workflows. Outside of work, I actively contribute to open-source projects.
+I graduated from **BITS Pilani** in 2023 and spent the next few years as a GenAI Engineer — iterating on agents, RAG pipelines, and fine-tuning workflows. Outside of work, I contribute to open-source projects.
 
-Around January 2025, I started exploring **CrewAI** because I wanted to deeply understand how agent orchestration frameworks are built.
+Around January 2025, I started exploring **CrewAI** because I wanted to deeply understand how agent orchestration frameworks are built. I went deep — contributed **35+ merged PRs**, became the **11th contributor** on the open-source repo, and placed **2nd Runner-Up** at their Fall Hackathon. By December 2025, I had enough credibility to join the **review team** for a book on the framework that's about to be published. In **August 2026, I joined CrewAI full-time as an Open Source Developer**.
 
-That curiosity turned into:
+Along the way, my curiosity also shifted toward **RL environments**. I started exploring **Prime Intellect** and **OpenEnv**, built a few playful environments, and I'm excited to keep building environments genuinely useful for training frontier models.
 
-- **35+ pull requests** merged
-- Becoming a **Top 11 contributor**
-- Winning **2nd Runner-Up** at the CrewAI Fall Hackathon
-- Joining the **review team** for an upcoming book on the framework
-
-After that, my curiosity shifted toward **RL environments**.
-
-I started exploring projects like **Prime Intellect** and **OpenEnv**, built a few playful environments, and became increasingly interested in building environments genuinely useful for training frontier models.
-
-Building, experimenting, and learning in public.
+I've contributed to CrewAI, Ragas, GitHub MCP, OpenEnv, and Prime Intellect. Check out my GitHub to see the open-source work.
 
 Know more about my work here: https://vidit-ostwal.github.io/
+
+---
+
+## 🔗 Links
+
+- [LinkedIn](https://www.linkedin.com/in/viditostwal/)
+- [X](https://x.com/ViditOstwal)
+- [Email](mailto:viditostwal@gmail.com)
+- [Anonymous feedback](https://www.admonymous.co/vidit-ostwal)
+
+## 🌱 Open Source Contributions
+
+- [CrewAI](https://github.com/crewAIInc/crewAI)
+- [Ragas](https://github.com/vibrantlabsai/ragas)
+- [GitHub MCP](https://github.com/github/github-mcp-server)
+- [OpenEnv](https://github.com/meta-pytorch/OpenEnv)
+- [Prime Intellect](https://github.com/PrimeIntellect-ai/verifiers)
 
 ---
 
