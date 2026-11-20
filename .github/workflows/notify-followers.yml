@@ -36,5 +36,6 @@ jobs:
         git config --local user.name "GitHub Action"
         git add followers.json
         if [ -f usd_tt_buy.json ]; then git add usd_tt_buy.json; fi
+        if [ -d assets/tt-charts ]; then git add -A assets/tt-charts; fi
         git commit -m "Update GitHub followers and USD TT buy rates" || exit 0
         git push

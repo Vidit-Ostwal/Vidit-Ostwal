@@ -14,6 +14,7 @@ AXIS_CARD_RATE_URL = "https://application.axis.bank.in/webforms/corporatecardrat
 TT_RATES_FILE = "usd_tt_buy.json"
 TT_STORE_DAYS = 10
 TT_EMAIL_DAYS = 7
+TT_CHART_DIR = "assets/tt-charts"
 
 def check_new_github_followers(username, token):
     """
@@ -264,6 +265,31 @@ def render_tt_rate_chart(tt_rates: list[dict]) -> bytes | None:
     return buffer.getvalue()
 
 
+def publish_tt_rate_chart(chart_png: bytes, on_date: str) -> str | None:
+    """
+    Save the chart under TT_CHART_DIR (keeping the latest TT_STORE_DAYS files)
+    and return its raw.githubusercontent.com URL. The workflow commits and
+    pushes the file right after the email is sent. Returns None outside
+    GitHub Actions, where there is no pushed copy to link to.
+    """
+    repo = os.environ.get("GITHUB_REPOSITORY")
+    branch = os.environ.get("GITHUB_REF_NAME")
+    if not repo or not branch:
+        return None
+    try:
+        os.makedirs(TT_CHART_DIR, exist_ok=True)
+        path = os.path.join(TT_CHART_DIR, f"{on_date}.png")
+        with open(path, "wb") as f:
+            f.write(chart_png)
+        charts = sorted(name for name in os.listdir(TT_CHART_DIR) if name.endswith(".png"))
+        for old in charts[:-TT_STORE_DAYS]:
+            os.remove(os.path.join(TT_CHART_DIR, old))
+    except OSError as e:
+        print(f"Error saving rate chart: {e}")
+        return None
+    return f"https://raw.githubusercontent.com/{repo}/{branch}/{TT_CHART_DIR}/{on_date}.png"
+
+
 def follower_email_subject(
     new_followers: list[dict],
     lost_followers: list[dict],
@@ -378,18 +404,31 @@ def send_email(
     )
     chart_png = render_tt_rate_chart(tt_rates)
     chart_cid = make_msgid(domain="tt-rate.chart")
-    chart_html = ""
+    chart_src = None
     if chart_png:
+        # Prefer a hosted URL so mail clients don't list the chart as an attachment;
+        # fall back to an embedded CID image when not running in GitHub Actions.
+        chart_src = publish_tt_rate_chart(chart_png, tt_rates[0]["date"])
+    use_cid = bool(chart_png) and chart_src is None
+    if use_cid:
+        chart_src = f"cid:{chart_cid[1:-1]}"
+    chart_html = ""
+    if chart_src:
         chart_html = f"""
-        <img src="cid:{chart_cid[1:-1]}" alt="USD TT Buy rate, last {len(tt_rates)} days"
+        <img src="{chart_src}" alt="USD TT Buy rate, last {len(tt_rates)} days"
              width="640" style="display: block; max-width: 100%; height: auto; border-radius: 8px; margin: 8px 0 16px;" />
         """
 
     tt_section = ""
-    if tt_rates:
+    if tt_rates and chart_html:
         tt_section = f"""
         <h2>USD TT Buy — Axis Bank</h2>
         {chart_html}
+        """
+    elif tt_rates:
+        # No chart (fewer than 2 days or matplotlib missing): show the rows instead.
+        tt_section = f"""
+        <h2>USD TT Buy — Axis Bank</h2>
         <p>Last {len(tt_rates)} stored day(s):</p>
         <table style="border-collapse: collapse;">
           <thead>
@@ -423,7 +462,7 @@ def send_email(
     """
 
     msg.add_alternative(html_body, subtype="html")
-    if chart_png:
+    if use_cid:
         msg.get_payload()[1].add_related(
             chart_png, maintype="image", subtype="png", cid=chart_cid
         )
