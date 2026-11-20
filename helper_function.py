@@ -10,6 +10,8 @@ from email.utils import make_msgid
 from io import BytesIO
 from zoneinfo import ZoneInfo
 
+from hdfc_tt_buy import fetch_hdfc_usd_tt_buy
+
 AXIS_CARD_RATE_URL = "https://application.axis.bank.in/webforms/corporatecardrate/index.aspx"
 TT_RATES_FILE = "usd_tt_buy.json"
 TT_STORE_DAYS = 10
@@ -134,6 +136,14 @@ def fetch_usd_tt_buy() -> str:
     return rate_match.group(1)
 
 
+# Each stored day looks like {"date": "2026-11-20", "axis": "91.45", "hdfc": "91.50"};
+# a bank whose fetch failed that day is simply absent.
+BANKS = {
+    "axis": {"name": "Axis Bank", "fetch": fetch_usd_tt_buy, "color": "#3987e5"},
+    "hdfc": {"name": "HDFC Bank", "fetch": fetch_hdfc_usd_tt_buy, "color": "#d95926"},
+}
+
+
 def load_tt_rates() -> list[dict]:
     if not os.path.exists(TT_RATES_FILE):
         return []
@@ -145,51 +155,94 @@ def load_tt_rates() -> list[dict]:
         return []
     if not isinstance(data, list):
         return []
-    return [
-        entry
-        for entry in data
-        if isinstance(entry, dict) and entry.get("date") and entry.get("usd")
-    ]
+    rates = []
+    for entry in data:
+        if not isinstance(entry, dict) or not entry.get("date"):
+            continue
+        if "usd" in entry and "axis" not in entry:
+            # Older entries stored only the Axis rate, under "usd".
+            entry = {**entry, "axis": entry["usd"]}
+        clean = {"date": entry["date"]}
+        clean.update({bank: entry[bank] for bank in BANKS if entry.get(bank)})
+        if len(clean) > 1:
+            rates.append(clean)
+    return rates
 
 
-def record_usd_tt_buy(rate: str, on_date: str | None = None) -> list[dict]:
+def record_tt_rates(fetched: dict[str, str], on_date: str | None = None) -> list[dict]:
     """
-    Store one USD TT Buy value for a date, then keep only the latest 10 days.
-    Returns the trimmed history, oldest first.
+    Merge today's fetched rates into the stored day (so a bank that fails on a
+    re-run keeps its earlier value), keep the latest 10 days, return oldest first.
     """
     if on_date is None:
         on_date = datetime.now(ZoneInfo("Asia/Kolkata")).date().isoformat()
 
-    rates = [entry for entry in load_tt_rates() if entry["date"] != on_date]
-    rates.append({"date": on_date, "usd": rate})
+    rates = load_tt_rates()
+    today = next((entry for entry in rates if entry["date"] == on_date), None)
+    if today is None:
+        today = {"date": on_date}
+        rates.append(today)
+    today.update(fetched)
     rates.sort(key=lambda entry: entry["date"])
     rates = rates[-TT_STORE_DAYS:]
 
     with open(TT_RATES_FILE, "w") as f:
         json.dump(rates, f, indent=4)
         f.write("\n")
-    print(f"Stored USD TT Buy {rate} for {on_date} ({len(rates)} day(s) kept).")
+    summary = ", ".join(f"{BANKS[bank]['name']} {rate}" for bank, rate in fetched.items())
+    print(f"Stored USD TT Buy for {on_date}: {summary} ({len(rates)} day(s) kept).")
     return rates
 
 
 def update_usd_tt_buy_history() -> list[dict]:
     """
-    Fetch today's TT Buy, store it, and return up to the last 7 stored days,
-    newest first. If the fetch fails, return whatever history is already stored.
+    Fetch today's TT Buy from every bank, store what succeeded, and return up
+    to the last 7 stored days, newest first. A failing bank never blocks the others.
     """
-    try:
-        history = record_usd_tt_buy(fetch_usd_tt_buy())
-    except (requests.exceptions.RequestException, ValueError, OSError) as e:
-        print(f"Error fetching USD TT Buy rate: {e}")
-        history = sorted(load_tt_rates(), key=lambda entry: entry["date"])
+    fetched = {}
+    for bank, info in BANKS.items():
+        try:
+            fetched[bank] = info["fetch"]()
+        except (requests.exceptions.RequestException, ValueError, OSError, ImportError) as e:
+            print(f"Error fetching {info['name']} USD TT Buy rate: {e}")
+
+    history = sorted(load_tt_rates(), key=lambda entry: entry["date"])
+    if fetched:
+        try:
+            history = record_tt_rates(fetched)
+        except OSError as e:
+            print(f"Error saving USD TT Buy rates: {e}")
     return list(reversed(history[-TT_EMAIL_DAYS:]))
+
+
+def tt_rate_comparison(tt_rates: list[dict]) -> dict | None:
+    """
+    Compare banks on the latest stored day. TT Buy is what the bank pays you per
+    USD received, so the higher rate is the better one.
+    """
+    if not tt_rates:
+        return None
+    latest = tt_rates[0]
+    quotes = [(bank, float(latest[bank])) for bank in BANKS if latest.get(bank)]
+    if not quotes:
+        return None
+    best_bank, best_rate = max(quotes, key=lambda quote: quote[1])
+    others = [rate for bank, rate in quotes if bank != best_bank]
+    gap = best_rate - max(others) if others else None
+    return {
+        "date": latest["date"],
+        "quotes": [(bank, latest[bank]) for bank, _ in quotes],
+        "missing": [bank for bank in BANKS if not latest.get(bank)],
+        "best": best_bank if gap else None,  # None when only one bank or a tie
+        "gap": gap,
+    }
 
 
 def render_tt_rate_chart(tt_rates: list[dict]) -> bytes | None:
     """
-    Render a dark-theme PNG line chart of USD TT Buy against date.
+    Render a dark-theme PNG line chart of USD TT Buy against date, one line per bank.
     Expects entries newest first (as returned by update_usd_tt_buy_history).
-    Returns None when there are fewer than 2 points or matplotlib is missing,
+    Returns None when there are fewer than 2 days or matplotlib is missing,
     so the email still goes out without the chart.
     """
     if len(tt_rates) < 2:
@@ -207,45 +260,69 @@ def render_tt_rate_chart(tt_rates: list[dict]) -> bytes | None:
     text_primary = "#f0efec"
     text_secondary = "#c3c2b7"
     grid = "#3a3a38"
-    series = "#3987e5"
 
-    points = sorted(
-        (datetime.fromisoformat(entry["date"]), float(entry["usd"]))
-        for entry in tt_rates
-    )
-    dates = [d for d, _ in points]
-    values = [v for _, v in points]
+    entries = sorted(tt_rates, key=lambda entry: entry["date"])
+    all_dates = [datetime.fromisoformat(entry["date"]) for entry in entries]
+    series = {}
+    for bank in BANKS:
+        points = [
+            (datetime.fromisoformat(entry["date"]), float(entry[bank]))
+            for entry in entries
+            if entry.get(bank)
+        ]
+        if points:
+            series[bank] = points
+    if not series:
+        return None
 
-    fig, ax = plt.subplots(figsize=(6.4, 3.0), dpi=200)
+    fig, ax = plt.subplots(figsize=(6.4, 3.2), dpi=200)
     fig.patch.set_facecolor(surface)
     ax.set_facecolor(surface)
 
-    ax.plot(dates, values, color=series, linewidth=2, solid_capstyle="round", zorder=2)
-    # Markers with a surface-coloured ring so they read cleanly on the line.
-    ax.scatter(dates, values, s=48, color=series, edgecolors=surface, linewidths=2, zorder=3)
+    for bank, points in series.items():
+        color = BANKS[bank]["color"]
+        dates = [d for d, _ in points]
+        values = [v for _, v in points]
+        ax.plot(dates, values, color=color, linewidth=2, solid_capstyle="round",
+                zorder=2, label=BANKS[bank]["name"])
+        # Markers with a surface-coloured ring so overlapping points stay readable.
+        ax.scatter(dates, values, s=48, color=color, edgecolors=surface, linewidths=2, zorder=3)
 
-    # Selective direct label: latest value only.
-    ax.annotate(
-        f"{values[-1]:.2f}",
-        (dates[-1], values[-1]),
-        xytext=(0, 10),
-        textcoords="offset points",
-        ha="center",
-        color=text_primary,
-        fontsize=9,
-        fontweight="bold",
-    )
+    # Direct-label each bank's latest value; the higher one above, the lower below.
+    latest = {bank: points[-1] for bank, points in series.items()}
+    ranked = sorted(latest, key=lambda bank: latest[bank][1], reverse=True)
+    for rank, bank in enumerate(ranked):
+        when, value = latest[bank]
+        above = rank == 0
+        ax.annotate(
+            f"{value:.2f}",
+            (when, value),
+            xytext=(0, 10 if above else -16),
+            textcoords="offset points",
+            ha="center",
+            color=text_primary,
+            fontsize=9,
+            fontweight="bold",
+        )
 
     ax.set_title(
-        "USD TT Buy · Axis Bank (INR)",
+        "USD TT Buy (INR)",
         loc="left",
         color=text_primary,
         fontsize=11,
         fontweight="bold",
         pad=12,
     )
+    if len(series) > 1:
+        # Legend sits on the title row, right-aligned.
+        legend = ax.legend(
+            loc="lower right", bbox_to_anchor=(1.0, 1.0), ncol=len(series), frameon=False,
+            fontsize=8, handlelength=1.6, borderaxespad=0.6,
+        )
+        for text in legend.get_texts():
+            text.set_color(text_secondary)
 
-    ax.set_xticks(dates)
+    ax.set_xticks(all_dates)
     ax.xaxis.set_major_formatter(mdates.DateFormatter("%d %b"))
     ax.tick_params(colors=text_secondary, labelsize=8, length=0, pad=6)
     ax.grid(axis="y", color=grid, linewidth=0.6)
@@ -254,9 +331,10 @@ def render_tt_rate_chart(tt_rates: list[dict]) -> bytes | None:
         ax.spines[side].set_visible(False)
     ax.spines["bottom"].set_color(grid)
 
+    values = [v for points in series.values() for _, v in points]
     span = max(values) - min(values)
     margin = max(span * 0.25, 0.1)
-    ax.set_ylim(min(values) - margin, max(values) + margin * 1.6)
+    ax.set_ylim(min(values) - margin * 1.3, max(values) + margin * 1.6)
 
     fig.tight_layout()
     buffer = BytesIO()
@@ -303,9 +381,23 @@ def follower_email_subject(
         return f"Ching Chang! {gained} New GitHub Follower{'s' if gained != 1 else ''}"
     if lost:
         return f"Womp Womp... {lost} Lost GitHub Follower{'s' if lost != 1 else ''}"
-    if tt_rates:
-        return f"Daily update · USD TT Buy {tt_rates[0]['usd']}"
+    comparison = tt_rate_comparison(tt_rates or [])
+    if comparison:
+        quotes = " · ".join(
+            f"{BANKS[bank]['name'].split()[0]} {rate}" for bank, rate in comparison["quotes"]
+        )
+        return f"Daily update · USD TT Buy {quotes}"
     return "Daily update"
+
+
+def _comparison_verdict(comparison: dict) -> str:
+    if comparison["best"]:
+        return (
+            f"{BANKS[comparison['best']]['name']} pays ₹{comparison['gap']:.2f} more per USD."
+        )
+    if len(comparison["quotes"]) > 1:
+        return "Both banks pay the same rate."
+    return ""
 
 
 def send_email(
@@ -319,6 +411,7 @@ def send_email(
     tt_rates: list[dict] | None = None,
 ):
     tt_rates = tt_rates or []
+    comparison = tt_rate_comparison(tt_rates)
     msg = EmailMessage()
     msg["From"] = sender_email
     msg["To"] = receiver_email
@@ -342,11 +435,23 @@ def send_email(
     if not new_followers and not lost_followers:
         text_lines.append("No follower changes.")
 
-    if tt_rates:
+    if comparison:
         text_lines.append("")
-        text_lines.append("USD TT Buy (Axis Bank) — last 7 stored days")
+        text_lines.append(f"USD TT Buy — {comparison['date']}")
+        for bank, rate in comparison["quotes"]:
+            text_lines.append(f"- {BANKS[bank]['name']}: {rate}")
+        for bank in comparison["missing"]:
+            text_lines.append(f"- {BANKS[bank]['name']}: unavailable")
+        verdict = _comparison_verdict(comparison)
+        if verdict:
+            text_lines.append(verdict)
+        text_lines.append("")
+        text_lines.append("Last 7 stored days:")
         for entry in tt_rates:
-            text_lines.append(f"- {entry['date']}: {entry['usd']}")
+            cells = ", ".join(
+                f"{BANKS[bank]['name'].split()[0]} {entry.get(bank, '-')}" for bank in BANKS
+            )
+            text_lines.append(f"- {entry['date']}: {cells}")
 
     msg.set_content("\n".join(text_lines))
 
@@ -393,15 +498,6 @@ def send_email(
         </ul>
         """
 
-    tt_rows = "".join(
-        f"""
-        <tr>
-          <td style="padding: 4px 16px 4px 0;">{entry['date']}</td>
-          <td style="padding: 4px 0;">{entry['usd']}</td>
-        </tr>
-        """
-        for entry in tt_rates
-    )
     chart_png = render_tt_rate_chart(tt_rates)
     chart_cid = make_msgid(domain="tt-rate.chart")
     chart_src = None
@@ -415,32 +511,40 @@ def send_email(
     chart_html = ""
     if chart_src:
         chart_html = f"""
-        <img src="{chart_src}" alt="USD TT Buy rate, last {len(tt_rates)} days"
+        <img src="{chart_src}" alt="USD TT Buy by bank, last {len(tt_rates)} days"
              width="640" style="display: block; max-width: 100%; height: auto; border-radius: 8px; margin: 8px 0 16px;" />
         """
 
     tt_section = ""
-    if tt_rates and chart_html:
-        tt_section = f"""
-        <h2>USD TT Buy — Axis Bank</h2>
-        {chart_html}
-        """
-    elif tt_rates:
-        # No chart (fewer than 2 days or matplotlib missing): show the rows instead.
-        tt_section = f"""
-        <h2>USD TT Buy — Axis Bank</h2>
-        <p>Last {len(tt_rates)} stored day(s):</p>
-        <table style="border-collapse: collapse;">
-          <thead>
+    if comparison:
+        best = comparison["best"]
+        quote_rows = "".join(
+            f"""
             <tr>
-              <th style="text-align: left; padding: 4px 16px 4px 0;">Date</th>
-              <th style="text-align: left; padding: 4px 0;">USD</th>
+              <td style="padding: 4px 24px 4px 0;">{BANKS[bank]['name']}</td>
+              <td style="padding: 4px 0; text-align: right;"><strong>{rate}</strong>{' ✓' if bank == best else ''}</td>
             </tr>
-          </thead>
-          <tbody>
-            {tt_rows}
-          </tbody>
+            """
+            for bank, rate in comparison["quotes"]
+        ) + "".join(
+            f"""
+            <tr>
+              <td style="padding: 4px 24px 4px 0;">{BANKS[bank]['name']}</td>
+              <td style="padding: 4px 0; text-align: right; color: #777;">unavailable</td>
+            </tr>
+            """
+            for bank in comparison["missing"]
+        )
+        on_date = datetime.fromisoformat(comparison["date"]).strftime("%d %b %Y")
+        verdict = _comparison_verdict(comparison)
+        tt_section = f"""
+        <h2>USD TT Buy — bank comparison</h2>
+        <p style="margin: 0 0 4px; color: #555;">Rates for {on_date} (₹ paid per USD received — higher is better):</p>
+        <table style="border-collapse: collapse; margin-bottom: 4px;">
+          {quote_rows}
         </table>
+        {f'<p style="margin: 4px 0 12px;">{verdict}</p>' if verdict else ''}
+        {chart_html}
         """
 
     html_body = f"""
