@@ -4,13 +4,14 @@ import re
 import requests
 import ssl
 import smtplib
-from datetime import datetime
+from datetime import datetime, timedelta
 from email.message import EmailMessage
 from email.utils import make_msgid
 from io import BytesIO
 from zoneinfo import ZoneInfo
 
 from hdfc_tt_buy import fetch_hdfc_usd_tt_buy
+from icici_tt_buy import fetch_icici_usd_tt_buy
 
 AXIS_CARD_RATE_URL = "https://application.axis.bank.in/webforms/corporatecardrate/index.aspx"
 TT_RATES_FILE = "usd_tt_buy.json"
@@ -136,11 +137,12 @@ def fetch_usd_tt_buy() -> str:
     return rate_match.group(1)
 
 
-# Each stored day looks like {"date": "2026-11-20", "axis": "91.45", "hdfc": "91.50"};
+# Each stored day looks like {"date": "2026-11-20", "axis": "91.45", "hdfc": "91.50", "icici": "91.53"};
 # a bank whose fetch failed that day is simply absent.
 BANKS = {
     "axis": {"name": "Axis Bank", "fetch": fetch_usd_tt_buy, "color": "#3987e5"},
     "hdfc": {"name": "HDFC Bank", "fetch": fetch_hdfc_usd_tt_buy, "color": "#d95926"},
+    "icici": {"name": "ICICI Bank", "fetch": fetch_icici_usd_tt_buy, "color": "#199e70"},
 }
 
 
@@ -226,14 +228,16 @@ def tt_rate_comparison(tt_rates: list[dict]) -> dict | None:
     quotes = [(bank, float(latest[bank])) for bank in BANKS if latest.get(bank)]
     if not quotes:
         return None
-    best_bank, best_rate = max(quotes, key=lambda quote: quote[1])
-    others = [rate for bank, rate in quotes if bank != best_bank]
-    gap = best_rate - max(others) if others else None
+    ranked = sorted(quotes, key=lambda quote: quote[1], reverse=True)
+    best_bank, best_rate = ranked[0]
+    runner_up = ranked[1][0] if len(ranked) > 1 else None
+    gap = round(best_rate - ranked[1][1], 4) if runner_up else None
     return {
         "date": latest["date"],
         "quotes": [(bank, latest[bank]) for bank, _ in quotes],
         "missing": [bank for bank in BANKS if not latest.get(bank)],
         "best": best_bank if gap else None,  # None when only one bank or a tie
+        "runner_up": runner_up,
         "gap": gap,
     }
 
@@ -288,22 +292,6 @@ def render_tt_rate_chart(tt_rates: list[dict]) -> bytes | None:
         # Markers with a surface-coloured ring so overlapping points stay readable.
         ax.scatter(dates, values, s=48, color=color, edgecolors=surface, linewidths=2, zorder=3)
 
-    # Direct-label each bank's latest value; the higher one above, the lower below.
-    latest = {bank: points[-1] for bank, points in series.items()}
-    ranked = sorted(latest, key=lambda bank: latest[bank][1], reverse=True)
-    for rank, bank in enumerate(ranked):
-        when, value = latest[bank]
-        above = rank == 0
-        ax.annotate(
-            f"{value:.2f}",
-            (when, value),
-            xytext=(0, 10 if above else -16),
-            textcoords="offset points",
-            ha="center",
-            color=text_primary,
-            fontsize=9,
-            fontweight="bold",
-        )
 
     ax.set_title(
         "USD TT Buy (INR)",
@@ -334,7 +322,43 @@ def render_tt_rate_chart(tt_rates: list[dict]) -> bytes | None:
     values = [v for points in series.values() for _, v in points]
     span = max(values) - min(values)
     margin = max(span * 0.25, 0.1)
-    ax.set_ylim(min(values) - margin * 1.3, max(values) + margin * 1.6)
+    ax.set_ylim(min(values) - margin, max(values) + margin)
+    # Room on the right for the end-of-line labels.
+    day = timedelta(days=1)
+    ax.set_xlim(all_dates[0] - day * 0.3, all_dates[-1] + day * (0.3 + 0.25 * len(all_dates)))
+
+    # End-of-line labels ("HDFC 91.50") in text ink, nudged apart so close rates
+    # never overlap; each is placed beside its own line's latest point.
+    min_gap_pt = 12
+    pt_per_px = 72 / fig.dpi
+    latest = {bank: points[-1] for bank, points in series.items()}
+    order = sorted(latest, key=lambda bank: latest[bank][1])
+    targets = []
+    for bank in order:
+        when, value = latest[bank]
+        y_pt = ax.transData.transform((mdates.date2num(when), value))[1] * pt_per_px
+        if targets and y_pt - targets[-1] < min_gap_pt:
+            y_pt = targets[-1] + min_gap_pt
+        targets.append(y_pt)
+    # Re-centre the stack on the real values so it doesn't drift upward.
+    actual = [
+        ax.transData.transform((mdates.date2num(latest[b][0]), latest[b][1]))[1] * pt_per_px
+        for b in order
+    ]
+    shift = (sum(actual) - sum(targets)) / len(targets)
+    for bank, target, real in zip(order, targets, actual):
+        when, value = latest[bank]
+        ax.annotate(
+            f"{BANKS[bank]['name'].split()[0]} {value:.2f}",
+            (when, value),
+            xytext=(8, target + shift - real),
+            textcoords="offset points",
+            ha="left",
+            va="center",
+            color=text_primary,
+            fontsize=8,
+            fontweight="bold",
+        )
 
     fig.tight_layout()
     buffer = BytesIO()
@@ -393,10 +417,11 @@ def follower_email_subject(
 def _comparison_verdict(comparison: dict) -> str:
     if comparison["best"]:
         return (
-            f"{BANKS[comparison['best']]['name']} pays ₹{comparison['gap']:.2f} more per USD."
+            f"{BANKS[comparison['best']]['name']} pays the most: ₹{comparison['gap']:.2f} more per USD "
+            f"than {BANKS[comparison['runner_up']]['name']}."
         )
     if len(comparison["quotes"]) > 1:
-        return "Both banks pay the same rate."
+        return "The top banks pay the same rate."
     return ""
 
 
