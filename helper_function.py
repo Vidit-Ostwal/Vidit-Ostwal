@@ -1,3 +1,4 @@
+import hashlib
 import os
 import json
 import re
@@ -234,7 +235,8 @@ def tt_rate_comparison(tt_rates: list[dict]) -> dict | None:
     gap = round(best_rate - ranked[1][1], 4) if runner_up else None
     return {
         "date": latest["date"],
-        "quotes": [(bank, latest[bank]) for bank, _ in quotes],
+        "quotes": [(bank, latest[bank]) for bank, _ in ranked],  # highest first
+        "top_rate": best_rate,
         "missing": [bank for bank in BANKS if not latest.get(bank)],
         "best": best_bank if gap else None,  # None when only one bank or a tie
         "runner_up": runner_up,
@@ -369,8 +371,11 @@ def render_tt_rate_chart(tt_rates: list[dict]) -> bytes | None:
 
 def publish_tt_rate_chart(chart_png: bytes, on_date: str) -> str | None:
     """
-    Save the chart under TT_CHART_DIR (keeping the latest TT_STORE_DAYS files)
-    and return its raw.githubusercontent.com URL. The workflow commits and
+    Save the chart under TT_CHART_DIR and return its raw.githubusercontent.com URL.
+    The filename includes a hash of the image, so every distinct chart gets a new
+    URL: Gmail's image proxy and GitHub's raw CDN both cache by URL, and reusing
+    one name per day made them serve an earlier chart. Charts for the latest
+    TT_STORE_DAYS dates are kept. The workflow commits and
     pushes the file right after the email is sent. Returns None outside
     GitHub Actions, where there is no pushed copy to link to.
     """
@@ -380,16 +385,18 @@ def publish_tt_rate_chart(chart_png: bytes, on_date: str) -> str | None:
         return None
     try:
         os.makedirs(TT_CHART_DIR, exist_ok=True)
-        path = os.path.join(TT_CHART_DIR, f"{on_date}.png")
-        with open(path, "wb") as f:
+        filename = f"{on_date}-{hashlib.sha256(chart_png).hexdigest()[:10]}.png"
+        with open(os.path.join(TT_CHART_DIR, filename), "wb") as f:
             f.write(chart_png)
-        charts = sorted(name for name in os.listdir(TT_CHART_DIR) if name.endswith(".png"))
-        for old in charts[:-TT_STORE_DAYS]:
-            os.remove(os.path.join(TT_CHART_DIR, old))
+        charts = [name for name in os.listdir(TT_CHART_DIR) if name.endswith(".png")]
+        keep_dates = sorted({name[:10] for name in charts})[-TT_STORE_DAYS:]
+        for old in charts:
+            if old[:10] not in keep_dates:
+                os.remove(os.path.join(TT_CHART_DIR, old))
     except OSError as e:
         print(f"Error saving rate chart: {e}")
         return None
-    return f"https://raw.githubusercontent.com/{repo}/{branch}/{TT_CHART_DIR}/{on_date}.png"
+    return f"https://raw.githubusercontent.com/{repo}/{branch}/{TT_CHART_DIR}/{filename}"
 
 
 def follower_email_subject(
@@ -463,8 +470,9 @@ def send_email(
     if comparison:
         text_lines.append("")
         text_lines.append(f"USD TT Buy — {comparison['date']}")
-        for bank, rate in comparison["quotes"]:
-            text_lines.append(f"- {BANKS[bank]['name']}: {rate}")
+        for rank, (bank, rate) in enumerate(comparison["quotes"], start=1):
+            gap = "" if rank == 1 else f" (−{comparison['top_rate'] - float(rate):.2f})"
+            text_lines.append(f"{rank}. {BANKS[bank]['name']}: {rate}{gap}")
         for bank in comparison["missing"]:
             text_lines.append(f"- {BANKS[bank]['name']}: unavailable")
         verdict = _comparison_verdict(comparison)
@@ -543,23 +551,37 @@ def send_email(
     tt_section = ""
     if comparison:
         best = comparison["best"]
+        cell = "padding: 6px 16px 6px 0; border-bottom: 1px solid #e5e5e5;"
         quote_rows = "".join(
             f"""
             <tr>
-              <td style="padding: 4px 24px 4px 0;">{BANKS[bank]['name']}</td>
-              <td style="padding: 4px 0; text-align: right;"><strong>{rate}</strong>{' ✓' if bank == best else ''}</td>
+              <td style="{cell} color: #777;">{rank}</td>
+              <td style="{cell}">{'<strong>' if bank == best else ''}{BANKS[bank]['name']}{' ✓</strong>' if bank == best else ''}</td>
+              <td style="{cell} text-align: right;"><strong>{rate}</strong></td>
+              <td style="{cell} text-align: right; color: #777;">{'—' if rank == 1 else f"−{comparison['top_rate'] - float(rate):.2f}"}</td>
             </tr>
             """
-            for bank, rate in comparison["quotes"]
+            for rank, (bank, rate) in enumerate(comparison["quotes"], start=1)
         ) + "".join(
             f"""
             <tr>
-              <td style="padding: 4px 24px 4px 0;">{BANKS[bank]['name']}</td>
-              <td style="padding: 4px 0; text-align: right; color: #777;">unavailable</td>
+              <td style="{cell} color: #777;">–</td>
+              <td style="{cell}">{BANKS[bank]['name']}</td>
+              <td style="{cell} text-align: right; color: #777;">unavailable</td>
+              <td style="{cell}"></td>
             </tr>
             """
             for bank in comparison["missing"]
         )
+        head = "padding: 6px 16px 6px 0; border-bottom: 2px solid #ccc; color: #555; font-size: 12px; text-align: left;"
+        quote_rows = f"""
+            <tr>
+              <th style="{head}">#</th>
+              <th style="{head}">Bank</th>
+              <th style="{head} text-align: right;">USD TT Buy (₹)</th>
+              <th style="{head} text-align: right;">vs best</th>
+            </tr>
+            """ + quote_rows
         on_date = datetime.fromisoformat(comparison["date"]).strftime("%d %b %Y")
         verdict = _comparison_verdict(comparison)
         tt_section = f"""
