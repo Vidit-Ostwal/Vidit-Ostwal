@@ -6,6 +6,8 @@ import ssl
 import smtplib
 from datetime import datetime
 from email.message import EmailMessage
+from email.utils import make_msgid
+from io import BytesIO
 from zoneinfo import ZoneInfo
 
 AXIS_CARD_RATE_URL = "https://application.axis.bank.in/webforms/corporatecardrate/index.aspx"
@@ -182,6 +184,86 @@ def update_usd_tt_buy_history() -> list[dict]:
     return list(reversed(history[-TT_EMAIL_DAYS:]))
 
 
+def render_tt_rate_chart(tt_rates: list[dict]) -> bytes | None:
+    """
+    Render a dark-theme PNG line chart of USD TT Buy against date.
+    Expects entries newest first (as returned by update_usd_tt_buy_history).
+    Returns None when there are fewer than 2 points or matplotlib is missing,
+    so the email still goes out without the chart.
+    """
+    if len(tt_rates) < 2:
+        return None
+    try:
+        import matplotlib
+        matplotlib.use("Agg")
+        import matplotlib.pyplot as plt
+        import matplotlib.dates as mdates
+    except ImportError:
+        print("matplotlib not installed; sending email without the rate chart.")
+        return None
+
+    surface = "#1a1a19"
+    text_primary = "#f0efec"
+    text_secondary = "#c3c2b7"
+    grid = "#3a3a38"
+    series = "#3987e5"
+
+    points = sorted(
+        (datetime.fromisoformat(entry["date"]), float(entry["usd"]))
+        for entry in tt_rates
+    )
+    dates = [d for d, _ in points]
+    values = [v for _, v in points]
+
+    fig, ax = plt.subplots(figsize=(6.4, 3.0), dpi=200)
+    fig.patch.set_facecolor(surface)
+    ax.set_facecolor(surface)
+
+    ax.plot(dates, values, color=series, linewidth=2, solid_capstyle="round", zorder=2)
+    # Markers with a surface-coloured ring so they read cleanly on the line.
+    ax.scatter(dates, values, s=48, color=series, edgecolors=surface, linewidths=2, zorder=3)
+
+    # Selective direct label: latest value only.
+    ax.annotate(
+        f"{values[-1]:.2f}",
+        (dates[-1], values[-1]),
+        xytext=(0, 10),
+        textcoords="offset points",
+        ha="center",
+        color=text_primary,
+        fontsize=9,
+        fontweight="bold",
+    )
+
+    ax.set_title(
+        "USD TT Buy · Axis Bank (INR)",
+        loc="left",
+        color=text_primary,
+        fontsize=11,
+        fontweight="bold",
+        pad=12,
+    )
+
+    ax.set_xticks(dates)
+    ax.xaxis.set_major_formatter(mdates.DateFormatter("%d %b"))
+    ax.tick_params(colors=text_secondary, labelsize=8, length=0, pad=6)
+    ax.grid(axis="y", color=grid, linewidth=0.6)
+    ax.set_axisbelow(True)
+    for side in ("top", "right", "left"):
+        ax.spines[side].set_visible(False)
+    ax.spines["bottom"].set_color(grid)
+
+    span = max(values) - min(values)
+    margin = max(span * 0.25, 0.1)
+    ax.set_ylim(min(values) - margin, max(values) + margin * 1.6)
+
+    fig.tight_layout()
+    buffer = BytesIO()
+    fig.savefig(buffer, format="png", facecolor=surface)
+    plt.close(fig)
+    return buffer.getvalue()
+
+
 def follower_email_subject(
     new_followers: list[dict],
     lost_followers: list[dict],
@@ -294,10 +376,20 @@ def send_email(
         """
         for entry in tt_rates
     )
+    chart_png = render_tt_rate_chart(tt_rates)
+    chart_cid = make_msgid(domain="tt-rate.chart")
+    chart_html = ""
+    if chart_png:
+        chart_html = f"""
+        <img src="cid:{chart_cid[1:-1]}" alt="USD TT Buy rate, last {len(tt_rates)} days"
+             width="640" style="display: block; max-width: 100%; height: auto; border-radius: 8px; margin: 8px 0 16px;" />
+        """
+
     tt_section = ""
     if tt_rates:
         tt_section = f"""
         <h2>USD TT Buy — Axis Bank</h2>
+        {chart_html}
         <p>Last {len(tt_rates)} stored day(s):</p>
         <table style="border-collapse: collapse;">
           <thead>
@@ -331,6 +423,10 @@ def send_email(
     """
 
     msg.add_alternative(html_body, subtype="html")
+    if chart_png:
+        msg.get_payload()[1].add_related(
+            chart_png, maintype="image", subtype="png", cid=chart_cid
+        )
 
     # -------- Send email --------
     context = ssl.create_default_context()

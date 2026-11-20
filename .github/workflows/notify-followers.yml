@@ -2,7 +2,7 @@ name: Notify GitHub Followers
 
 on:
   schedule:
-    - cron: '30 0 * * *'  # 11:00 AM IST (05:30 UTC)
+    - cron: '30 0 * * 1-5'  # Mon–Fri, 6:00 AM IST (00:30 UTC); GitHub often starts runs late
   workflow_dispatch:  # Allow manual triggering
 
 jobs:
@@ -19,7 +19,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install requests
+        pip install requests matplotlib
 
     - name: Check GitHub Followers
       env:
